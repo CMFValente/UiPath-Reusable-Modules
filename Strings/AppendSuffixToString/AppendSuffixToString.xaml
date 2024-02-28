@@ -1,7 +1,7 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.in_str_SuffixToAppend="tina" this:Main.io_str_InformationToAppendSuffix="Crist" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_str_SuffixToAppend" Type="InArgument(x:String)" />
-    <x:Property Name="io_str_InformationToAppendSuffix" Type="InArgument(x:String)" />
+    <x:Property Name="io_str_InformationToAppendSuffix" Type="InOutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -89,7 +89,7 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[AppendSuffixToString]&#xD;&#xA;[Append Suffix to a list of input strings.]&#xD;&#xA;[Arguments:&#xD;&#xA;&#xD;&#xA;IN:&#xD;&#xA;&#xD;&#xA;- in_str_SuffixToAppend (String): Stores the suffix to be appended to all input strings.&#xD;&#xA;&#xD;&#xA;OUT: N/A.&#xD;&#xA;&#xD;&#xA;IN/OUT:&#xD;&#xA;&#xD;&#xA;- io_str_InformationToAppendSuffix (String): Stores the list of input strings to append the suffix.]" DisplayName="AppendSuffixToString" sap:VirtualizedContainerService.HintSize="449.6,509.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[AppendSuffixToString]&#xA;[Append Suffix to a list of input strings.]&#xA;[Arguments:&#xA;&#xA;IN:&#xA;&#xA;- in_str_SuffixToAppend (String): Stores the suffix to be appended to all input strings.&#xA;&#xA;OUT: N/A.&#xA;&#xA;IN/OUT:&#xA;&#xA;- io_str_InformationToAppendSuffix (String): Stores the list of input strings to append the suffix.]" DisplayName="AppendSuffixToString" sap:VirtualizedContainerService.HintSize="449.6,509.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

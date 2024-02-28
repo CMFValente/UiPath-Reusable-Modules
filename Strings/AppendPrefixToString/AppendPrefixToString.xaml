@@ -89,7 +89,7 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[AppendPrefixToString]&#xD;&#xA;[Append a prefix to all input strings.]&#xD;&#xA;[Arguments:&#xD;&#xA;&#xD;&#xA;IN:&#xD;&#xA;&#xD;&#xA;- in_str_PrefixToAppend (String): Stores the prefix to be appended to all input strings.&#xD;&#xA;&#xD;&#xA;OUT: N/A.&#xD;&#xA;&#xD;&#xA;IN/OUT:&#xD;&#xA;&#xD;&#xA;- io_str_InformationToAppendPrefix (String): Stores the input strings that needed to have a prefix.]" DisplayName="AppendPrefixToString" sap:VirtualizedContainerService.HintSize="449.6,509.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[AppendPrefixToString]&#xA;[Append a prefix to all input strings.]&#xA;[Arguments:&#xA;&#xA;IN:&#xA;&#xA;- in_str_PrefixToAppend (String): Stores the prefix to be appended to all input strings.&#xA;&#xA;OUT: N/A.&#xA;&#xA;IN/OUT:&#xA;&#xA;- io_str_InformationToAppendPrefix (String): Stores the input strings that needed to have a prefix.]" DisplayName="AppendPrefixToString" sap:VirtualizedContainerService.HintSize="449.6,509.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -131,7 +131,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Not io_str_InformationToAppendPrefix.Contains(in_str_PrefixToAppend.TrimStart.TrimEnd)]" DisplayName="Verify if Input String Not Contains the Indicated Prefix" sap:VirtualizedContainerService.HintSize="256.8,52.8" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If Condition="[Not CurrentString.TrimStart.TrimEnd.Contains(in_str_PrefixToAppend.TrimStart.TrimEnd)]" DisplayName="Verify if Input String Not Contains the Indicated Prefix" sap:VirtualizedContainerService.HintSize="256.8,52.8" sap2010:WorkflowViewState.IdRef="If_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -155,10 +155,10 @@
                         </ui:LogMessage>
                         <Assign DisplayName="Assign: Append Prefix to Input String" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[io_str_InformationToAppendPrefix]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String">[CurrentString]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[String.Concat(in_str_PrefixToAppend.TrimStart.TrimEnd, io_str_InformationToAppendPrefix.TrimStart.TrimEnd)]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[String.Concat(in_str_PrefixToAppend.TrimStart.TrimEnd, CurrentString.TrimStart.TrimEnd)]</InArgument>
                           </Assign.Value>
                         </Assign>
                       </Sequence>

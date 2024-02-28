@@ -21,7 +21,7 @@ namespace AppendSuffixToString
     {
         public CodedWorkflow()
         {
-            _ = new System.Type[]{typeof(UiPath.Testing.API.ITestingService), typeof(UiPath.Core.Activities.API.ISystemService), typeof(UiPath.Mail.Activities.Api.IMailService), typeof(UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService)};
+            _ = new System.Type[]{typeof(UiPath.Testing.API.ITestingService), typeof(UiPath.Mail.Activities.Api.IMailService), typeof(UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService), typeof(UiPath.Core.Activities.API.ISystemService)};
         }
 
         protected UiPath.Mail.Activities.Api.IMailService mail { get => serviceContainer.Resolve<UiPath.Mail.Activities.Api.IMailService>(); }
