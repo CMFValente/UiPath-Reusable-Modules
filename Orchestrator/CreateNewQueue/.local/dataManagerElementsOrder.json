@@ -1,0 +1,27 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CreateNewQueue.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "int_CreateNewQueueHTTPStatusResponse&Sequence_3",
+        "str_CreateQueueJsonBody&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_QueueName",
+        "in_str_QueueDescription",
+        "in_str_QueueRetryNumber"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

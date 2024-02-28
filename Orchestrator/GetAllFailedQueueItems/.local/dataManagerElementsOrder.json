@@ -1,0 +1,29 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "GetAllFailedQueueItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "list_FailedQueueItems&Sequence_1",
+        "QueueName&Sequence_2",
+        "int_SkipItems&Sequence_2",
+        "list_AllFailedItems&Sequence_1",
+        "int_FailedItemsCounter&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_OrchestratorFolderPath",
+        "in_str_QueueName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

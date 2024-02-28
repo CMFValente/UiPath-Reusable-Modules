@@ -1,0 +1,28 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "GetQueuesInfo.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_GetQueueInfoResponse&Sequence_2",
+        "jObj_GetQueuesInfoResponse&Sequence_2",
+        "int_QueueIndex&Sequence_2",
+        "int_GetQueueInfoHTTPStatusResponse&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_list_QueuesNames",
+        "in_str_FilterQueueName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
