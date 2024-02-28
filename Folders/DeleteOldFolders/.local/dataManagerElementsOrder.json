@@ -1,0 +1,29 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "DeleteOldFoldersFromDirectory.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "screenshotsFoldersName_Array&Sequence_542",
+        "orderArray&Sequence_542",
+        "previousDateToDelete&Sequence_542",
+        "index&Sequence_542"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_int_NumberPreviousDays",
+        "in_int_MinimumNumberFoldersNotToDelete",
+        "in_str_MainFolderPath"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}
