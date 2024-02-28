@@ -1,0 +1,26 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ForceDeleteFilesWithCMD.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bool_CMDAppExists&Sequence_2",
+        "bool_RunAppExists&Sequence_1",
+        "FileExists&Sequence_5"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_FilesToDelete"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

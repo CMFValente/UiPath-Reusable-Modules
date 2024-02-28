@@ -1,0 +1,27 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "GetLatestFileFromFolder.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "fileDate&Sequence_1605",
+        "fileDate_str&Sequence_1605",
+        "newestFileDate&Sequence_1605"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_str_LatestFilePath",
+        "in_str_FolderPath"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}
