@@ -1,0 +1,30 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "AddNewColumnsToExistingDataTable.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "arr_ColumnNames&Sequence_2",
+        "arr_ColumnTypes&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_str_SystemErrorMessage",
+        "io_str_BusinessErrorMessage",
+        "io_dt_DataToProcess",
+        "in_str_NewColumnTypes",
+        "in_str_NewColumnNames",
+        "io_bool_CheckFlow"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
