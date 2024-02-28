@@ -1,0 +1,25 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "KillProcessByUser.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "int_IdxProcess&Sequence_1",
+        "ListProcessFromMachine&Sequence_13"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_ProcessList"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

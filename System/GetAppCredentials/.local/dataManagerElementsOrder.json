@@ -1,0 +1,30 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "GetAppCredentials.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "secstr_Password&Sequence_1",
+        "str_Username&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_OrchestratorFolderPath",
+        "in_str_ProcessName",
+        "out_dt_AppCredentials",
+        "in_Config",
+        "in_list_AppCredentials",
+        "in_OrchestratorFolderPath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

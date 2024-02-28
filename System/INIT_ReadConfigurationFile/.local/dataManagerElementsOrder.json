@@ -1,0 +1,30 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "INIT_ReadConfigurationFile.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_SettingsAndConstants&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_str_SystemErrorMessage",
+        "io_str_BusinessErrorMessage",
+        "out_Config",
+        "in_ConfigSheets",
+        "in_ConfigFile",
+        "in_str_EnvironmentRun",
+        "io_bool_CheckFlow"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
