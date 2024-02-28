@@ -1,0 +1,44 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "AppendTransactionResultsToExcelFile.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bool_WriteSuc&Sequence_1",
+        "stopWatch&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_dt_TransactionResults",
+        "in_str_ExcelFilePath",
+        "in_str_SheetName",
+        "in_int_WaitTime"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "AppendResultsToExcelFile.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "stopWatch&Sequence_1",
+        "bool_WriteSuc&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_dt_Results",
+        "in_int_WaitTime",
+        "in_str_SheetName",
+        "in_str_ExcelFilePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

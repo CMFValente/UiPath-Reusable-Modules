@@ -1,0 +1,28 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ReadExcelRange.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bool_ReadSuc&Sequence_1",
+        "stopWatch&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_ExcelFilePath",
+        "in_str_SheetName",
+        "in_int_WaitTime",
+        "out_dt_ExcelData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
