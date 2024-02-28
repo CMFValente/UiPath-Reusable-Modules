@@ -1,0 +1,25 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "JoinTwoDataTablesWithDifferentColumns.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "int_RowIndex&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_dt_FirstDataTable",
+        "in_dt_SecondDataTable"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
