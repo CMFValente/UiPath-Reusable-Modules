@@ -1,0 +1,25 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CapitalizeFirstLetterOfString.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "int_StringIndex&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_StringsToCapitalize",
+        "out_str_StringsCapitalized"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
