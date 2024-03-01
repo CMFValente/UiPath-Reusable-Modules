@@ -1,0 +1,26 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CountOccurrencesCharacterInString.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "int_NumberOccurrencesCharacter&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_list_NumberCharacterOccurrence",
+        "in_str_CharacterToCountOccurrence",
+        "in_str_StringsToCountOccurrence"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
