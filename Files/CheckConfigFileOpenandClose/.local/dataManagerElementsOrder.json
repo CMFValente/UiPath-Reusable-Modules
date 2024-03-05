@@ -1,0 +1,37 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CheckFileOpened.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bool_FileIsOpened&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_FileNamesToCheckStatus",
+        "in_str_MainFolderPath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CheckConfigFileOpenandClose.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bool_FileIsOpened&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_ConfigFilePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
