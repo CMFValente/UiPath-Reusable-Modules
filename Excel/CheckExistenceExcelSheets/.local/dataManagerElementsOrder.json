@@ -1,0 +1,25 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CheckExistenceExcelSheets.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "bool_SheetExists&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_SheetsToCheckExistence",
+        "in_str_ExcelFilePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
