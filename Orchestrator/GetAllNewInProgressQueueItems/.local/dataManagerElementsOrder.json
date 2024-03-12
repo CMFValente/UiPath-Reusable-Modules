@@ -1,0 +1,40 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "GetAllNewQueueItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "list_NewQueueItems&Sequence_1",
+        "int_NewQueueItemsCounter&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_list_NewQueueItems",
+        "in_str_QueueName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "GetAllNewInProgressQueueItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "int_NewInProgressQueueItemsCounter&Sequence_1",
+        "list_NewInProgressQueueItems&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_list_NewInProgressQueueItems",
+        "in_str_QueueName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
