@@ -1,9 +1,9 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.in_str_ExcelFilePath="C:\Users\CatarinaValente\Desktop\TESTE.xlsx" this:Main.in_str_ExcelSheetName="Sheet2" this:Main.in_int_ColumnNumberMax="3" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_str_ExcelFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_str_ExcelSheetName" Type="InArgument(x:String)" />
     <x:Property Name="in_int_ColumnNumberMax" Type="InArgument(x:Int32)" />
-    <x:Property Name="out_list_ExcelVisibleColumnName" Type="OutArgument(scg:List(x:String))" />
+    <x:Property Name="out_list_ExcelHiddenColumnName" Type="OutArgument(scg:List(x:String))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -92,14 +92,14 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[GetExcelVisibleColumnNameList]&#xA;[Get all visible column name of an Excel file.]&#xA;[Arguments:&#xA;&#xA;IN:&#xA;&#xA;- in_int_ColumnNumberMax (Int32): Stores the maximum number of columns allowed to retrieve the visible column names;&#xA;&#xA;- in_str_ExcelFilePath (String): Stores the Excel file path;&#xA;&#xA;- in_str_ExcelSheetName (String): Stores the Excel Sheet Name to retrieve all visible column names.&#xA;&#xA;OUT:&#xA;&#xA;- out_list_ExcelVisibleColumnName (List&lt;String&gt;): Stores all visible column names of an Excel file.&#xA;&#xA;IN/OUT: N/A.]" DisplayName="GetExcelVisibleColumnNameList" sap:VirtualizedContainerService.HintSize="449.6,589.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[GetExcelHiddenColumnNameList]&#xA;[Get all hidden column name of an Excel file.]&#xA;[Arguments:&#xA;&#xA;IN:&#xA;&#xA;- in_int_ColumnNumberMax (Int32): Stores the maximum number of columns allowed to retrieve the visible column names;&#xA;&#xA;- in_str_ExcelFilePath (String): Stores the Excel file path;&#xA;&#xA;- in_str_ExcelSheetName (String): Stores the Excel Sheet Name to retrieve all visible column names.&#xA;&#xA;OUT:&#xA;&#xA;- out_list_ExcelHiddenColumnName (List&lt;String&gt;): Stores all hidden column names of an Excel file.&#xA;&#xA;IN/OUT: N/A.]" DisplayName="GetExcelHiddenColumnNameList" sap:VirtualizedContainerService.HintSize="449.6,589.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Init GetExcelVisibleColumnNameList Workflow" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Initialization of GetExcelVisibleColumnNameList workflow...&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Init GetExcelHiddenColumnNameList Workflow" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Initialization of GetExcelHiddenColumnNameList workflow...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -107,7 +107,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch: Get Excel Visible Column Names" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch: Get Excel Hidden Column Names" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -115,19 +115,27 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Get Excel Visible Column Names" sap:VirtualizedContainerService.HintSize="449.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Get Excel Hidden Column Names" sap:VirtualizedContainerService.HintSize="449.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim func_ConvColumnNumberToName As Func(Of Integer, String) = _&#xA;&#x9;Function(columnIndex As Integer) As String&#xA;&#x9;&#x9;Dim colLetter As String = String.Empty&#xA;&#x9;&#x9;Dim modNum As Integer = 0&#xA;&#x9;&#x9;Dim divEnd As Integer = columnIndex&#xA;&#x9;&#x9;While divEnd &gt; 0&#xA;&#x9;&#x9;&#x9;modNum = (divEnd - 1) Mod 26 '// 26 = A-Z&#xA;&#x9;&#x9;&#x9;colLetter = Chr(65 + modNum) &amp; colLetter '// char(65) = A&#xA;&#x9;&#x9;&#x9;divEnd = CInt((divEnd - modNum) \ 26)&#xA;&#x9;&#x9;End While&#xA;&#x9;&#x9;Return colLetter&#xA;&#x9;End Function&#xA;&#x9;&#xA;&#x9;list_ExcelVisibleColumnName = New List(Of String)&#xA;&#x9;Dim xlApp As Microsoft.Office.Interop.Excel.Application&#xA;&#x9;Dim xlWorkbook As Microsoft.Office.Interop.Excel.Workbook&#xA;&#x9;Dim xlWorksheet As Microsoft.Office.Interop.Excel.Worksheet&#xA;&#x9;xlApp = New Microsoft.Office.Interop.Excel.ApplicationClass&#xA;&#x9;Try&#xA;&#x9;&#x9;xlWorkbook = xlApp.Workbooks.Open(str_ExcelFilePath)&#xA;&#x9;&#x9;For idx As Integer = 1 To xlWorkbook.Sheets.Count&#xA;&#x9;&#x9;&#x9;xlWorksheet = CType(xlWorkbook.Sheets(idx), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#x9;&#x9;&#x9;If xlWorksheet.Name = str_ExcelSheetName Then&#xA;&#x9;&#x9;&#x9;&#x9;For idxCol As Integer = 1 To int_ColumnNumberMax&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;If Not(CBool(xlWorksheet.Range(xlWorksheet.Cells(1, idxCol), xlWorksheet.Cells(1, idxCol)).EntireColumn.Hidden)) Then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;list_ExcelVisibleColumnName.Add(func_ConvColumnNumberToName(idxCol))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#xA;&#x9;&#x9;&#x9;&#x9;Next&#xA;&#x9;&#x9;&#x9;&#x9;Exit For&#xA;&#x9;&#x9;&#x9;End If&#xA;&#x9;&#x9;Next&#xA;&#x9;&#x9;xlWorkbook.Close&#xA;&#x9;&#x9;xlApp.Visible = False&#xA;&#x9;Catch ex As Exception&#xA;&#x9;&#x9;Throw (ex)&#xA;&#x9;Finally&#xA;&#x9;&#x9;xlApp.Quit&#xA;&#x9;End Try&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;" DisplayName="Invoke Code: Get Excel Visible Column Name" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim func_ConvColumnNumberToName As Func(Of Integer, String) = _&#xD;&#xA;&#x9;Function(columnIndex As Integer) As String&#xD;&#xA;&#x9;&#x9;Dim colLetter As String = String.Empty&#xD;&#xA;&#x9;&#x9;Dim modNum As Integer = 0&#xD;&#xA;&#x9;&#x9;Dim divEnd As Integer = columnIndex&#xD;&#xA;&#x9;&#x9;While divEnd &gt; 0&#xD;&#xA;&#x9;&#x9;&#x9;modNum = (divEnd - 1) Mod 26 '// 26 = A-Z&#xD;&#xA;&#x9;&#x9;&#x9;colLetter = Chr(65 + modNum) &amp; colLetter '// char(65) = A&#xD;&#xA;&#x9;&#x9;&#x9;divEnd = CInt((divEnd - modNum) \ 26)&#xD;&#xA;&#x9;&#x9;End While&#xD;&#xA;&#x9;&#x9;Return colLetter&#xD;&#xA;&#x9;End Function&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;list_ExcelHiddenColumnName = New List(Of String)&#xD;&#xA;&#x9;Dim xlApp As Microsoft.Office.Interop.Excel.Application&#xD;&#xA;&#x9;Dim xlWorkbook As Microsoft.Office.Interop.Excel.Workbook&#xD;&#xA;&#x9;Dim xlWorksheet As Microsoft.Office.Interop.Excel.Worksheet&#xD;&#xA;&#x9;xlApp = New Microsoft.Office.Interop.Excel.ApplicationClass&#xD;&#xA;&#x9;Try&#xD;&#xA;&#x9;&#x9;xlWorkbook = xlApp.Workbooks.Open(str_ExcelFilePath)&#xD;&#xA;&#x9;&#x9;For idx As Integer = 1 To xlWorkbook.Sheets.Count&#xD;&#xA;&#x9;&#x9;&#x9;xlWorksheet = CType(xlWorkbook.Sheets(idx), Microsoft.Office.Interop.Excel.Worksheet)&#xD;&#xA;&#x9;&#x9;&#x9;If xlWorksheet.Name = str_ExcelSheetName Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;For idxCol As Integer = 1 To int_ColumnNumberMax&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;If (CBool(xlWorksheet.Range(xlWorksheet.Cells(1, idxCol), xlWorksheet.Cells(1, idxCol)).EntireColumn.Hidden)) Then&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;list_ExcelHiddenColumnName.Add(func_ConvColumnNumberToName(idxCol))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Next&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;Exit For&#xD;&#xA;&#x9;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#x9;Next&#xD;&#xA;&#x9;&#x9;xlWorkbook.Close&#xD;&#xA;&#x9;&#x9;xlApp.Visible = False&#xD;&#xA;&#x9;Catch ex As Exception&#xD;&#xA;&#x9;&#x9;Throw (ex)&#xD;&#xA;&#x9;Finally&#xD;&#xA;&#x9;&#x9;xlApp.Quit&#xD;&#xA;&#x9;End Try&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;" DisplayName="Invoke Code: Get Excel Hidden Column Name" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
             <ui:InvokeCode.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="str_ExcelFilePath">[in_str_ExcelFilePath.TrimStart.TrimEnd]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="str_ExcelSheetName">[in_str_ExcelSheetName.TrimStart.TrimEnd]</InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="int_ColumnNumberMax">[in_int_ColumnNumberMax]</InArgument>
-              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="list_ExcelVisibleColumnName">[out_list_ExcelVisibleColumnName]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="str_ExcelFilePath">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_ExcelFilePath.TrimStart.TrimEnd" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="str_ExcelSheetName">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_ExcelSheetName.TrimStart.TrimEnd" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="int_ColumnNumberMax">
+                <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_int_ColumnNumberMax" />
+              </InArgument>
+              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="list_ExcelHiddenColumnName">
+                <VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="out_list_ExcelHiddenColumnName" />
+              </InOutArgument>
             </ui:InvokeCode.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -136,7 +144,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeCode>
-          <ui:LogMessage DisplayName="Log Message: Success GetExcelVisibleColumnNameList" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;GetExcelVisibleColumnNameList workflow ended successfully...&quot;]">
+          <ui:LogMessage DisplayName="Log Message: Success GetExcelHiddenColumnNameList" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;GetExcelHiddenColumnNameList workflow ended successfully...&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -147,10 +155,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="452.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,123.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -158,7 +166,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message: SE GetExcelVisibleColumnNameList Workflow" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Error Source: {0} | Error Message: {1}&quot;, exception.Source, exception.Message)]">
+            <ui:LogMessage DisplayName="Log Message: SE GetExcelHiddenColumnNameList workflow" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Error Source: {0} | Error Message: {1}&quot;, exception.Source, exception.Message)]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -168,7 +176,7 @@
             </ui:LogMessage>
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="452.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -179,7 +187,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message: BRE GetExcelVisibleColumnNameList Workflow" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Error Source: {0} | Error Message: {1}&quot;, exception.Source, exception.Message)]">
+            <ui:LogMessage DisplayName="Log Message: BRE GetExcelHiddenColumnNameList workflow" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Error Source: {0} | Error Message: {1}&quot;, exception.Source, exception.Message)]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
