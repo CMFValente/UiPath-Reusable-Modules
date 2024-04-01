@@ -1,0 +1,27 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ExportRobotLogsToExcel.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_LogsToWriteExcel&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_str_ExcelSheetName",
+        "io_str_SystemErrorMessage",
+        "in_str_OutputExcelLogsDirectoryPath",
+        "in_str_LogFilesDirectoryPath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
