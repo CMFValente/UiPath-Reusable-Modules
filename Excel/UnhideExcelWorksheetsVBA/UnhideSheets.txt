@@ -1,0 +1,4 @@
+Sub UnhideSheet(SheetName1,SheetName2)
+Sheets(SheetName1).Visible=True
+Sheets(SheetName2).Visible=True
+End Sub
