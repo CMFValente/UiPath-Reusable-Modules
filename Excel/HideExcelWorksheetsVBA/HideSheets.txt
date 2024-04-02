@@ -1,0 +1,4 @@
+Sub HideSheet(SheetName1,SheetName2)
+Sheets(SheetName1).Visible=False
+Sheets(SheetName2).Visible=False
+End Sub
