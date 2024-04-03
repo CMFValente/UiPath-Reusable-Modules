@@ -90,7 +90,7 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[HideExcelColumns]&#xD;&#xA;[Hide specific columns for each sheet in an excel file.]&#xD;&#xA;[Arguments:&#xD;&#xA;&#xD;&#xA;IN:&#xD;&#xA;&#xD;&#xA;- in_str_ExcelFilePath (String): Stores the excel file path;&#xD;&#xA;&#xD;&#xA;- in_str_ExcelSheetName (String): Stores the list of excel sheet names to hide specific columns;&#xD;&#xA;&#xD;&#xA;- in_str_ColumnsRangeToHide (String): Stores the column range to be hidden.&#xD;&#xA;&#xD;&#xA;OUT: N/A&#xD;&#xA;&#xD;&#xA;IN/OUT: N/A]" DisplayName="HideExcelColumns" sap:VirtualizedContainerService.HintSize="449.6,525.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[HideExcelColumns]&#xA;[Hide specific columns for each sheet in an excel file.]&#xA;[Arguments:&#xA;&#xA;IN:&#xA;&#xA;- in_str_ExcelFilePath (String): Stores the excel file path;&#xA;&#xA;- in_str_ExcelSheetName (String): Stores the list of excel sheet names to hide specific columns;&#xA;&#xA;- in_str_ColumnsRangeToHide (String): Stores the column range to be hidden.&#xA;&#xA;OUT: N/A&#xA;&#xA;IN/OUT: N/A]" DisplayName="HideExcelColumns" sap:VirtualizedContainerService.HintSize="449.6,525.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -113,13 +113,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Hide Excel Columns for each Excel Sheet" sap:VirtualizedContainerService.HintSize="449.6,257.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Hide Excel Columns for each Excel Sheet" sap:VirtualizedContainerService.HintSize="449.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Hide Excel Columns for each Excel Sheet" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(in_str_ExcelSheetName, &quot;,&quot;)]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Hide Excel Columns for each Excel Sheet" sap:VirtualizedContainerService.HintSize="387.2,188" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(in_str_ExcelSheetName, &quot;,&quot;)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
@@ -141,9 +142,15 @@
                   </ui:LogMessage>
                   <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim xlApp As Microsoft.Office.Interop.Excel.Application&#xA;Dim xlWorkbook As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim xlWorksheet As Microsoft.Office.Interop.Excel.Worksheet&#xA;xlApp = New Microsoft.Office.Interop.Excel.ApplicationClass&#xA;Try&#xA;&#x9;xlWorkbook = xlApp.Workbooks.Open(str_ExcelFilePath)&#xA;&#x9;xlWorksheet = CType(xlWorkbook.Sheets(str_ExcelSheetName), Microsoft.Office.Interop.Excel.Worksheet)&#xA;&#x9;xlWorksheet.Range(str_ColumnsRangeToHide).EntireColumn.Hidden = True&#xA;&#x9;xlWorkbook.Save&#xA;&#x9;xlWorkbook.Close&#xA;&#x9;xlApp.Visible = False&#xA;Catch ex As Exception&#xA;&#x9;Throw (ex)&#xA;Finally&#xA;&#x9;xlApp.Quit&#xA;End Try" DisplayName="Invoke Code: Hide Excel Columns" sap:VirtualizedContainerService.HintSize="268,52.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                     <ui:InvokeCode.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="str_ExcelFilePath">[in_str_ExcelFilePath.TrimStart.TrimEnd]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="str_ExcelSheetName">[in_str_ExcelSheetName.TrimStart.TrimEnd]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="str_ColumnsRangeToHide">[in_str_ColumnsRangeToHide.TrimStart.TrimEnd]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="str_ExcelFilePath">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_ExcelFilePath.TrimStart.TrimEnd" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="str_ExcelSheetName">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentSheetName.TrimStart.TrimEnd" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="str_ColumnsRangeToHide">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_ColumnsRangeToHide.TrimStart.TrimEnd" />
+                      </InArgument>
                     </ui:InvokeCode.Arguments>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -157,7 +164,7 @@
             </ui:ForEach.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
