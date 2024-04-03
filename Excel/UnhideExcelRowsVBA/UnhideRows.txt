@@ -1,0 +1,3 @@
+Sub UnhideRows(SheetName)
+Sheets(SheetName).Rows("4:6").Hidden=False
+End Sub
