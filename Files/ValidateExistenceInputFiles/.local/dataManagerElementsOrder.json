@@ -24,6 +24,7 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
+        "in_int_RetryValidateInputFiles",
         "in_str_MainFolderPath",
         "in_str_FolderName",
         "in_str_FilesNames"
