@@ -1,0 +1,4 @@
+Sub HideColumns(SheetName1,SheetName2)
+Sheets(SheetName1).Columns("C:E").Hidden=True
+Sheets(SheetName2).Columns("C:E").Hidden=True
+End Sub
