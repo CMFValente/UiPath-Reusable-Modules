@@ -13,6 +13,7 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
+        "in_int_RetryValidateSubFolders",
         "in_str_ListSubFoldersName",
         "in_str_MainFolderPath"
       ],
