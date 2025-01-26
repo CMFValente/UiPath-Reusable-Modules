@@ -1,19 +1,16 @@
 {
-  "name": "System",
-  "projectId": "538b1609-865a-4e3b-b55e-687b47efe8d4",
-  "description": "Blank Process",
-  "main": "KillProcessByUser.xaml",
+  "name": "ReadOverrrideConfigFile",
+  "projectId": "d9c0a75e-d718-43f0-8b42-edce5dc2a7b7",
+  "description": "Read and Override Config file.",
+  "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.22.0-preview]",
-    "UiPath.Mail.Activities": "[1.20.3]",
-    "UiPath.System.Activities": "[23.8.1-preview]",
-    "UiPath.Testing.Activities": "[23.8.0-preview]",
-    "UiPath.UIAutomation.Activities": "[23.6.2-preview]"
+    "UiPath.Excel.Activities": "[2.25.1-preview]",
+    "UiPath.System.Activities": "[24.10.7]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
-  "studioVersion": "23.8.0.0",
+  "studioVersion": "25.0.157.0",
   "projectVersion": "1.0.0",
   "runtimeOptions": {
     "autoDispose": false,
@@ -44,13 +41,13 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "KillProcessByUser.xaml",
-      "uniqueId": "390fc173-f3b6-4155-8806-6d06978a4273",
+      "filePath": "Main.xaml",
+      "uniqueId": "779d773f-ff09-4091-94a6-7a9f37474cad",
       "input": [],
       "output": []
     }

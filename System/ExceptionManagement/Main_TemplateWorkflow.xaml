@@ -110,14 +110,14 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[XXXXX]&#xA;[XXXXXXX]&#xA;[Arguments:&#xA;&#xA;    IN:&#xA;- in_XXXXXXX (String): XXXXXXXXXXXX.&#xA;&#xA;   OUT:&#xA;- out_XXXXXXX (String): XXXXXXXXXXXX.&#xA;&#xA;&#xA;IN\OUT:&#xA;&#xA;- io_bool_CheckFlow (Boolean): Stores the value of the execution result of the workflow;&#xA;&#xA;- io_str_BusinessErrorMessage (String): Stores the business exception message of the execution of the workflow;&#xA;&#xA;-io_str_SystemErrorMessage (String): Stores the system exception message of the execution of the workflow.]      " DisplayName="XXXXXXXXXXXXXXX" sap:VirtualizedContainerService.HintSize="449.6,605.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[XXXXX]&#xA;[XXXXXXX]&#xA;[Arguments:&#xA;&#xA;    IN:&#xA;- in_XXXXXXX (String): XXXXXXXXXXXX.&#xA;&#xA;   OUT:&#xA;- out_XXXXXXX (String): XXXXXXXXXXXX.&#xA;&#xA;&#xA;IN\OUT:&#xA;&#xA;- io_bool_CheckFlow (Boolean): Stores the value of the execution result of the workflow;&#xA;&#xA;- io_str_BusinessErrorMessage (String): Stores the business exception message of the execution of the workflow;&#xA;&#xA;-io_str_SystemErrorMessage (String): Stores the system exception message of the execution of the workflow.]      " DisplayName="XXXXXXXXXXXXXXX" sap:VirtualizedContainerService.HintSize="1079.111111111111,666.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: XXXXXXXXX Initialization" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;XXXXX...&quot;]">
+    <ui:LogMessage DisplayName="Log Message: XXXXXXXXX Initialization" sap:VirtualizedContainerService.HintSize="469.3333333333333,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;XXXXX...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -125,21 +125,21 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch - XXXXXXXXXXXXX" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - XXXXXXXXXXXXX" sap:VirtualizedContainerService.HintSize="469.3333333333333,481.77777777777777" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="XXXXXXXXXXXXXX" sap:VirtualizedContainerService.HintSize="476.8,264" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="XXXXXXXXXXXXXX" sap:VirtualizedContainerService.HintSize="467.55555555555554,224.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign CheckFlow" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign CheckFlow" sap:VirtualizedContainerService.HintSize="433.77777777777777,116.44444444444444" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
@@ -147,7 +147,7 @@
               <InArgument x:TypeArguments="x:Boolean">True</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: Success XXXXXX" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;XXXXXX workflow ended successfully... &quot;]">
+          <ui:LogMessage DisplayName="Log Message: Success XXXXXX" sap:VirtualizedContainerService.HintSize="433.77777777777777,48" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;XXXXXX workflow ended successfully... &quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -169,14 +169,14 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Error XXXXXXX" sap:VirtualizedContainerService.HintSize="431.2,144" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Error XXXXXXX" sap:VirtualizedContainerService.HintSize="467.55555555555554,227.55555555555554" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Error ToolsPestana Login" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[String.Format(&quot;Error Source: {0} | Error Message: {1}&quot;, exception.Source, exception.Message)]">
+              <ui:LogMessage DisplayName="Log Message: Error ToolsPestana Login" sap:VirtualizedContainerService.HintSize="433.77777777777777,167.11111111111111" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[String.Format(&quot;Error Source: {0} | Error Message: {1}&quot;, exception.Source, exception.Message)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -188,6 +188,15 @@
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="467.55555555555554,91.55555555555556" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </TryCatch.Finally>
     </TryCatch>
   </Sequence>
 </Activity>
