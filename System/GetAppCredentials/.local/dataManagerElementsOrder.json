@@ -20,8 +20,7 @@
         "in_str_ProcessName",
         "out_dt_AppCredentials",
         "in_Config",
-        "in_list_AppCredentials",
-        "in_OrchestratorFolderPath"
+        "in_list_AppCredentials"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
