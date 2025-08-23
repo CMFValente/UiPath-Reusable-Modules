@@ -23,11 +23,12 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
-      <x:String>GlobalVariablesNamespace</x:String>
-      <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -77,13 +78,15 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Invoke Workflow XXXXXX" sap:VirtualizedContainerService.HintSize="496,724" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Invoke Workflow XXXXXX" sap:VirtualizedContainerService.HintSize="1061.3333333333333,512.5455555555556" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="bool_BusinessException" />
       <Variable x:TypeArguments="x:Boolean" Name="bool_CheckFlow" />
-      <Variable x:TypeArguments="x:String" Name="str_WF_ErrorMessageToBusiness" />
-      <Variable x:TypeArguments="x:String" Name="str_WF_ErrorMessageToRpaTeam" />
+      <Variable x:TypeArguments="x:String" Name="str_AuxiliaryErrorMessage" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -91,7 +94,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: IN - Invoke Workflow XXXXX" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;IN - Invoke Workflow XXXXXX&quot;]">
+    <ui:LogMessage DisplayName="Log Message: IN - Invoke Workflow XXXXX" sap:VirtualizedContainerService.HintSize="449.77777777777777,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;IN - Invoke Workflow XXXXXX&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -99,7 +102,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:MultipleAssign DisplayName="Assign Variables Intialization for Workflow XXXXXXXXXXXXXX" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Assign Variables Intialization for Workflow XXXXXXXXXXXXXX" sap:VirtualizedContainerService.HintSize="449.77777777777777,56.888888888888886" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -112,18 +115,18 @@
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
             <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[str_WF_ErrorMessageToBusiness]</OutArgument>
+              <OutArgument x:TypeArguments="x:String">[str_AuxiliaryErrorMessage]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
               <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
             <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[str_WF_ErrorMessageToRpaTeam]</OutArgument>
+              <OutArgument x:TypeArguments="x:Boolean">[bool_BusinessException]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -135,11 +138,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Main_TemplateWorkflow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Main_TemplateWorkflow.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Main_TemplateWorkflow.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="449.77777777777777,56.888888888888886" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Main_TemplateWorkflow.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_bool_CheckFlow">[bool_CheckFlow]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="io_str_WF_ErrorMessageToBusiness">[str_WF_ErrorMessageToBusiness]</InOutArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="io_str_WF_ErrorMessageToRpaTeam">[str_WF_ErrorMessageToRpaTeam]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_bool_BusinessException">
+          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="bool_BusinessException" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:Boolean" x:Key="io_bool_CheckFlow">
+          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="bool_CheckFlow" />
+        </InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_str_AuxiliaryErrorMessage">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_AuxiliaryErrorMessage" />
+        </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -148,26 +157,74 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:IfElseIf sap2010:Annotation.AnnotationText="If the actions inside the workflow werent done with success, and if WorkFlowErrorMessage is empty, assign ErrorMessage, defined in Config (only after the Config variable is defined) for this workflow to variable WorkFlowErrorMessage and Throw Exception." DisplayName="Else If - Checkflow Workflow XXXXX is not true" sap:VirtualizedContainerService.HintSize="433.6,240.8" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+    <ui:IfElseIf sap2010:Annotation.AnnotationText="If the actions inside the workflow werent done with success, and if WorkFlowErrorMessage is empty, assign ErrorMessage, defined in Config (only after the Config variable is defined) for this workflow to variable WorkFlowErrorMessage and Throw Exception." DisplayName="Else If - Checkflow Workflow XXXXX is not true" sap:VirtualizedContainerService.HintSize="449.77777777777777,150.22222222222223" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
       <ui:IfElseIf.ConditionBlocks>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-          <ui:IfElseIfBlock BlockType="If" Condition="[Not bool_CheckFlow]">
+          <ui:IfElseIfBlock BlockType="If" Condition="[Not bool_CheckFlow And Not bool_BusinessException]">
             <ui:IfElseIfBlock.Then>
-              <Sequence DisplayName="Assign WorkFlowErrorMessage and throw exception for Workflow XXXXXXX" sap:VirtualizedContainerService.HintSize="476.8,301.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence DisplayName="Assign SystemExceptionMessage and Throw exception" sap:VirtualizedContainerService.HintSize="492.44444444444446,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign WorkFlowErrorMessage for workflow XXXXXXXXX" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign DisplayName="Assign: Establish System Exception Message" sap:VirtualizedContainerService.HintSize="416,56.888888888888886" sap2010:WorkflowViewState.IdRef="Assign_2">
                   <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[str_WF_ErrorMessageToBusiness]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String">[str_SystemExceptionMessage]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[IF (String.IsNullOrEmpty(str_WF_ErrorMessageToBusiness),Config("XXXXXXX").ToString,str_WF_ErrorMessageToBusiness)]</InArgument>
+                    <InArgument x:TypeArguments="x:String">[String.Format("{0}:{1}", Config("XXX").ToString.TrimStart.TrimEnd, str_AuxiliaryErrorMessage.TrimStart.TrimEnd)]</InArgument>
                   </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </Assign>
-                <Throw DisplayName="Throw Exception for Workflow XXXXXXX" Exception="[New SystemException]" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                <Throw DisplayName="Throw System Exception for Workflow XXXXXXX" Exception="[New SystemException(str_SystemExceptionMessage.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Throw_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Throw>
+              </Sequence>
+            </ui:IfElseIfBlock.Then>
+          </ui:IfElseIfBlock>
+          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not bool_CheckFlow And bool_BusinessException]">
+            <ui:IfElseIfBlock.Then>
+              <Sequence DisplayName="Assign BusinessExceptionMessage and Throw exception" sap:VirtualizedContainerService.HintSize="492.44444444444446,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign: Establish Business Exception Message" sap:VirtualizedContainerService.HintSize="416,56.888888888888886" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[str_BusinessExceptionMessage]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[String.Format("{0}:{1}", Config("XXX").ToString.TrimStart.TrimEnd, str_AuxiliaryErrorMessage.TrimStart.TrimEnd)]</InArgument>
+                  </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Assign>
+                <Throw DisplayName="Throw Business Exception for Workflow XXXXXXX" Exception="[New BusinessRuleException(str_BusinessExceptionMessage.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Throw_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Throw>
               </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
@@ -181,7 +238,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:IfElseIf>
-    <ui:LogMessage DisplayName="Log Message: OUT - Invoke Workflow XXXXX" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;OUT - Invoke Workflow XXXXXX&quot;]">
+    <ui:LogMessage DisplayName="Log Message: OUT - Invoke Workflow XXXXX" sap:VirtualizedContainerService.HintSize="449.77777777777777,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;OUT - Invoke Workflow XXXXXX&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>

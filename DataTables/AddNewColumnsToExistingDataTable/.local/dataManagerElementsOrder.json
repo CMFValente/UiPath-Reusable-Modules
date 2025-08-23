@@ -11,10 +11,7 @@
     {
       "Path": "AddNewColumnsToExistingDataTable.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "arr_ColumnNames&Sequence_2",
-        "arr_ColumnTypes&Sequence_2"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "io_str_SystemErrorMessage",
         "io_str_BusinessErrorMessage",

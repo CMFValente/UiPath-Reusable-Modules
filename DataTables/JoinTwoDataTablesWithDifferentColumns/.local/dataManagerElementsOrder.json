@@ -11,9 +11,7 @@
     {
       "Path": "JoinTwoDataTablesWithDifferentColumns.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "int_RowIndex&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "io_dt_FirstDataTable",
         "in_dt_SecondDataTable"

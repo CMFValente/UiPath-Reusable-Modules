@@ -11,9 +11,7 @@
     {
       "Path": "CountOccurrencesCharacterInString.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "int_NumberOccurrencesCharacter&Sequence_2"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "out_list_NumberCharacterOccurrence",
         "in_str_CharacterToCountOccurrence",

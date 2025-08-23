@@ -1,8 +1,8 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Main_Template" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="io_bool_BusinessException" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
-    <x:Property Name="io_str_BusinessErrorMessage" Type="InOutArgument(x:String)" />
-    <x:Property Name="io_str_SystemErrorMessage" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_str_AuxiliaryErrorMessage" Type="InOutArgument(x:String)" />
     <x:Property Name="out_dt_InputDataToProcess" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_dt_InputDataWithHeaderSpaces" Type="InArgument(sd:DataTable)" />
   </x:Members>
@@ -43,6 +43,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -84,16 +85,28 @@
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[RemoveHeaderSpacesInputDataTable]&#xA;[Remove Spaces in Column Headers of the Input DataTable.]&#xA;[Arguments:&#xA;&#xA;IN:&#xA;&#xA;- in_dt_InputDataWithHeaderSpaces (DataTable): Stores the data with spaces in the Column Headers.&#xA;&#xA;OUT:&#xA;&#xA;- out_dt_InputDataToProcess (DataTable): Stores the data without spaces in the Column Headers.&#xA;&#xA;IN/OUT:&#xA;&#xA;- io_bool_CheckFlow (Boolean): Stores the value of the execution result of the workflow;&#xA;&#xA;- io_str_BusinessErrorMessage (String): Stores the business error message of the execution of the workflow;&#xA;&#xA;- io_str_SystemErrorMessage (String): Stores the system error message of the execution of the workflow.]" DisplayName="RemoveHeaderSpacesInputDataTable" sap:VirtualizedContainerService.HintSize="449.6,653.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[RemoveHeaderSpacesInputDataTable]&#xA;[Remove Spaces in Column Headers of the Input DataTable.]" DisplayName="RemoveHeaderSpacesInputDataTable" sap:VirtualizedContainerService.HintSize="1061.3333333333333,746.3233333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Init RemoveHeaderSpacesInputDataTable workflow" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Initialization of RemoveHeaderSpacesInputDataTable workflow...&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Init RemoveHeaderSpacesInputDataTable workflow" sap:VirtualizedContainerService.HintSize="449.77777777777777,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Initialization of RemoveHeaderSpacesInputDataTable workflow...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -101,7 +114,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch: Remove Spaces in Column Headers" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch: Remove Spaces in Column Headers" sap:VirtualizedContainerService.HintSize="449.77777777777777,48" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -109,22 +122,28 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Remove Spaces in Column Headers" sap:VirtualizedContainerService.HintSize="496,624" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Remove Spaces in Column Headers" sap:VirtualizedContainerService.HintSize="449.77777777777777,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign: Clone DataTable" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign: Clone DataTable" sap:VirtualizedContainerService.HintSize="416,56.888888888888886" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[out_dt_InputDataToProcess]</OutArgument>
             </Assign.To>
             <Assign.Value>
               <InArgument x:TypeArguments="sd:DataTable">[in_dt_InputDataWithHeaderSpaces.Clone()]</InArgument>
             </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="For Each: Remove Spaces in Column Headers" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[out_dt_InputDataToProcess.Columns]">
+          <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="For Each: Remove Spaces in Column Headers" sap:VirtualizedContainerService.HintSize="416,56.888888888888886" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[out_dt_InputDataToProcess.Columns]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="sd:DataColumn">
                 <ActivityAction.Argument>
@@ -147,24 +166,21 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEach>
-          <Assign DisplayName="Assign: Merge DataTables" sap:VirtualizedContainerService.HintSize="433.6,83.2" sap2010:WorkflowViewState.IdRef="Assign_5">
-            <Assign.To>
-              <OutArgument x:TypeArguments="sd:DataTable">[out_dt_InputDataToProcess]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From d In in_dt_InputDataWithHeaderSpaces.AsEnumerable
-Select r = out_dt_InputDataToProcess.Rows.Add(d.ItemArray)).CopyToDataTable]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign DisplayName="Assign: Estblish CheckFlow as True" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign: Estblish CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,56.888888888888886" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
             <Assign.Value>
               <InArgument x:TypeArguments="x:Boolean">True</InArgument>
             </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: Success RemoveHeaderSpacesInputDataTable workflow" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;RemoveHeaderSpacesInputDataTable workflow ended successfully...&quot;]">
+          <ui:LogMessage DisplayName="Log Message: Success RemoveHeaderSpacesInputDataTable workflow" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;RemoveHeaderSpacesInputDataTable workflow ended successfully...&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -186,14 +202,50 @@ Select r = out_dt_InputDataToProcess.Rows.Add(d.ItemArray)).CopyToDataTable]</In
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message: Business Error RemoveHeaderSpacesInputDataTable workflow" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[String.Format(&quot;Error Source: {0} | Error Message: {1}&quot;, exception.Source, exception.Message)]">
+            <Sequence DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="449.77777777777777,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:LogMessage>
+              <ui:LogMessage DisplayName="Log Message: Business Error RemoveHeaderSpacesInputDataTable workflow" sap:VirtualizedContainerService.HintSize="425.77777777777777,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[String.Format(&quot;Business Exception Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <ui:MultipleAssign DisplayName="Multiple Assign: Establish Auxiliary Error Message and bool_BusinessException as True" sap:VirtualizedContainerService.HintSize="425.77777777777777,48" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[io_bool_BusinessException]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Format("Business Exception Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+            </Sequence>
           </ActivityAction>
         </Catch>
         <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,123.2" sap2010:WorkflowViewState.IdRef="Catch`1_2">
@@ -207,17 +259,48 @@ Select r = out_dt_InputDataToProcess.Rows.Add(d.ItemArray)).CopyToDataTable]</In
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message: System Error RemoveHeaderSpacesInputDataTable workflow" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[String.Format(&quot;Error Source: {0} | Error Message: {1}&quot;, exception.Source, exception.Message)]">
+            <Sequence DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="449.77777777777777,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:LogMessage>
+              <ui:LogMessage DisplayName="Log Message: System Error RemoveHeaderSpacesInputDataTable workflow" sap:VirtualizedContainerService.HintSize="416,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[String.Format(&quot;System Exception Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <Assign DisplayName="Assign: Establish Auxiliary Error Message" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[String.Format("System Exception Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+            </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="449.77777777777777,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </TryCatch.Finally>
     </TryCatch>
   </Sequence>
 </Activity>

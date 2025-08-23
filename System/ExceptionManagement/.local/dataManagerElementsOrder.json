@@ -11,12 +11,7 @@
     {
       "Path": "ExceptionManagement.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "Config&Sequence_1",
-        "str_WF_ErrorMessageToRpaTeam&Sequence_1",
-        "str_WF_ErrorMessageToBusiness&Sequence_1",
-        "bool_CheckFlow&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null

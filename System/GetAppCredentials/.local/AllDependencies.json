@@ -21208,7 +21208,11 @@
       "projectName": "GetCredential",
       "projectPath": "C:\\Users\\catar\\OneDrive\\Documentos\\HTML-CSS\\UiPath-Reusable-Modules\\System\\GetAppCredentials\\.local",
       "packagesPath": "C:\\Users\\catar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\catar\\OneDrive\\Documentos\\HTML-CSS\\UiPath-Reusable-Modules\\System\\GetAppCredentials\\.local"
+      "outputPath": "C:\\Users\\catar\\OneDrive\\Documentos\\HTML-CSS\\UiPath-Reusable-Modules\\System\\GetAppCredentials\\.local",
+      "UsingMicrosoftNETSdk": false,
+      "restoreAuditProperties": {
+        "enableAudit": "False"
+      }
     },
     "frameworks": {
       "net8.0-windows7.0": {

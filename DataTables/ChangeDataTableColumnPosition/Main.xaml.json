@@ -30,32 +30,32 @@
       "DataSourceItems": null
     },
     {
-      "Name": "io_str_BusinessException",
-      "DisplayName": "io_str_BusinessException",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "io_str_SystemException",
-      "DisplayName": "io_str_SystemException",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_str_ColumnNameToModifyPosition",
       "DisplayName": "in_str_ColumnNameToModifyPosition",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_bool_BusinessException",
+      "DisplayName": "io_bool_BusinessException",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_str_AuxiliaryErrorMessage",
+      "DisplayName": "io_str_AuxiliaryErrorMessage",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,

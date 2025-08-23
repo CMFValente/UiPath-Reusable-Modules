@@ -11,9 +11,7 @@
     {
       "Path": "CapitalizeFirstLetterOfString.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "int_StringIndex&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_StringsToCapitalize",
         "out_str_StringsCapitalized"

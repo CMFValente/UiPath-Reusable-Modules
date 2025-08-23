@@ -42,8 +42,8 @@
       "DataSourceItems": null
     },
     {
-      "Name": "io_str_BusinessException",
-      "DisplayName": "io_str_BusinessException",
+      "Name": "io_bool_BusinessException",
+      "DisplayName": "io_bool_BusinessException",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
@@ -54,8 +54,8 @@
       "DataSourceItems": null
     },
     {
-      "Name": "io_str_SystemException",
-      "DisplayName": "io_str_SystemException",
+      "Name": "io_str_AuxiliaryErrorMessage",
+      "DisplayName": "io_str_AuxiliaryErrorMessage",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,

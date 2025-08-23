@@ -11,10 +11,7 @@
     {
       "Path": "KillProcessByUser.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "int_IdxProcess&Sequence_1",
-        "ListProcessFromMachine&Sequence_13"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_ProcessList"
       ],

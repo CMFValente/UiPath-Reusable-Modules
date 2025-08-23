@@ -1,0 +1,81 @@
+{
+  "DisplayName": "ConvertDifferentMultipleDateTypesToFixedDateFormat",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "io_str_AuxiliaryErrorMessage",
+      "DisplayName": "io_str_AuxiliaryErrorMessage",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_bool_BusinessException",
+      "DisplayName": "io_bool_BusinessException",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_bool_CheckFlow",
+      "DisplayName": "io_bool_CheckFlow",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_DateWithDifferentFormat",
+      "DisplayName": "in_str_DateWithDifferentFormat",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "23-11-2023",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_str_DateWithFixedFormat",
+      "DisplayName": "out_str_DateWithFixedFormat",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_FixedDateFormat",
+      "DisplayName": "in_str_FixedDateFormat",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "MM/dd/yyyy",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

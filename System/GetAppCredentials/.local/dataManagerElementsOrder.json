@@ -11,10 +11,7 @@
     {
       "Path": "GetAppCredentials.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "secstr_Password&Sequence_1",
-        "str_Username&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_OrchestratorFolderPath",
         "in_str_ProcessName",

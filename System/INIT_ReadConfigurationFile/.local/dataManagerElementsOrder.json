@@ -11,9 +11,7 @@
     {
       "Path": "INIT_ReadConfigurationFile.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "dt_SettingsAndConstants&Sequence_2"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "io_str_SystemErrorMessage",
         "io_str_BusinessErrorMessage",

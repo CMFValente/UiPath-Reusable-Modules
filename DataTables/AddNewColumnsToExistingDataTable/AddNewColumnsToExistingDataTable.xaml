@@ -1,11 +1,11 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Main_TemplateWorkflow" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="io_bool_BusinessException" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="in_str_NewColumnNames" Type="InArgument(x:String)" />
     <x:Property Name="in_str_NewColumnTypes" Type="InArgument(x:String)" />
     <x:Property Name="io_dt_DataToProcess" Type="InOutArgument(sd:DataTable)" />
-    <x:Property Name="io_str_BusinessErrorMessage" Type="InOutArgument(x:String)" />
-    <x:Property Name="io_str_SystemErrorMessage" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_str_AuxiliaryErrorMessage" Type="InOutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -45,6 +45,7 @@
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -100,16 +101,20 @@
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[AddNewColumnsToExistingDataTable]&#xA;[Add New Columns to an existing DataTable and Add Information to Them.]&#xA;[Arguments:&#xA;&#xA;IN:&#xA;&#xA;- in_str_NewColumnNames (String): Stores the list of the Column Names to add to an existing datatable;&#xA;&#xA;- in_str_NewColumnTypes (String): Stores the list of the Column Types to add to an existing datatable.&#xA;&#xA;OUT: N/A.&#xA;&#xA;IN/OUT:&#xA;&#xA;- io_bool_CheckFlow (Boolean): Stores the value of the execution result of the workflow;&#xA;&#xA;- io_dt_DataToProcess (DataTable): Stores the information to add to the Queue;&#xA;&#xA;- io_str_BusinessErrorMessage (String): Stores the business error message of the execution of the workflow;&#xA;&#xA;- io_str_SystemErrorMessage (String): Stores the system error message of the execution of the workflow.]" DisplayName="AddNewColumnsToExistingDataTable" sap:VirtualizedContainerService.HintSize="579,627" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[AddNewColumnsToExistingDataTable]&#xA;[Add New Columns to an existing DataTable and Add Information to Them.]" DisplayName="AddNewColumnsToExistingDataTable" sap:VirtualizedContainerService.HintSize="1061.3333333333333,512.5455555555556" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Initialization AddNewColumnsToExistingDataTable Workflow" sap:VirtualizedContainerService.HintSize="517,52" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Initialization of AddNewColumnsToExistingDataTable workflow...&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Initialization AddNewColumnsToExistingDataTable Workflow" sap:VirtualizedContainerService.HintSize="449.77777777777777,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Initialization of AddNewColumnsToExistingDataTable workflow...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -117,7 +122,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch: Add New Columns to Existing DataTable and Add Information to Them" sap:VirtualizedContainerService.HintSize="517,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch: Add New Columns to Existing DataTable and Add Information to Them" sap:VirtualizedContainerService.HintSize="449.77777777777777,48" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -125,7 +130,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Add New Columns to Existing DataTable and Add Information to Them" sap:VirtualizedContainerService.HintSize="462,81" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Add New Columns to Existing DataTable and Add Information to Them" sap:VirtualizedContainerService.HintSize="532.4444444444445,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="s:String[]" Name="arr_ColumnNames" />
             <Variable x:TypeArguments="s:String[]" Name="arr_ColumnTypes" />
@@ -136,7 +141,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign DisplayName="Multiple Assign: Define Column Names and Column Types" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign: Define Column Names and Column Types" sap:VirtualizedContainerService.HintSize="434.6666666666667,56.888888888888886" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -164,13 +169,19 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:MultipleAssign>
-          <InvokeMethod DisplayName="Invoke Method: Add Two New Columns" sap:VirtualizedContainerService.HintSize="434,136" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="AddRange">
+          <InvokeMethod DisplayName="Invoke Method: Add Two New Columns" sap:VirtualizedContainerService.HintSize="434.6666666666667,56.888888888888886" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="AddRange">
             <InvokeMethod.TargetObject>
               <InArgument x:TypeArguments="sd:DataColumnCollection">[io_dt_DataToProcess.Columns]</InArgument>
             </InvokeMethod.TargetObject>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
             <InArgument x:TypeArguments="sd:DataColumn[]">[arr_ColumnNames.Zip(arr_ColumnTypes, Function(n,t) New DataColumn(n, Type.GetType(t))).ToArray]</InArgument>
           </InvokeMethod>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_DataToProcess]" DisplayName="For Each Row in Data Table: Add Data to Two New Columns" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_DataToProcess]" DisplayName="For Each Row in Data Table: Add Data to Two New Columns" sap:VirtualizedContainerService.HintSize="434.6666666666667,56.888888888888886" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
@@ -186,15 +197,21 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEachRow>
-          <Assign DisplayName="Assign: CheckFlow As True" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign: CheckFlow As True" sap:VirtualizedContainerService.HintSize="434.6666666666667,56.888888888888886" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
             <Assign.Value>
               <InArgument x:TypeArguments="x:Boolean">True</InArgument>
             </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: Success AddNewColumnsToExistingDataTable Workflow" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;AddNewColumnsToExistingDataTable workflow ended successfully...&quot;]">
+          <ui:LogMessage DisplayName="Log Message: Success AddNewColumnsToExistingDataTable Workflow" sap:VirtualizedContainerService.HintSize="434.6666666666667,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;AddNewColumnsToExistingDataTable workflow ended successfully...&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -216,14 +233,50 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message: Error AddNewColumnsToExistingDataTable Workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message)]">
+            <Sequence DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="532.4444444444445,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:LogMessage>
+              <ui:LogMessage DisplayName="Log Message: Error AddNewColumnsToExistingDataTable Workflow" sap:VirtualizedContainerService.HintSize="466.6666666666667,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[String.Format(&quot;Business Exception Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <ui:MultipleAssign DisplayName="Multiple Assign: Establish Auxiliary Error Message and bool_BusinessException as True" sap:VirtualizedContainerService.HintSize="466.6666666666667,48" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[io_bool_BusinessException]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Format("Business Exception Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+            </Sequence>
           </ActivityAction>
         </Catch>
         <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="483,121" sap2010:WorkflowViewState.IdRef="Catch`1_2">
@@ -237,17 +290,48 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message: Error AddNewColumnsToExistingDataTable Workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message)]">
+            <Sequence DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="532.4444444444445,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:LogMessage>
+              <ui:LogMessage DisplayName="Log Message: Error AddNewColumnsToExistingDataTable Workflow" sap:VirtualizedContainerService.HintSize="498.6666666666667,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[String.Format(&quot;System Exception Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <Assign DisplayName="Assign: Establish Auxiliary Error Message" sap:VirtualizedContainerService.HintSize="498.6666666666667,48" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[String.Format("System Exception Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+            </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="532.4444444444445,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </TryCatch.Finally>
     </TryCatch>
   </Sequence>
 </Activity>

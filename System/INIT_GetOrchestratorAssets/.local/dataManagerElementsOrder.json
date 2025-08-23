@@ -11,10 +11,7 @@
     {
       "Path": "INIT_GetOrchestratorAssets.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "dt_Assets&Sequence_2",
-        "AssetValue&Sequence_3"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "io_str_BusinessErrorMessage",
         "io_str_SystemErrorMessage",
