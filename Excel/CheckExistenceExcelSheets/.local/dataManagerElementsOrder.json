@@ -11,9 +11,7 @@
     {
       "Path": "CheckExistenceExcelSheets.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "bool_SheetExists&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_SheetsToCheckExistence",
         "in_str_ExcelFilePath"

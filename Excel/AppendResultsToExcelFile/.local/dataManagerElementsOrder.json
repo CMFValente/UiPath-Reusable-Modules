@@ -27,10 +27,7 @@
     {
       "Path": "AppendResultsToExcelFile.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "stopWatch&Sequence_1",
-        "bool_WriteSuc&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_dt_Results",
         "in_int_WaitTime",

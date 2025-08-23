@@ -11,9 +11,7 @@
     {
       "Path": "ExportRobotLogsToExcel.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "dt_LogsToWriteExcel&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_ExcelSheetName",
         "io_str_SystemErrorMessage",
