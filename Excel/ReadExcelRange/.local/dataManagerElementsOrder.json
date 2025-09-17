@@ -11,10 +11,7 @@
     {
       "Path": "ReadExcelRange.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "bool_ReadSuc&Sequence_1",
-        "stopWatch&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_ExcelFilePath",
         "in_str_SheetName",
