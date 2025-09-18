@@ -24,9 +24,7 @@
     {
       "Path": "CheckConfigFileOpenandClose.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "bool_FileIsOpened&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_ConfigFilePath"
       ],

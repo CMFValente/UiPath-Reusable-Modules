@@ -11,10 +11,7 @@
     {
       "Path": "RestartVirtualMachine.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "bool_CMDAppExists&Sequence_2",
-        "bool_RunAppExists&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": null,
       "AddedNamespaces": null

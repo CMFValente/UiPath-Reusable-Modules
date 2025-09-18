@@ -11,10 +11,7 @@
     {
       "Path": "GetAllNewQueueItems.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "list_NewQueueItems&Sequence_1",
-        "int_NewQueueItemsCounter&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "out_list_NewQueueItems",
         "in_str_QueueName"

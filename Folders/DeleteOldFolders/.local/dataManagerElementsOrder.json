@@ -11,12 +11,7 @@
     {
       "Path": "DeleteOldFoldersFromDirectory.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "screenshotsFoldersName_Array&Sequence_542",
-        "orderArray&Sequence_542",
-        "previousDateToDelete&Sequence_542",
-        "index&Sequence_542"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_int_NumberPreviousDays",
         "in_int_MinimumNumberFoldersNotToDelete",

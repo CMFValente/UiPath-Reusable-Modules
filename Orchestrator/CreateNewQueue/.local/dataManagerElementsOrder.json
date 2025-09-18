@@ -11,10 +11,7 @@
     {
       "Path": "CreateNewQueue.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "int_CreateNewQueueHTTPStatusResponse&Sequence_3",
-        "str_CreateQueueJsonBody&Sequence_2"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_QueueName",
         "in_str_QueueDescription",

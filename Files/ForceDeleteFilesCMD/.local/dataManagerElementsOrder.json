@@ -11,11 +11,7 @@
     {
       "Path": "ForceDeleteFilesWithCMD.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "bool_CMDAppExists&Sequence_2",
-        "bool_RunAppExists&Sequence_1",
-        "FileExists&Sequence_5"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_FilesToDelete"
       ],

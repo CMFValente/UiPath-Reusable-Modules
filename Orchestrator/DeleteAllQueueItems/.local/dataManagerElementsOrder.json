@@ -11,10 +11,7 @@
     {
       "Path": "DeleteAllQueueItems.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "QueueName&Sequence_2",
-        "list_NewQueueItems&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "in_str_QueueName",
         "in_str_OrchestratorFolderPath"

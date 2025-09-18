@@ -11,11 +11,7 @@
     {
       "Path": "GetLatestFileFromFolder.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "fileDate&Sequence_1605",
-        "fileDate_str&Sequence_1605",
-        "newestFileDate&Sequence_1605"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "out_str_LatestFilePath",
         "in_str_FolderPath"

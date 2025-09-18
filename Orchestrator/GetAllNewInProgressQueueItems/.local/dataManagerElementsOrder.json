@@ -25,10 +25,7 @@
     {
       "Path": "GetAllNewInProgressQueueItems.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "int_NewInProgressQueueItemsCounter&Sequence_1",
-        "list_NewInProgressQueueItems&Sequence_1"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "out_list_NewInProgressQueueItems",
         "in_str_QueueName"

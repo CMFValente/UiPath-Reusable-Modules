@@ -11,12 +11,7 @@
     {
       "Path": "GetQueuesInfo.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "str_GetQueueInfoResponse&Sequence_2",
-        "jObj_GetQueuesInfoResponse&Sequence_2",
-        "int_QueueIndex&Sequence_2",
-        "int_GetQueueInfoHTTPStatusResponse&Sequence_2"
-      ],
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
         "out_list_QueuesNames",
         "in_str_FilterQueueName"
