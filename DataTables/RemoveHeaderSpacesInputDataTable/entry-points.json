@@ -1,0 +1,51 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "RemoveHeaderSpacesInputDataTable.xaml",
+      "uniqueId": "6bf19308-7951-4f47-a708-fb21c3149392",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          },
+          "in_dt_InputDataWithHeaderSpaces": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          },
+          "out_dt_InputDataToProcess": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
