@@ -1,0 +1,61 @@
+{
+  "name": "WF_CopyFilesFromOneFolderToAnother",
+  "projectId": "171b9b45-2323-47ce-a690-65b4c7bfd39c",
+  "description": "Copy a specific list of files from a specific origin folder to a specific destination folder.",
+  "main": "WF_CopyFilesFromOneFolderToAnother.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "[3.3.1]",
+    "UiPath.Mail.Activities": "[2.5.10]",
+    "UiPath.System.Activities": "[25.10.5]",
+    "UiPath.Testing.Activities": "[25.10.0]",
+    "UiPath.UIAutomation.Activities": "[25.10.24]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "25.10.4.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "NewtonsoftJson",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "WF_CopyFilesFromOneFolderToAnother.xaml",
+      "uniqueId": "bcf33778-97d2-46f7-834b-4fb00e7cbf52",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}
