@@ -1,0 +1,6 @@
+{
+  "Name": "CheckFileOpened",
+  "ProjectType": "Process",
+  "Description": "Check if a specific file is opened and, in an affirmative case, close it.",
+  "MainFile": "CheckFileOpened.xaml"
+}
