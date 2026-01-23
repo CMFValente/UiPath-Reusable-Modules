@@ -7,7 +7,7 @@
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="in_str_DestinationFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_str_OriginFolderPath" Type="InArgument(x:String)" />
-    <x:Property Name="in_str_ListOfFilesPathsToMove" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_ListOfFilesToMove" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -46,6 +46,7 @@
       <x:String>System.Numerics</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -110,6 +111,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="[WF_FILE_MoveFilesFromOneFolderToAnother]&#xA;[Move specific files from an origin folder to a destination folder.]" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1287,629.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -119,7 +121,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Move All Files To Destination Folder" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Moving files '{0}' from the origin folder named '{1}' to the destination folder named '{2}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesPathsToMove.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_OriginFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
+    <ui:LogMessage DisplayName="Log Message: Move All Files To Destination Folder" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Moving files '{0}' from the origin folder named '{1}' to the destination folder named '{2}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToMove.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_OriginFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -142,7 +144,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Move Each File to Destination Folder" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_str_ListOfFilesPathsToMove.TrimStart.TrimEnd.Split(&quot;,&quot;c)]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Move Each File to Destination Folder" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_str_ListOfFilesToMove.TrimStart.TrimEnd.Split(&quot;,&quot;c)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
@@ -185,7 +187,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:LogMessage>
-                                <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_str_DestinationFolderPath.TrimStart.TrimEnd]" DisplayName="Move File: Move Current File to Destination Folder" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[str_CurrentFile.TrimStart.TrimEnd]">
+                                <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_str_DestinationFolderPath.TrimStart.TrimEnd]" DisplayName="Move File: Move Current File to Destination Folder" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_OriginFolderPath.TrimStart.TrimEnd,&quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd)]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -206,7 +208,7 @@
                           </ui:RetryScope.ActivityBody>
                           <ui:RetryScope.Condition>
                             <ActivityFunc x:TypeArguments="x:Boolean">
-                              <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True: Verify if Current File was moved" Expression="[File.Exists(Path.Combine(in_str_DestinationFolderPath.TrimStart.TrimEnd, Path.GetFileName(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd))]" sap:VirtualizedContainerService.HintSize="426,25" sap2010:WorkflowViewState.IdRef="CheckTrue_1">
+                              <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True: Verify if Current File was moved" Expression="[File.Exists(Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_DestinationFolderPath.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd))]" sap:VirtualizedContainerService.HintSize="426,25" sap2010:WorkflowViewState.IdRef="CheckTrue_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -238,7 +240,7 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message: File Not Correctly Moved" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[String.Format(&quot;File '{0}' was not correctly moved to the destination folder named '{1}': {2}&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
+                            <ui:LogMessage DisplayName="Log Message: File Not Correctly Moved" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[String.Format(&quot;File '{0}' was not correctly moved to the destination folder named '{1}': {2}&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -246,7 +248,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:LogMessage>
-                            <Assign DisplayName="Assign: File Not Correctly Moved" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_1">
+                            <Assign DisplayName="Assign: File Not Correctly Moved" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_1">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
                               </Assign.To>
@@ -260,7 +262,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </Assign>
-                            <Throw DisplayName="Throw: SE File Not Correctly Moved" Exception="[New SystemException(io_str_AuxiliaryErrorMessage.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Throw_1">
+                            <Throw DisplayName="Throw: SE File Not Correctly Moved" Exception="[New SystemException(io_str_AuxiliaryErrorMessage.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_1">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -307,7 +309,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: Success All Files Moved" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[String.Format(&quot;All files '{0}' were correctly moved from the origin folder named '{1}' to the destination folder named '{2}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesPathsToMove.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_OriginFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: Success All Files Moved" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[String.Format(&quot;All files '{0}' were correctly moved from the origin folder named '{1}' to the destination folder named '{2}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToMove.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_OriginFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -330,7 +332,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: SE Moving File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+              <ui:LogMessage DisplayName="Log Message: SE Moving File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>

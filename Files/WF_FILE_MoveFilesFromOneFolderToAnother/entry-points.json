@@ -23,9 +23,6 @@
           "in_str_OriginFolderPath": {
             "type": "string"
           },
-          "in_str_ListOfFilesPathsToMove": {
-            "type": "string"
-          },
           "in_ts_RetryInterval": {
             "type": "object",
             "properties": {
@@ -97,6 +94,9 @@
             "type": "integer",
             "minimum": -2147483648,
             "maximum": 2147483647
+          },
+          "in_str_ListOfFilesToMove": {
+            "type": "string"
           }
         },
         "required": []
