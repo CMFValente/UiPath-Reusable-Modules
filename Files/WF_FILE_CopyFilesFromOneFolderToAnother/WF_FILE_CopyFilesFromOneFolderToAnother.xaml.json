@@ -30,18 +30,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_str_ListOfFilesPathsToCopy",
-      "DisplayName": "in_str_ListOfFilesPathsToCopy",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "io_bool_BusinessException",
       "DisplayName": "io_bool_BusinessException",
       "Category": null,
@@ -92,6 +80,18 @@
     {
       "Name": "in_int32_NumberOfRetries",
       "DisplayName": "in_int32_NumberOfRetries",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ListOfFilesToCopy",
+      "DisplayName": "in_str_ListOfFilesToCopy",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,

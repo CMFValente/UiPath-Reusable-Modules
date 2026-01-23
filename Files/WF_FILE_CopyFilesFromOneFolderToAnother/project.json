@@ -2,7 +2,7 @@
   "name": "WF_CopyFilesFromOneFolderToAnother",
   "projectId": "171b9b45-2323-47ce-a690-65b4c7bfd39c",
   "description": "Copy a specific list of files from a specific origin folder to a specific destination folder.",
-  "main": "WF_CopyFilesFromOneFolderToAnother.xaml",
+  "main": "WF_FILE_CopyFilesFromOneFolderToAnother.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[3.3.1]",
     "UiPath.Mail.Activities": "[2.5.10]",
@@ -48,8 +48,8 @@
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "WF_CopyFilesFromOneFolderToAnother.xaml",
-      "uniqueId": "bcf33778-97d2-46f7-834b-4fb00e7cbf52",
+      "filePath": "WF_FILE_CopyFilesFromOneFolderToAnother.xaml",
+      "uniqueId": "cdc18e0b-d486-4b8c-aecc-d703bf1472bb",
       "input": [],
       "output": []
     }

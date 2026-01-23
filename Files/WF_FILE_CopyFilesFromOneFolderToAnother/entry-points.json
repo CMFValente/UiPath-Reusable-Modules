@@ -2,8 +2,8 @@
   "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
   "entryPoints": [
     {
-      "filePath": "WF_CopyFilesFromOneFolderToAnother.xaml",
-      "uniqueId": "bcf33778-97d2-46f7-834b-4fb00e7cbf52",
+      "filePath": "WF_FILE_CopyFilesFromOneFolderToAnother.xaml",
+      "uniqueId": "cdc18e0b-d486-4b8c-aecc-d703bf1472bb",
       "type": "process",
       "input": {
         "type": "object",
@@ -21,9 +21,6 @@
             "type": "string"
           },
           "in_str_OriginFolderPath": {
-            "type": "string"
-          },
-          "in_str_ListOfFilesPathsToCopy": {
             "type": "string"
           },
           "in_ts_RetryInterval": {
@@ -97,6 +94,9 @@
             "type": "integer",
             "minimum": -2147483648,
             "maximum": 2147483647
+          },
+          "in_str_ListOfFilesToCopy": {
+            "type": "string"
           }
         },
         "required": []

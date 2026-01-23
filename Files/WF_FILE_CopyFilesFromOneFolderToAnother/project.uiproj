@@ -2,5 +2,5 @@
   "Name": "WF_CopyFilesFromOneFolderToAnother",
   "ProjectType": "Process",
   "Description": "Copy a specific list of files from a specific origin folder to a specific destination folder.",
-  "MainFile": "WF_CopyFilesFromOneFolderToAnother.xaml"
+  "MainFile": "WF_FILE_CopyFilesFromOneFolderToAnother.xaml"
 }
