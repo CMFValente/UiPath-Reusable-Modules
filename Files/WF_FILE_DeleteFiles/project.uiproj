@@ -1,0 +1,6 @@
+{
+  "Name": "WF_FILE_DeleteFiles",
+  "ProjectType": "Process",
+  "Description": "Delete specific files from a specific folder.",
+  "MainFile": "WF_FILE_DeleteFiles.xaml"
+}
