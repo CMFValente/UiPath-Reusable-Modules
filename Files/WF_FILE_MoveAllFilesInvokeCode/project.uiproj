@@ -1,0 +1,6 @@
+{
+  "Name": "MoveAllFiles_InvokeCode",
+  "ProjectType": "Process",
+  "Description": "Move All Files from a Sorce Folder to a Destination Folder using the capabilities of Invoke Code activity.",
+  "MainFile": "MoveAllFiles_InvokeCode.xaml"
+}
