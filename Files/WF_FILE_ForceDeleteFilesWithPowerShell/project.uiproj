@@ -1,0 +1,6 @@
+{
+  "Name": "ForceDeletePS",
+  "ProjectType": "Process",
+  "Description": "Force Delete Files using PowerShell",
+  "MainFile": "WF_FILE_ForceDeleteFilesWithPowerShell.xaml"
+}
