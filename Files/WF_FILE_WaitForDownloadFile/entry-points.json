@@ -1,0 +1,50 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_FILE_WaitForDownloadFiles.xaml",
+      "uniqueId": "b7f6e712-209c-4363-aa5d-30844dbeb0a5",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          },
+          "in_str_DownloadFolderPath": {
+            "type": "string"
+          },
+          "in_int_NumberDownloadedFiles": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "out_str_ListOfLatestDownloadedFilePath": {
+            "type": "string"
+          },
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}
