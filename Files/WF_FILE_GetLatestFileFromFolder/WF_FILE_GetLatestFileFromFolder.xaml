@@ -1,9 +1,11 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="getfilefromlastexecution" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="io_str_AuxiliaryExceptionMessage" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_ts_RetryInterval" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="in_int32_NumberOfRetries" Type="InArgument(x:Int32)" />
+    <x:Property Name="io_str_AuxiliaryErrorMessage" Type="InOutArgument(x:String)" />
     <x:Property Name="io_bool_BusinessException" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
-    <x:Property Name="in_str_FolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_FolderPathToGetLatestFiles" Type="InArgument(x:String)" />
     <x:Property Name="out_str_LatestFilePath" Type="OutArgument(x:String)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>2072,1189</sap:VirtualizedContainerService.HintSize>
@@ -53,6 +55,7 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -109,9 +112,17 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[GetLatestFileFromFolder]&#xA;[Get Latest File from a specific folder.]" DisplayName="GetlatestFileFromFolder" sap:VirtualizedContainerService.HintSize="1061.3333333333333,746.3233333333333" sap2010:WorkflowViewState.IdRef="Sequence_1605">
+  <Sequence sap2010:Annotation.AnnotationText="[WF_FILE_GetLatestFileFromFolder]&#xA;[Get Latest created files from a specific folder.]" DisplayName="GetlatestFileFromFolder" sap:VirtualizedContainerService.HintSize="1287,629.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1605">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="date_newestFileDate" />
       <Variable x:TypeArguments="x:String" Name="str_FileDate" />
@@ -123,7 +134,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Init GetLatestFileFromFolder Workflow" sap:VirtualizedContainerService.HintSize="470.22222222222223,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Initialization of GetLatestFileFromFolder Workflow...&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Init WF_FILE_GetLatestFileFromFolder Workflow" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Getting latest created files stored in the folder named '{0}'...&quot;, New System.IO.DirectoryInfo(in_str_FolderPathToGetLatestFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -131,36 +142,59 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch: Get Latest File From a Specific Folder" sap:VirtualizedContainerService.HintSize="470.22222222222223,510.22222222222223" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch: Get Latest File From a Specific Folder" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="468.44444444444446,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_1607">
+        <Sequence DisplayName="Get Latest Files" sap:VirtualizedContainerService.HintSize="450,230" sap2010:WorkflowViewState.IdRef="Sequence_1607">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign: Get Latest File Path" sap:VirtualizedContainerService.HintSize="416,56.888888888888886" sap2010:WorkflowViewState.IdRef="Assign_862">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[out_str_LatestFilePath]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[Directory.GetFiles(in_str_FolderPath, "*").OrderByDescending(Function(d) New FileInfo(d).CreationTime).ToList(0)]</InArgument>
-            </Assign.Value>
+          <ui:RetryScope DisplayName="Retry Scope: Get Latest Files" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+            <ui:RetryScope.ActivityBody>
+              <ActivityAction>
+                <Sequence DisplayName="Get latest Files" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_1611">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign: Get Latest File Path" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Assign_862">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_str_LatestFilePath]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[String.Join(",", Directory.GetFiles(in_str_FolderPathToGetLatestFiles.TrimStart.TrimEnd, "*").OrderByDescending(Function(d) New FileInfo(d).CreationTime).ToArray())]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                </Sequence>
+              </ActivityAction>
+            </ui:RetryScope.ActivityBody>
+            <ui:RetryScope.Condition>
+              <ActivityFunc x:TypeArguments="x:Boolean" />
+            </ui:RetryScope.Condition>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </Assign>
-          <Assign DisplayName="Assign: Establish bool_CheckFlow As True" sap:VirtualizedContainerService.HintSize="416,56.888888888888886" sap2010:WorkflowViewState.IdRef="Assign_863">
+          </ui:RetryScope>
+          <Assign DisplayName="Assign: Establish bool_CheckFlow As True" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_863">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
@@ -174,7 +208,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: Success GetLatestFileFromFolder Workflow" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;GetLatestFileFromFolder workflow ended successfully...&quot;]">
+          <ui:LogMessage DisplayName="Log Message: Success Get Latest Files" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Latest created files were obtained correctly from the folder named '{0}'...&quot;, New System.IO.DirectoryInfo(in_str_FolderPathToGetLatestFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -196,13 +230,14 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="468.44444444444446,165.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1609">
+            <Sequence DisplayName="SE" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_1609">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Error GetLatestFileFromFolder Workflow" sap:VirtualizedContainerService.HintSize="434.6666666666667,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+              <ui:LogMessage DisplayName="Log Message: Error GetLatestFileFromFolder Workflow" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -210,9 +245,9 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
-              <Assign DisplayName="Assign: Establish Exception Message to str_AuxiliaryExceptionMessage" sap:VirtualizedContainerService.HintSize="434.6666666666667,48" sap2010:WorkflowViewState.IdRef="Assign_864">
+              <Assign DisplayName="Assign: Establish Exception Message to str_AuxiliaryExceptionMessage" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_864">
                 <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryExceptionMessage]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
                   <InArgument x:TypeArguments="x:String">[String.Format("Error Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
@@ -238,7 +273,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="468.44444444444446,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_1610">
+            <Sequence DisplayName="BRE" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_1610">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -266,7 +301,7 @@
                     </ui:AssignOperation>
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
                       <ui:AssignOperation.To>
-                        <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryExceptionMessage]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
                         <InArgument x:TypeArguments="x:String">[String.Format("Error Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
@@ -286,7 +321,7 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="468.44444444444446,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1608">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_1608">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

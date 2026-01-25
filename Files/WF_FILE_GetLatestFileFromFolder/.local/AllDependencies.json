@@ -18452,15 +18452,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\catar\\.nuget\\packages\\": {}
+    "C:\\Users\\catarina.valente\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "BlankProcess",
       "projectName": "BlankProcess",
-      "projectPath": "C:\\Users\\catar\\OneDrive\\Documentos\\HTML-CSS\\UiPath-Reusable-Modules\\Files\\GetLatestFileFromFolder\\.local",
-      "packagesPath": "C:\\Users\\catar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\catar\\OneDrive\\Documentos\\HTML-CSS\\UiPath-Reusable-Modules\\Files\\GetLatestFileFromFolder\\.local",
+      "projectPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\Files\\WF_FILE_GetLatestFileFromFolder\\.local",
+      "packagesPath": "C:\\Users\\catarina.valente\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\Files\\WF_FILE_GetLatestFileFromFolder\\.local",
       "UsingMicrosoftNETSdk": false,
       "restoreAuditProperties": {
         "enableAudit": "False"
@@ -18490,7 +18490,7 @@
             "version": "[21.10.5, 21.10.5]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\catar\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\catarina.valente\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
