@@ -1,0 +1,10 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "MoveAllFiles_PowerShell.xaml",
+      "uniqueId": "844a05fe-dfe3-4b3c-9c42-3088803c9116",
+      "type": "process"
+    }
+  ]
+}

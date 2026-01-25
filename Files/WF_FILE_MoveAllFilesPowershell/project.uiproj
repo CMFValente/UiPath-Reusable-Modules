@@ -1,0 +1,6 @@
+{
+  "Name": "MoveAllFiles_Powershell",
+  "ProjectType": "Process",
+  "Description": "Move all files from a source folder to a destination folder using the capabilities of PowerShell.",
+  "MainFile": "MoveAllFiles_PowerShell.xaml"
+}
