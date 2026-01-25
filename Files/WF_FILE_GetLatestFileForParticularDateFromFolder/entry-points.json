@@ -1,0 +1,10 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "GetLatestFileForParticularDateFromFolder.xaml",
+      "uniqueId": "ce9ef351-8e0b-4b58-b57b-cc73971c0a04",
+      "type": "process"
+    }
+  ]
+}
