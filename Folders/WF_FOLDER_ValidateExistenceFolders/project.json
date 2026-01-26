@@ -1,14 +1,14 @@
 {
-  "name": "ValidateExistenceSubFolders",
+  "name": "WF_FOLDER_ValidateExistenceFolders",
   "projectId": "c8109e79-5041-467a-a0d0-899880c9b621",
-  "description": "Validate the existence of subfolders in a specific main folder.",
+  "description": "Validate the existence of folders in a specific main folder.",
   "main": "ValidateExistenceSubFolders.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.22.3]",
-    "UiPath.Mail.Activities": "[1.22.1]",
-    "UiPath.System.Activities": "[23.10.5]",
-    "UiPath.Testing.Activities": "[23.10.1]",
-    "UiPath.UIAutomation.Activities": "[23.10.9]"
+    "UiPath.Excel.Activities": "[3.3.1]",
+    "UiPath.Mail.Activities": "[2.5.10]",
+    "UiPath.System.Activities": "[25.10.5]",
+    "UiPath.Testing.Activities": "[25.10.0]",
+    "UiPath.UIAutomation.Activities": "[25.10.25]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -37,14 +37,13 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [

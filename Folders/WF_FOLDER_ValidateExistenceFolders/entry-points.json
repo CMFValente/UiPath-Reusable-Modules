@@ -1,0 +1,10 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "ValidateExistenceSubFolders.xaml",
+      "uniqueId": "123944cb-f7af-4a7b-8e76-d856f5e15efc",
+      "type": "process"
+    }
+  ]
+}
