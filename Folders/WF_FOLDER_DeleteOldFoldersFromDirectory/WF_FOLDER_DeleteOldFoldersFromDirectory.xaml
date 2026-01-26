@@ -1,11 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="DeleteOlderFolders" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="io_str_AuxiliaryExceptionMessage" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_ts_RetryInterval" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="in_int32_NumberOfRetries" Type="InArgument(x:Int32)" />
+    <x:Property Name="io_str_AuxiliaryErrorMessage" Type="InOutArgument(x:String)" />
     <x:Property Name="io_bool_BusinessException" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
-    <x:Property Name="in_str_MainFolderPath" Type="InArgument(x:String)" />
-    <x:Property Name="in_int_MinimumNumberFoldersNotToDelete" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_int_NumberPreviousDays" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_str_FolderPathToDeleteOldFolders" Type="InArgument(x:String)" />
+    <x:Property Name="in_int32_MinimumNumberFoldersNotToDelete" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_int32_NumberPreviousDays" Type="InArgument(x:Int32)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>2072,1189</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
@@ -47,6 +49,8 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -101,9 +105,15 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[DeleteOldFoldersFromDirectory]&#xA;[Delete all old folders of a specific directory, if the number of folders is greater than the minimum acceptable.]" DisplayName="DeleteOldFoldersFromDirectory" sap:VirtualizedContainerService.HintSize="1061.3333333333333,746.3233333333333" sap2010:WorkflowViewState.IdRef="Sequence_542">
+  <Sequence sap2010:Annotation.AnnotationText="[WF_FOLDER_DeleteOldFoldersFromDirectory]&#xA;[Delete all old folders of a specific directory, if the number of folders is greater than the minimum acceptable.]" DisplayName="DeleteOldFoldersFromDirectory" sap:VirtualizedContainerService.HintSize="1287,629.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_542">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="arr_ScreenshotsFoldersName" />
       <Variable x:TypeArguments="s:String[]" Name="arr_Order" />
@@ -117,7 +127,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Init DeleteOldFoldersFromDirectory Workflow" sap:VirtualizedContainerService.HintSize="751.1111111111111,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Initialization of DeleteOldFoldersFromDirectory workflow...&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Init Delete Old Folders From Directory" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;Deleting all subfolders from the folder named '{0}' with a modification date greater than '{1}' days...&quot;, New System.IO.DirectoryInfo(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, in_int32_NumberPreviousDays.ToString.TrimStart.TrimEnd)]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -125,30 +135,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch: Delete Old Folders, if the number of folders are greater than the Minimum Number of Folders available" sap:VirtualizedContainerService.HintSize="751.1111111111111,510.22222222222223" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Try Catch: Delete Old Folders, if the number of folders are greater than the Minimum Number of Folders available" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Delete Old Folders, if the number of folders are greater than the Minimum Number of Folders available" sap:VirtualizedContainerService.HintSize="749.3333333333334,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_556">
+        <Sequence DisplayName="Delete Old Folders, if the number of folders are greater than the Minimum Number of Folders available" sap:VirtualizedContainerService.HintSize="751,25" sap2010:WorkflowViewState.IdRef="Sequence_556">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message: Delete All Folders" sap:VirtualizedContainerService.HintSize="645.3333333333334,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Deleting all subfolders from the main folder {0} with a modification date greater than {1} days...&quot;, in_str_MainFolderPath.TrimStart.TrimEnd, in_int_NumberPreviousDays.ToString.TrimStart.TrimEnd)]">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:LogMessage>
-          <If Condition="[Directory.GetDirectories(in_str_MainFolderPath.TrimStart.TrimEnd).Count &gt; in_int_MinimumNumberFoldersNotToDelete]" DisplayName="Verify if the Number of SubFolders in the Main Folder is Greater than the Minimum SubFolders to Maintain" sap:VirtualizedContainerService.HintSize="645.3333333333334,56.888888888888886" sap2010:WorkflowViewState.IdRef="If_172">
+          <If Condition="[Directory.GetDirectories(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Count &gt; in_int32_MinimumNumberFoldersNotToDelete]" DisplayName="Verify if the Number of SubFolders in the Main Folder is Greater than the Minimum SubFolders to Maintain" sap:VirtualizedContainerService.HintSize="717,57" sap2010:WorkflowViewState.IdRef="If_172">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -156,56 +158,160 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Delete All Folders with Modification Date Less than the Defined Number of Previous days " sap:VirtualizedContainerService.HintSize="608,52" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Directory.GetDirectories(in_str_MainFolderPath.TrimStart.TrimEnd).OrderBy(Function(d) New DirectoryInfo(d).CreationTime)]">
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Delete All Folders with Modification Date Less than the Defined Number of Previous days " sap:VirtualizedContainerService.HintSize="711,25" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Directory.GetDirectories(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).OrderBy(Function(d) New DirectoryInfo(d).CreationTime)]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:String">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:String" Name="CurrentFolder" />
                     </ActivityAction.Argument>
-                    <If Condition="[Directory.GetLastWriteTime(CurrentFolder.TrimStart.TrimEnd).Date &lt; Today.Date.AddDays(-in_int_NumberPreviousDays)]" DisplayName="Verify the Existence of Folders with Modification Date Less than the Defined Number of Previous Days" sap:VirtualizedContainerService.HintSize="621,52" sap2010:WorkflowViewState.IdRef="If_171">
+                    <TryCatch DisplayName="Try Catch: Delete Old Folders" sap:VirtualizedContainerService.HintSize="642,25" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If.Then>
-                        <Sequence DisplayName="Delete Current Old Folder" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_555">
+                      <TryCatch.Try>
+                        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_560">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message: Deleting Current Folder" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;Deleting folder {0}...&quot;, CurrentFolder.TrimStart.TrimEnd)]">
+                          <ui:RetryScope DisplayName="Retry Scope: Delete Old Folders" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                            <ui:RetryScope.ActivityBody>
+                              <ActivityAction>
+                                <Sequence DisplayName="Delete Old Folders" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_563">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If Condition="[Directory.GetLastWriteTime(CurrentFolder.TrimStart.TrimEnd).Date &lt; Today.Date.AddDays(-in_int32_NumberPreviousDays)]" DisplayName="Verify the Existence of Folders with Modification Date Less than the Defined Number of Previous Days" sap:VirtualizedContainerService.HintSize="452,206" sap2010:WorkflowViewState.IdRef="If_171">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <If.Then>
+                                      <Sequence DisplayName="Delete Current Old Folder" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_555">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Message: Deleting Current Folder" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;Deleting subfolder '{0}' from the folder named '{1}'...&quot;, New System.IO.DirectoryInfo(CurrentFolder.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:LogMessage>
+                                        <ui:DeleteFolderX DisplayName="Delete Folder: Delete Old Folders" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="DeleteFolderX_3" Path="[CurrentFolder.TrimStart.TrimEnd]" Recursive="True">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:DeleteFolderX>
+                                        <ui:LogMessage DisplayName="Log Message: Current Folder Deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;SubFolder '{0}' was correctly deleted from the folder named '{1}'...&quot;, New System.IO.DirectoryInfo(CurrentFolder.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:LogMessage>
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <ui:LogMessage DisplayName="Log Message: No Delete Current Folder" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;Folder '{0}' does not need to be deleted from the folder named '{1}'...&quot;, New System.IO.DirectoryInfo(CurrentFolder.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:LogMessage>
+                                    </If.Else>
+                                  </If>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:RetryScope.ActivityBody>
+                            <ui:RetryScope.Condition>
+                              <ActivityFunc x:TypeArguments="x:Boolean" />
+                            </ui:RetryScope.Condition>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                          </ui:LogMessage>
-                          <ui:DeleteFolderX DisplayName="Delete Folder: Delete Old Folders" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="DeleteFolderX_3" Path="[CurrentFolder.TrimStart.TrimEnd]" Recursive="True">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:DeleteFolderX>
+                          </ui:RetryScope>
                         </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <ui:LogMessage DisplayName="Log Message: No Delete Current Folder" sap:VirtualizedContainerService.HintSize="290,52" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;The folder {0} does not need to be deleted...&quot;, CurrentFolder.TrimStart.TrimEnd)]">
+                      </TryCatch.Try>
+                      <TryCatch.Catches>
+                        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                          <ActivityAction x:TypeArguments="s:Exception">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="SE" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_561">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message: SE Delete Old Folders" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[String.Format(&quot;Error while deleting subfolder '{0}' from the folder named '{1}': {2}&quot;, New System.IO.DirectoryInfo(CurrentFolder.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:LogMessage>
+                              <Assign DisplayName="Assign: Establish str_AuxiliaryErrorMessage" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[String.Format("Error while deleting subfolder '{0}' from the folder named '{1}': {2}", New System.IO.DirectoryInfo(CurrentFolder.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                              <Throw DisplayName="Throw: SE Delete Old Folders" Exception="[New SystemException(io_str_AuxiliaryErrorMessage.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="452,52" sap2010:WorkflowViewState.IdRef="Throw_1">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Throw>
+                            </Sequence>
+                          </ActivityAction>
+                        </Catch>
+                      </TryCatch.Catches>
+                      <TryCatch.Finally>
+                        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_562">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </ui:LogMessage>
-                      </If.Else>
-                    </If>
+                        </Sequence>
+                      </TryCatch.Finally>
+                    </TryCatch>
                   </ActivityAction>
                 </ui:ForEach.Body>
                 <sap:WorkflowViewStateService.ViewState>
@@ -217,7 +323,7 @@
               </ui:ForEach>
             </If.Then>
             <If.Else>
-              <ui:LogMessage DisplayName="Log Message: No Delete Old Folders" sap:VirtualizedContainerService.HintSize="275,52" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;There is no need to delete old folders...&quot;]">
+              <ui:LogMessage DisplayName="Log Message: No Delete Old Folders" sap:VirtualizedContainerService.HintSize="711,25" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;There is no need to delete old folders from the folder named '{0}'...&quot;, New System.IO.DirectoryInfo(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -227,7 +333,7 @@
               </ui:LogMessage>
             </If.Else>
           </If>
-          <Assign DisplayName="Assign: Establish bool_CheckFlow As True" sap:VirtualizedContainerService.HintSize="645.3333333333334,56.888888888888886" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign: Establish bool_CheckFlow As True" sap:VirtualizedContainerService.HintSize="717,61" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
@@ -241,7 +347,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: Success DeleteOldFoldersFromDirectory" sap:VirtualizedContainerService.HintSize="645.3333333333334,48" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;DeleteOldFoldersFromDirectory workflow ended successfully...&quot;]">
+          <ui:LogMessage DisplayName="Log Message: Success Delete Old Folders From Directory" sap:VirtualizedContainerService.HintSize="717,52" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[String.Format(&quot;All old subfolders were correctly deleted from the folder named '{0}'...&quot;, New System.IO.DirectoryInfo(in_str_FolderPathToDeleteOldFolders.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -263,13 +369,14 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="749.3333333333334,165.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_558">
+            <Sequence DisplayName="SE" sap:VirtualizedContainerService.HintSize="751,25" sap2010:WorkflowViewState.IdRef="Sequence_558">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: SE DeleteOldFoldersFromDirectory" sap:VirtualizedContainerService.HintSize="715.5555555555555,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+              <ui:LogMessage DisplayName="Log Message: SE DeleteOldFoldersFromDirectory" sap:VirtualizedContainerService.HintSize="717,61" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -277,9 +384,9 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
-              <Assign DisplayName="Assign: Establish Exception Message to str_AuxiliaryExceptionMessage" sap:VirtualizedContainerService.HintSize="715.5555555555555,48" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign DisplayName="Assign: Establish Exception Message to str_AuxiliaryExceptionMessage" sap:VirtualizedContainerService.HintSize="717,52" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryExceptionMessage]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
                   <InArgument x:TypeArguments="x:String">[String.Format("Error Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
@@ -305,7 +412,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="749.3333333333334,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_559">
+            <Sequence DisplayName="BRE" sap:VirtualizedContainerService.HintSize="751,25" sap2010:WorkflowViewState.IdRef="Sequence_559">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -333,7 +440,7 @@
                     </ui:AssignOperation>
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
                       <ui:AssignOperation.To>
-                        <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryExceptionMessage]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
                         <InArgument x:TypeArguments="x:String">[String.Format("Error Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
@@ -353,7 +460,7 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="749.3333333333334,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_557">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="751,94" sap2010:WorkflowViewState.IdRef="Sequence_557">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

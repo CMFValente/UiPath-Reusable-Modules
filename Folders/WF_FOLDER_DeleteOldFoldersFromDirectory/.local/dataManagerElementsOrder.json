@@ -19,6 +19,14 @@
       ],
       "ConstantsSectionElementsOrder": null,
       "AddedNamespaces": null
+    },
+    {
+      "Path": "WF_FOLDER_DeleteOldFoldersFromDirectory.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
     }
   ]
 }
