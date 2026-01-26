@@ -1,0 +1,6 @@
+{
+  "Name": "WF_FOLDER_ValidateandCreateFolder",
+  "ProjectType": "Process",
+  "Description": "Validate the existence of a specific folder. In case of non-existence of the folder, proceed to its creation.",
+  "MainFile": "WF_FOLDER_ValidateandCreateFolder.xaml"
+}
