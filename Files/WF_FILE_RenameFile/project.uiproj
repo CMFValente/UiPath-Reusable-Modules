@@ -1,0 +1,6 @@
+{
+  "Name": "WF_FILE_RenameFile",
+  "ProjectType": "Process",
+  "Description": "Rename a specific file.",
+  "MainFile": "WF_FILE_RenameFile.xaml"
+}
