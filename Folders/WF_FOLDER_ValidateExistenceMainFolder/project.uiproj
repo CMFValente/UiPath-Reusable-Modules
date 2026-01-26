@@ -1,0 +1,6 @@
+{
+  "Name": "FolderValidation",
+  "ProjectType": "Process",
+  "Description": "Validation of the existence of subfolders within a specific folder.",
+  "MainFile": "WF_FOLDER_ValidateExistenceMainFolder.xaml"
+}
