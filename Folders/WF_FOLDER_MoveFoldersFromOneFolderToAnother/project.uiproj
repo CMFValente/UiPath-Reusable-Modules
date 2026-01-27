@@ -1,0 +1,6 @@
+{
+  "Name": "WF_FOLDER_MoveFoldersFromOneFolderToAnother",
+  "ProjectType": "Process",
+  "Description": "Move specific folders from a source folder to a destination folder.",
+  "MainFile": "WF_FOLDER_MoveFoldersFromOneFolderToAnother.xaml"
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_FOLDER_MoveFoldersFromOneFolderToAnother.xaml",
+      "uniqueId": "6db2d924-fb5a-42ea-b8da-62354dce141b",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          },
+          "in_ts_RetryInterval": {
+            "type": "object",
+            "properties": {
+              "Ticks": {
+                "type": "integer",
+                "minimum": -9223372036854775808,
+                "maximum": 9223372036854775807,
+                "readOnly": true
+              },
+              "Days": {
+                "$ref": "#/$defs/integer"
+              },
+              "Hours": {
+                "$ref": "#/$defs/integer"
+              },
+              "Milliseconds": {
+                "$ref": "#/$defs/integer"
+              },
+              "Microseconds": {
+                "$ref": "#/$defs/integer"
+              },
+              "Nanoseconds": {
+                "$ref": "#/$defs/integer"
+              },
+              "Minutes": {
+                "$ref": "#/$defs/integer"
+              },
+              "Seconds": {
+                "$ref": "#/$defs/integer"
+              },
+              "TotalDays": {
+                "$ref": "#/$defs/number"
+              },
+              "TotalHours": {
+                "$ref": "#/$defs/number"
+              },
+              "TotalMilliseconds": {
+                "$ref": "#/$defs/number"
+              },
+              "TotalMicroseconds": {
+                "$ref": "#/$defs/number"
+              },
+              "TotalNanoseconds": {
+                "$ref": "#/$defs/number"
+              },
+              "TotalMinutes": {
+                "$ref": "#/$defs/number"
+              },
+              "TotalSeconds": {
+                "$ref": "#/$defs/number"
+              }
+            },
+            "$defs": {
+              "integer": {
+                "type": "integer",
+                "minimum": -2147483648,
+                "maximum": 2147483647,
+                "readOnly": true
+              },
+              "number": {
+                "type": "number",
+                "minimum": -1.7976931348623157E+308,
+                "maximum": 1.7976931348623157E+308,
+                "readOnly": true
+              }
+            }
+          },
+          "in_int32_NumberOfRetries": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+          },
+          "in_str_ListOfFoldersToMove": {
+            "type": "string"
+          },
+          "in_str_DestinationFolderPath": {
+            "type": "string"
+          },
+          "in_str_SourceFolderPath": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}
