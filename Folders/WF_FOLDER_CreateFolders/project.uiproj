@@ -1,0 +1,6 @@
+{
+  "Name": "WF_FOLDER_CreateFolders",
+  "ProjectType": "Process",
+  "Description": "Create folders in a specific main folder.",
+  "MainFile": "WF_FOLDER_CreateFolders.xaml"
+}
