@@ -1,0 +1,6 @@
+{
+  "Name": "WF_DATATABLE_CompareDataTablesGetMatchingRows",
+  "ProjectType": "Process",
+  "Description": "Compare two datatables and store the matching rows in a datatable.",
+  "MainFile": "WF_DATATABLE_CompareDataTablesGetMatchingRows.xaml"
+}
