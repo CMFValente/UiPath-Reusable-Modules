@@ -1,0 +1,6 @@
+{
+  "Name": "GetUniqueValuesDataTable",
+  "ProjectType": "Process",
+  "Description": "Get Unique Values from a DataTable.",
+  "MainFile": "WF_DATATABLE_GetUniqueValuesDataTable.xaml"
+}
