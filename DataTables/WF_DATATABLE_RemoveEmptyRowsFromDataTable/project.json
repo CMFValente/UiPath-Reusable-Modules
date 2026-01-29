@@ -1,11 +1,10 @@
 {
-  "name": "RemoveEmptyRowsFromDataTable",
+  "name": "WF_DATATABLE_RemoveEmptyRowsFromDataTable",
   "projectId": "5e226c61-61a1-4312-8a05-54259174be9a",
   "description": "Remove all empty rows from a datatable.",
-  "main": "Main.xaml",
+  "main": "WF_DATATABLE_RemoveEmptyRowsFromDataTable.xaml",
   "dependencies": {
-    "UiPath.AmazonWebServices.Activities": "2.7.0",
-    "UiPath.System.Activities": "[24.10.7]"
+    "UiPath.System.Activities": "[25.12.1]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -34,7 +33,6 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
@@ -46,8 +44,8 @@
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "Main.xaml",
-      "uniqueId": "147fdb0a-6c14-4316-ac99-96f3ae0bca05",
+      "filePath": "WF_DATATABLE_RemoveEmptyRowsFromDataTable.xaml",
+      "uniqueId": "4d56be0f-a0f9-4763-bc1c-43c22f8a172a",
       "input": [],
       "output": []
     }

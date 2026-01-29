@@ -1,0 +1,6 @@
+{
+  "Name": "WF_DATATABLE_RemoveEmptyRowsFromDataTable",
+  "ProjectType": "Process",
+  "Description": "Remove all empty rows from a datatable.",
+  "MainFile": "WF_DATATABLE_RemoveEmptyRowsFromDataTable.xaml"
+}
