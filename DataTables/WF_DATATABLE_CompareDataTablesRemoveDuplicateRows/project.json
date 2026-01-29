@@ -1,14 +1,14 @@
 {
-  "name": "CompareDataTablesRemoveDuplicateRows",
+  "name": "WF_DATATABLE_CompareDataTablesRemoveDuplicateRows",
   "projectId": "f8525078-f489-49fe-9a09-32e70e599fa3",
   "description": "Compare two datatables and remove duplicate rows.",
-  "main": "CompareDataTablesRemoveDuplicateRows.xaml",
+  "main": "WF_DATATABLE_CompareDataTablesRemoveDuplicateRows.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.22.0-preview]",
-    "UiPath.Mail.Activities": "[1.20.3]",
-    "UiPath.System.Activities": "[23.8.1-preview]",
-    "UiPath.Testing.Activities": "[23.8.0-preview]",
-    "UiPath.UIAutomation.Activities": "[23.6.2-preview]"
+    "UiPath.Excel.Activities": "[3.3.1]",
+    "UiPath.Mail.Activities": "[2.5.10]",
+    "UiPath.System.Activities": "[25.10.5]",
+    "UiPath.Testing.Activities": "[25.10.0]",
+    "UiPath.UIAutomation.Activities": "[25.10.25]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -37,20 +37,19 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "CompareDataTablesRemoveDuplicateRows.xaml",
-      "uniqueId": "757bb62a-c168-46b2-9b9b-21b0d5eb021f",
+      "filePath": "WF_DATATABLE_CompareDataTablesRemoveDuplicateRows.xaml",
+      "uniqueId": "dd975a20-74ff-4d8e-9284-498d3ea83f76",
       "input": [],
       "output": []
     }

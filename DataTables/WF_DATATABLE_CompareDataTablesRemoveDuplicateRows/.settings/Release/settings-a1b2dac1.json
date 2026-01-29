@@ -1,4 +1,4 @@
-{
+﻿{
   "UiPath.UIAutomationNext.Activities.Generic.DelayAfter": "0.3",
   "UiPath.UIAutomationNext.Activities.Generic.DelayBefore": "0.2",
   "UiPath.UIAutomationNext.Activities.Generic.Timeout": "30",
@@ -27,5 +27,31 @@
   "UiPath.UIAutomationNext.Activities.InjectJs.InjectJsExecutionWorld": "Isolated",
   "UiPath.UIAutomationNext.Activities.Logging.SearchLog": "False",
   "UiPath.UIAutomationNext.Activities.Logging.SearchPerformanceLog": "False",
-  "UiPath.UIAutomationNext.Activities.Logging.AuditLogLevel": "Trace"
+  "UiPath.UIAutomationNext.Activities.Logging.AuditLogLevel": "Trace",
+  "UiPath.UIAutomationNext.Activities.Generic.WaitPrimaryUntilTimeout": "False",
+  "UiPath.UIAutomationNext.Activities.Generic.AskAtRuntime": "False",
+  "UiPath.UIAutomationNext.Activities.Generic.UIATraceRetention": "7",
+  "UiPath.UIAutomationNext.Activities.SearchStepsWnd.WpfSupport": "False",
+  "UiPath.UIAutomationNext.Activities.ApplicationCard.DialogHandlingDismissAlerts": "False",
+  "UiPath.UIAutomationNext.Activities.ApplicationCard.DialogHandlingDismissConfirms": "False",
+  "UiPath.UIAutomationNext.Activities.ApplicationCard.DialogHandlingDismissPrompts": "False",
+  "UiPath.UIAutomationNext.Activities.ApplicationCard.DialogHandlingConfirmDialogResponse": "Cancel",
+  "UiPath.UIAutomationNext.Activities.ApplicationCard.DialogHandlingPromptDialogResponse": "Cancel",
+  "UiPath.UIAutomationNext.Activities.ApplicationCard.DialogHandlingPromptDialogResponseText": "",
+  "UiPath.UIAutomationNext.Activities.KeyboardEvents.TypeIntoClipboardMode": "Never",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPEnforceHardTimeout": "False",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPAdditionalScaling": "True",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPMonitoring": "False",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPLogonRetries": "5",
+  "UiPath.UIAutomationNext.Activities.SAP.SAPLogonDelayBetweenRetries": "0.5",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskAgentType": "GeminiFlash25",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskClipboardMode": "Never",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskMaxIterations": "100",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskIsDOMEnabled": "True",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskLogLevel": "Info",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskTraceLevel": "Html",
+  "UiPath.UIAutomationNext.Activities.UITask.UITaskTraceRetention": "7",
+  "UiPath.UIAutomationNext.Activities.ClosePopup.PopupAppearTimeout": "30",
+  "UiPath.UIAutomationNext.Activities.Logging.TargetSearchLogLevel": "Off",
+  "UiPath.UIAutomationNext.Activities.Logging.TargetSearchPerformanceLogLevel": "Off"
 }

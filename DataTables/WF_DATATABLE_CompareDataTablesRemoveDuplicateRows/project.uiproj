@@ -1,0 +1,6 @@
+{
+  "Name": "WF_DATATABLE_CompareDataTablesRemoveDuplicateRows",
+  "ProjectType": "Process",
+  "Description": "Compare two datatables and remove duplicate rows.",
+  "MainFile": "WF_DATATABLE_CompareDataTablesRemoveDuplicateRows.xaml"
+}
