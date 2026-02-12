@@ -99,7 +99,7 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[JoinTwoDataTablesWithDifferentColumns]&#xA;[Join two datatables that contains different columns.]" DisplayName="JoinTwoDataTablesWithDifferentColumns" sap:VirtualizedContainerService.HintSize="1061.3333333333333,746.3233333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[WF_DATATABLE_JoinTwoDataTablesWithDifferentColumns]&#xA;[Join two datatables that contains different columns.]" DisplayName="JoinTwoDataTablesWithDifferentColumns" sap:VirtualizedContainerService.HintSize="1287,629.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int_RowIndex" />
     </Sequence.Variables>
@@ -109,7 +109,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Init JoinTwoDataTablesWithDifferentColumns Workflow" sap:VirtualizedContainerService.HintSize="449.77777777777777,56.888888888888886" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Initialization of JoinTwoDataTablesWithDifferentColumns workflow...&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Init Join Two DataTables With Different Columns" sap:VirtualizedContainerService.HintSize="545,57" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Initialization of JoinTwoDataTablesWithDifferentColumns workflow...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -117,15 +117,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch: Join Two DataTables with Different Columns Into a Single DataTable" sap:VirtualizedContainerService.HintSize="449.77777777777777,48" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch: Join Two DataTables with Different Columns Into a Single DataTable" sap:VirtualizedContainerService.HintSize="545,377" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="541.3333333333334,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="543,25" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -276,7 +276,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="541.3333333333334,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="543,25" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -319,7 +319,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="541.3333333333334,24.88888888888889" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="543,25" sap2010:WorkflowViewState.IdRef="Sequence_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -367,7 +367,7 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="541.3333333333334,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="543,94" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

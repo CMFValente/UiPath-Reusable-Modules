@@ -1,0 +1,57 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "JoinTwoDataTablesWithDifferentColumns.xaml",
+      "uniqueId": "bb9fc138-cb1f-400f-9447-3b4e3bb96397",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_dt_FirstDataTable": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "in_dt_SecondDataTable": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_dt_FirstDataTable": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  ]
+}

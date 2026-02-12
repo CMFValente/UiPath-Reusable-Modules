@@ -1,0 +1,6 @@
+{
+  "Name": "WF_DATATABLE_JoinTwoDataTablesWithDifferentColumns",
+  "ProjectType": "Process",
+  "Description": "Join two datatables with different columns and with different data.",
+  "MainFile": "JoinTwoDataTablesWithDifferentColumns.xaml"
+}

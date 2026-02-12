@@ -1,5 +1,5 @@
 {
-  "name": "JoinTwoDataTablesWithDifferentColumns",
+  "name": "WF_DATATABLE_JoinTwoDataTablesWithDifferentColumns",
   "projectId": "a171c08c-981a-435b-a58f-5bc05dcc5e58",
   "description": "Join two datatables with different columns and with different data.",
   "main": "JoinTwoDataTablesWithDifferentColumns.xaml",
@@ -37,14 +37,13 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
