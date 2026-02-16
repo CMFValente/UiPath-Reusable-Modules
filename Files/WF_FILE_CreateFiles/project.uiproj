@@ -1,0 +1,6 @@
+{
+  "Name": "WF_FILE_CreateFiles",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_FILE_CreateFiles.xaml"
+}
