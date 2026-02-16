@@ -1,0 +1,6 @@
+{
+  "Name": "WF_TemplateGeneric_SE&BRE",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_TemplateGeneric_SE&BRE.xaml"
+}
