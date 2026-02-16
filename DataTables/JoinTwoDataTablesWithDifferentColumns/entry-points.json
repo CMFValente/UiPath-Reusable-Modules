@@ -8,12 +8,6 @@
       "input": {
         "type": "object",
         "properties": {
-          "io_dt_FirstDataTable": {
-            "type": "array",
-            "items": {
-              "type": "object"
-            }
-          },
           "io_str_AuxiliaryErrorMessage": {
             "type": "string"
           },
@@ -23,7 +17,19 @@
           "io_bool_CheckFlow": {
             "type": "boolean"
           },
-          "in_dt_SecondDataTable": {
+          "io_dt_DataTableWithAllColumns": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "in_str_DataTableNameWithColumnsToJoin": {
+            "type": "string"
+          },
+          "in_str_DataTableNameWithAllColumns": {
+            "type": "string"
+          },
+          "in_dt_DataTableWithColumnsToJoin": {
             "type": "array",
             "items": {
               "type": "object"
@@ -35,12 +41,6 @@
       "output": {
         "type": "object",
         "properties": {
-          "io_dt_FirstDataTable": {
-            "type": "array",
-            "items": {
-              "type": "object"
-            }
-          },
           "io_str_AuxiliaryErrorMessage": {
             "type": "string"
           },
@@ -49,6 +49,12 @@
           },
           "io_bool_CheckFlow": {
             "type": "boolean"
+          },
+          "io_dt_DataTableWithAllColumns": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
           }
         }
       }
