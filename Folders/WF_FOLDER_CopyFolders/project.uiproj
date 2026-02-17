@@ -1,0 +1,6 @@
+{
+  "Name": "WF_FOLDER_CopyFolders",
+  "ProjectType": "Process",
+  "Description": "The purpose of this WF is to copy a list of folders from a specific source folder to a specific destination folder. The list of folders must only include the folder names, in which each folder name must be separated by a comma \",\".",
+  "MainFile": "WF_FOLDER_CopyFolders.xaml"
+}
