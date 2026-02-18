@@ -132,14 +132,14 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to create a list of files in a specific folder. All files that need to be created must be indicated in the &quot;in_str_ListOfFilesToBeCreated&quot; argument, specifying the file name and its extension. Each file indicated in this argument must be separated by a comma &quot;,&quot;." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1921,1247" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to create a list of files in a specific folder. All files that need to be created must be indicated in the &quot;in_str_ListOfFilesToBeCreated&quot; argument, specifying the file name and its extension. Each file indicated in this argument must be separated by a comma &quot;,&quot;." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1927,989.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch: Create Files in a specific Folder" sap:VirtualizedContainerService.HintSize="524,1193" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+    <TryCatch DisplayName="Try Catch: Create Files in a specific Folder" sap:VirtualizedContainerService.HintSize="452,651" sap2010:WorkflowViewState.IdRef="TryCatch_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -147,14 +147,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Create Files in a specific Folder" sap:VirtualizedContainerService.HintSize="522,841" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Create Files in a specific Folder" sap:VirtualizedContainerService.HintSize="450,299" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="488,61" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -162,51 +162,51 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Create Each File" sap:VirtualizedContainerService.HintSize="488,603" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(in_str_ListOfFilesToBeCreated.TrimStart.TrimEnd, &quot;,&quot;c)]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Create Each File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(in_str_ListOfFilesToBeCreated.TrimStart.TrimEnd, &quot;,&quot;c)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="str_CurrentFileName" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,468" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_17">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch DisplayName="Try Catch: Create Current File" sap:VirtualizedContainerService.HintSize="452,404" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                  <TryCatch DisplayName="Try Catch: Create Current File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <TryCatch.Try>
-                      <Sequence DisplayName="Create Current File" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                      <Sequence DisplayName="Create Current File" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="Sequence_18">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Create Current File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                        <ui:LogMessage DisplayName="Log Message: Create Current File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Creating file named '{0}' in the folder '{1}'...&quot;, str_CurrentFileName.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToCreateFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Create Current File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
-                              <Sequence DisplayName="Create Current File" sap:VirtualizedContainerService.HintSize="450,230" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <Sequence DisplayName="Create Current File" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message: Create Current File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Creating file named '{0}' in the folder '{1}'...&quot;, str_CurrentFileName.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToCreateFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:LogMessage>
-                                <ui:CreateFile Output="{x:Null}" PathResource="{x:Null}" DisplayName="Create File: Create Current File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="CreateFile_2" Name="[str_CurrentFileName.TrimStart.TrimEnd]" Path="[in_str_FolderPathToCreateFiles.TrimStart.TrimEnd]">
+                                <ui:CreateFile Output="{x:Null}" PathResource="{x:Null}" DisplayName="Create File: Create Current File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CreateFile_2" Name="[str_CurrentFileName.TrimStart.TrimEnd]" Path="[in_str_FolderPathToCreateFiles.TrimStart.TrimEnd]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -214,7 +214,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:CreateFile>
-                                <If Condition="[File.Exists(Path.Combine(in_str_FolderPathToCreateFiles.TrimStart.TrimEnd, str_CurrentFileName.TrimStart.TrimEnd))]" DisplayName="If: Check if Current File was correctly created" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="If_1">
+                                <If Condition="[File.Exists(Path.Combine(in_str_FolderPathToCreateFiles.TrimStart.TrimEnd, str_CurrentFileName.TrimStart.TrimEnd))]" DisplayName="If: Check if Current File was correctly created" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_1">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -365,12 +365,12 @@
             </ui:ForEach.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEach>
-          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="488,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
@@ -384,7 +384,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="488,52" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -406,7 +406,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="522,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -449,7 +449,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="BUSINESS EXCEPTION" sap:VirtualizedContainerService.HintSize="522,25" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence DisplayName="BUSINESS EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_16">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
