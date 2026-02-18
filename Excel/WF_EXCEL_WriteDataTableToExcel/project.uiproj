@@ -1,0 +1,6 @@
+{
+  "Name": "WF_EXCEL_WriteDataTableToExcel",
+  "ProjectType": "Process",
+  "Description": "The purpose of this WF is to write data stored in a datatable into an Excel file.",
+  "MainFile": "WF_EXCEL_WriteDataTableToExcel.xaml"
+}
