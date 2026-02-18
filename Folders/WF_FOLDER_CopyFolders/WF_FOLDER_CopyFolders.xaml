@@ -175,7 +175,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch DisplayName="Try Catch: Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="452,312" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                  <TryCatch DisplayName="Try Catch: Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="453,52" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -183,29 +183,29 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <TryCatch.Try>
-                      <Sequence DisplayName="Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                      <Sequence DisplayName="Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="Sequence_19">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="452,388" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                        <ui:LogMessage DisplayName="Log Message: Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Copying folder named '{0}' from the source folder '{1}' to the destination folder '{2}'...&quot;, str_CurrentFolderToCopy.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
-                              <Sequence DisplayName="Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="450,238" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <Sequence DisplayName="Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message: Copy Current Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Copying folder named '{0}' from the source folder '{1}' to the destination folder '{2}'...&quot;, str_CurrentFolderToCopy.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:LogMessage>
                                 <ui:CopyFolderX FromResource="{x:Null}" ToResource="{x:Null}" DisplayName="Copy Folder: Copy Current Folder to Destination Folder" From="[Path.Combine(in_str_SourceFolderPath.TrimStart.TrimEnd, str_CurrentFolderToCopy.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CopyFolderX_2" IncludeSubfolders="True" Overwrite="True" To="[in_str_DestinationFolderPath.TrimStart.TrimEnd]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
