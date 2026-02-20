@@ -1,0 +1,3 @@
+Sub ExportPDF()
+    ActiveWorkbook.ExportAsFixedFormat Type:=xlTypePDF, Filename:=PDFFilePath
+End Sub
