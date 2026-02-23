@@ -1,0 +1,129 @@
+{
+  "DisplayName": "WF_TXT_WriteTXTFile",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_int32_NumberOfRetries",
+      "DisplayName": "in_int32_NumberOfRetries",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_ts_RetryInterval",
+      "DisplayName": "in_ts_RetryInterval",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_bool_CheckFlow",
+      "DisplayName": "io_bool_CheckFlow",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_WorkflowName",
+      "DisplayName": "in_str_WorkflowName",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_str_ExceptionAuxiliarInfo",
+      "DisplayName": "io_str_ExceptionAuxiliarInfo",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_bool_BusinessException",
+      "DisplayName": "io_bool_BusinessException",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_TXTFileName",
+      "DisplayName": "in_str_TXTFileName",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "TESTE",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_FolderPathToSaveTXTFile",
+      "DisplayName": "in_str_FolderPathToSaveTXTFile",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "C:\\Users\\catarina.valente\\Desktop",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_TextToWriteToTXTFile",
+      "DisplayName": "in_str_TextToWriteToTXTFile",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "TESTE",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_TXTFileEncoding",
+      "DisplayName": "in_str_TXTFileEncoding",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "utf-8",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

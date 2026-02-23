@@ -1,0 +1,6 @@
+{
+  "Name": "WF_TXT_WriteTXTFile",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_TXT_WriteTXTFile.xaml"
+}
