@@ -107,20 +107,20 @@
           "in_str_VBAToConvertExcelSheetToPDFFilePath": {
             "type": "string"
           },
-          "bool_ConvertAllExcelFileToPDF": {
-            "type": "boolean"
-          },
-          "in_list_ListOfEntryMethodParametersVBA": {
-            "type": "array",
-            "items": {
-              "type": "object"
-            }
-          },
           "in_str_EntryMethodNameToConvertExcelToPDF": {
             "type": "string"
           },
           "in_str_VBAToConvertExcelToPDFFilePath": {
             "type": "string"
+          },
+          "in_bool_ConvertAllExcelFileToPDF": {
+            "type": "boolean"
+          },
+          "in_list_EntryParametersVBAToConvertExcelToPDF": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
           }
         },
         "required": []

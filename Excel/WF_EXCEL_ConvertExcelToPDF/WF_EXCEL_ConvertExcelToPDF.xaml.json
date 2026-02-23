@@ -138,30 +138,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "bool_ConvertAllExcelFileToPDF",
-      "DisplayName": "bool_ConvertAllExcelFileToPDF",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "in_list_ListOfEntryMethodParametersVBA",
-      "DisplayName": "in_list_ListOfEntryMethodParametersVBA",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_str_EntryMethodNameToConvertExcelToPDF",
       "DisplayName": "in_str_EntryMethodNameToConvertExcelToPDF",
       "Category": null,
@@ -176,6 +152,30 @@
     {
       "Name": "in_str_VBAToConvertExcelToPDFFilePath",
       "DisplayName": "in_str_VBAToConvertExcelToPDFFilePath",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_bool_ConvertAllExcelFileToPDF",
+      "DisplayName": "in_bool_ConvertAllExcelFileToPDF",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "True",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_list_EntryParametersVBAToConvertExcelToPDF",
+      "DisplayName": "in_list_EntryParametersVBAToConvertExcelToPDF",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
