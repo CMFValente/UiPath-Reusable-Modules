@@ -171,7 +171,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Write DataTable to Excel using Modern Activities" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_19">
+              <Sequence DisplayName="Write DataTable to Excel using Modern Activities" sap:VirtualizedContainerService.HintSize="450,299" sap2010:WorkflowViewState.IdRef="Sequence_19">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -185,22 +185,30 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:LogMessage>
-                <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Write DataTable to Excel using Modern Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process: Kill EXCEL Process" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="KillProcess_3" ProcessName="EXCEL">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:KillProcess>
+                <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Write DataTable to Excel using Modern Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
-                      <Sequence DisplayName="Write DataTable to Excel using Modern Activities" sap:VirtualizedContainerService.HintSize="468,283" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                      <Sequence DisplayName="Write DataTable to Excel using Modern Activities" sap:VirtualizedContainerService.HintSize="502,516" sap2010:WorkflowViewState.IdRef="Sequence_22">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" DisplayName="Excel Process Scope: Write DataTable to Excel" ExistingProcessAction="ForceKill" FileConflictResolution="ThrowException" sap:VirtualizedContainerService.HintSize="434,219" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1" ProcessMode="ReuseIfExists" ShowExcelWindow="False">
+                        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" DisplayName="Excel Process Scope: Write DataTable to Excel" ExistingProcessAction="ForceKill" FileConflictResolution="ThrowException" sap:VirtualizedContainerService.HintSize="468,452" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1" ProcessMode="ReuseIfExists" ShowExcelWindow="False">
                           <ueab:ExcelProcessScopeX.Body>
                             <ActivityAction x:TypeArguments="ui:IExcelProcess">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
                               </ActivityAction.Argument>
-                              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Use Excel File: Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="400,25" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[in_str_ExcelFilePathToWriteData.TrimStart.TrimEnd]">
+                              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Use Excel File: Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="434,298" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[in_str_ExcelFilePathToWriteData.TrimStart.TrimEnd]">
                                 <ueab:ExcelApplicationCard.Body>
                                   <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                                     <ActivityAction.Argument>
@@ -218,7 +226,7 @@
                                 </ueab:ExcelApplicationCard.Body>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -245,6 +253,14 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:RetryScope>
+                <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process: Kill EXCEL Process" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="KillProcess_4" ProcessName="EXCEL">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:KillProcess>
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
@@ -260,7 +276,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message: Write Data To Excel File using Classic Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Warn" Message="[String.Format(&quot;Occurred the following error while writing data to the excel file named '{0}' using Excel Modern Activities: {1}. Trying again to write data to the excel file by using Excel Classic Activities...&quot;, Path.GetFileNameWithoutExtension(in_str_ExcelFilePathToWriteData.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
+                    <ui:LogMessage DisplayName="Log Message: Write Data To Excel File using Classic Activities" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Warn" Message="[String.Format(&quot;Occurred the following error while writing data to the excel file named '{0}' using Excel Modern Activities: {1}. Trying again to write data to the excel file by using Excel Classic Activities...&quot;, Path.GetFileNameWithoutExtension(in_str_ExcelFilePathToWriteData.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -268,7 +284,15 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[in_dt_DataToAddToExcelFile]" DisplayName="Write Range Workbook: Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_str_ExcelSheetNameToWriteData.TrimStart.TrimEnd]" WorkbookPath="[in_str_ExcelFilePathToWriteData.TrimStart.TrimEnd]">
+                    <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process: Kill EXCEL Process" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="EXCEL">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:KillProcess>
+                    <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[in_dt_DataToAddToExcelFile]" DisplayName="Write Range Workbook: Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_str_ExcelSheetNameToWriteData.TrimStart.TrimEnd]" WorkbookPath="[in_str_ExcelFilePathToWriteData.TrimStart.TrimEnd]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -276,6 +300,14 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:WriteRange>
+                    <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process: Kill EXCEL Process" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="EXCEL">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:KillProcess>
                   </Sequence>
                 </ActivityAction>
               </Catch>
