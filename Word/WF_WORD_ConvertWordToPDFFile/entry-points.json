@@ -1,0 +1,42 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_WORD_ConvertWordToPDFFile.xaml",
+      "uniqueId": "f80fdb54-fee4-4c77-991d-805e0a3ba129",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  ]
+}

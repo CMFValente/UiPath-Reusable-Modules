@@ -1,0 +1,6 @@
+{
+  "Name": "WF_WORD_ConvertWordToPDFFile",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_WORD_ConvertWordToPDFFile.xaml"
+}
