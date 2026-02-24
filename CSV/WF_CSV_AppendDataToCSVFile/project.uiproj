@@ -1,0 +1,6 @@
+{
+  "Name": "WF_CSV_AppendToCSVFile",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_CSV_AppendDataToCSVFile.xaml"
+}
