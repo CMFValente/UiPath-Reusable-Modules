@@ -78,32 +78,8 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_str_PDFFileNameWithExtension",
-      "DisplayName": "in_str_PDFFileNameWithExtension",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_str_FolderPathToSavePDFFile",
       "DisplayName": "in_str_FolderPathToSavePDFFile",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "in_str_ExcelFilePathToConvertToPDF",
-      "DisplayName": "in_str_ExcelFilePathToConvertToPDF",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
@@ -174,8 +150,20 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_list_EntryParametersVBAToConvertExcelToPDF",
-      "DisplayName": "in_list_EntryParametersVBAToConvertExcelToPDF",
+      "Name": "in_str_FolderPathWithExcelFilesToBeConverted",
+      "DisplayName": "in_str_FolderPathWithExcelFilesToBeConverted",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ListOfExcelFileNamesToConvertToPDF",
+      "DisplayName": "in_str_ListOfExcelFileNamesToConvertToPDF",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,

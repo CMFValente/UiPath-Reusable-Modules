@@ -92,13 +92,7 @@
             "minimum": -2147483648,
             "maximum": 2147483647
           },
-          "in_str_PDFFileNameWithExtension": {
-            "type": "string"
-          },
           "in_str_FolderPathToSavePDFFile": {
-            "type": "string"
-          },
-          "in_str_ExcelFilePathToConvertToPDF": {
             "type": "string"
           },
           "in_str_EntryMethodNameToConvertExcelSheetToPDF": {
@@ -116,11 +110,11 @@
           "in_bool_ConvertAllExcelFileToPDF": {
             "type": "boolean"
           },
-          "in_list_EntryParametersVBAToConvertExcelToPDF": {
-            "type": "array",
-            "items": {
-              "type": "object"
-            }
+          "in_str_FolderPathWithExcelFilesToBeConverted": {
+            "type": "string"
+          },
+          "in_str_ListOfExcelFileNamesToConvertToPDF": {
+            "type": "string"
           }
         },
         "required": []
