@@ -1,0 +1,6 @@
+{
+  "Name": "WF_WORD_ReadWordFile",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_WORD_ReadWordFile.xaml"
+}
