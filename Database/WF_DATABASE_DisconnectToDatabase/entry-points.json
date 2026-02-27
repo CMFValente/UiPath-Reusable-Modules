@@ -1,0 +1,10 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_DATABASE_DisconnectToDatabase.xaml",
+      "uniqueId": "c0e35a5e-c571-4d11-bfb3-1b4fefac3529",
+      "type": "process"
+    }
+  ]
+}
