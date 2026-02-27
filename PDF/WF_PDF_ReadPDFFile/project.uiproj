@@ -1,0 +1,6 @@
+{
+  "Name": "WF_PDF_ReadPDFFile",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_PDF_ReadPDFFile.xaml"
+}
