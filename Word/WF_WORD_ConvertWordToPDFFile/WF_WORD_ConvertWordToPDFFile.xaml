@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" this:WF_TemplateGeneric.in_ts_RetryInterval="00:03:00" this:WF_TemplateGeneric.in_int32_NumberOfRetries="3" this:WF_TemplateGeneric.in_str_FolderPathToStorePDFFiles="C:\Users\catarina.valente\Documents\GitHub\UiPath-Reusable-Modules\Word\WF_WORD_ConvertWordToPDFFile" this:WF_TemplateGeneric.in_str_ListOfWordFileNamesToBeConverted="TESTE.docx,Carta de Cessação de Contrato.docx" this:WF_TemplateGeneric.in_str_FolderPathWithWordFilesToBeConverted="C:\Users\catarina.valente\Desktop" this:WF_TemplateGeneric.in_str_WorkflowName="TESTE" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_ts_RetryInterval" Type="InArgument(x:TimeSpan)" />
     <x:Property Name="in_int32_NumberOfRetries" Type="InArgument(x:Int32)" />
@@ -139,7 +139,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to convert a specific list of word documents into PDF files. The list of word documents that need to be converted must be stored in the input argument called 'in_str_ListOfWordFileNamesToBeConverted' and each word document mentioned in this argument must include not only the file name but also its extension." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1927,989.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to convert a specific list of word documents into PDF files. The list of word documents that need to be converted must be stored in the input argument called 'in_str_ListOfWordFileNamesToBeConverted' and each word document mentioned in this argument must include not only the file name but also its extension." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1281,841" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
       <Variable x:TypeArguments="x:String" Name="str_ListOfWordFilesNotConverted" />
@@ -196,14 +196,14 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Convert All Word Documents to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="450,238" sap2010:WorkflowViewState.IdRef="Sequence_19">
+              <Sequence DisplayName="Convert All Word Documents to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="630,1847" sap2010:WorkflowViewState.IdRef="Sequence_19">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message: Convert Word Documents to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[String.Format(&quot;Proceeding to the conversion of the Word documents named '{0}' to PDF files using Word Activites...&quot;, String.Join(&quot;,&quot; , in_str_ListOfWordFileNamesToBeConverted.TrimStart.TrimEnd))]">
+                <ui:LogMessage DisplayName="Log Message: Convert Word Documents to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="596,61" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[String.Format(&quot;Proceeding to the conversion of the Word documents named '{0}' to PDF files using Word Activites...&quot;, String.Join(&quot;,&quot; , in_str_ListOfWordFileNamesToBeConverted.TrimStart.TrimEnd))]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -211,48 +211,48 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:LogMessage>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Convert All Word Document to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(in_str_ListOfWordFileNamesToBeConverted.TrimStart.TrimEnd, &quot;,&quot;c)]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Convert All Word Document to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="596,1565" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(in_str_ListOfWordFileNamesToBeConverted.TrimStart.TrimEnd, &quot;,&quot;c)]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="str_CurrentWordDocument" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Convert All Word Document to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="452,116" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                      <Sequence DisplayName="Convert All Word Document to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="572,1430" sap2010:WorkflowViewState.IdRef="Sequence_34">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <TryCatch DisplayName="Try Catch: Convert Current Word Document to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="489,403" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                        <TryCatch DisplayName="Try Catch: Convert Current Word Document to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="538,1366" sap2010:WorkflowViewState.IdRef="TryCatch_8">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Convert Current Word Document to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="487,116" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                            <Sequence DisplayName="Convert Current Word Document to PDF using Word Activities" sap:VirtualizedContainerService.HintSize="536,1052" sap2010:WorkflowViewState.IdRef="Sequence_35">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <If Condition="[Not File.Exists(Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentWordDocument.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" DisplayName="If: Checking if Current Word Document was already converrted to PDF File" sap:VirtualizedContainerService.HintSize="453,52" sap2010:WorkflowViewState.IdRef="If_4">
+                              <If Condition="[Not File.Exists(Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentWordDocument.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" DisplayName="If: Checking if Current Word Document was already converrted to PDF File" sap:VirtualizedContainerService.HintSize="502,988" sap2010:WorkflowViewState.IdRef="If_4">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <Sequence DisplayName="Current Word Document Not Converted to PDF" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                  <Sequence DisplayName="Current Word Document Not Converted to PDF" sap:VirtualizedContainerService.HintSize="500,829" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="Log Message: Word Document Not Converted to PDF" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Info" Message="[String.Format(&quot;Word document named '{0}' was not yet converted to a PDF file...&quot;, str_CurrentWordDocument.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                                    <ui:LogMessage DisplayName="Log Message: Word Document Not Converted to PDF" sap:VirtualizedContainerService.HintSize="466,61" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Info" Message="[String.Format(&quot;Word document named '{0}' was not yet converted to a PDF file...&quot;, str_CurrentWordDocument.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -260,7 +260,7 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:LogMessage>
-                                    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Current Word Document to PDF" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                                    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Current Word Document to PDF" sap:VirtualizedContainerService.HintSize="466,704" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                                       <ui:RetryScope.ActivityBody>
                                         <ActivityAction>
                                           <Sequence DisplayName="Convert Current Word Document to PDF" sap:VirtualizedContainerService.HintSize="450,421" sap2010:WorkflowViewState.IdRef="Sequence_22">
@@ -400,7 +400,7 @@
                                       </ui:RetryScope.Condition>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
@@ -408,7 +408,7 @@
                                   </Sequence>
                                 </If.Then>
                                 <If.Else>
-                                  <Sequence DisplayName="Word Document Already Converted to PDF" sap:VirtualizedContainerService.HintSize="497,25" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                                  <Sequence DisplayName="Word Document Already Converted to PDF" sap:VirtualizedContainerService.HintSize="500,25" sap2010:WorkflowViewState.IdRef="Sequence_41">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -434,7 +434,7 @@
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                 </ActivityAction.Argument>
-                                <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="536,25" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -468,14 +468,14 @@
                             </Catch>
                           </TryCatch.Catches>
                           <TryCatch.Finally>
-                            <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="487,116" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                            <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="536,116" sap2010:WorkflowViewState.IdRef="Sequence_42">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="453,52" sap2010:WorkflowViewState.IdRef="Assign_11">
+                              <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="502,52" sap2010:WorkflowViewState.IdRef="Assign_11">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                                 </Assign.To>
@@ -497,12 +497,12 @@
                   </ui:ForEach.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
-                <If Condition="[String.IsNullOrEmpty(str_ListOfWordFilesNotConvertedWithWordActivities)]" DisplayName="If: Checking if All Word Documents were correctly converted to PDF Files using Word Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_6">
+                <If Condition="[String.IsNullOrEmpty(str_ListOfWordFilesNotConvertedWithWordActivities)]" DisplayName="If: Checking if All Word Documents were correctly converted to PDF Files using Word Activities" sap:VirtualizedContainerService.HintSize="552,157" sap2010:WorkflowViewState.IdRef="If_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -510,17 +510,17 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="All Word Documents were correctly converted to PDF Files using Word Activities" sap:VirtualizedContainerService.HintSize="550,25" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                    <Sequence DisplayName="All Word Documents were correctly converted to PDF Files using Word Activities" sap:VirtualizedContainerService.HintSize="529,226" sap2010:WorkflowViewState.IdRef="Sequence_43">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message: All Word Documents were correctly converted to PDF Files using Word Activities" sap:VirtualizedContainerService.HintSize="516,52" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[String.Format(&quot;All Word documents named '{0}' were correctly converted to PDF files using Word Activities...&quot;)]">
+                      <ui:LogMessage DisplayName="Log Message: All Word Documents were correctly converted to PDF Files using Word Activities" sap:VirtualizedContainerService.HintSize="495,166" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[String.Format(&quot;All Word documents named '{0}' were correctly converted to PDF files using Word Activities...&quot;, String.Join(&quot;,&quot;, in_str_ListOfWordFileNamesToBeConverted.TrimStart.TrimEnd))]">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -562,14 +562,14 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="630,1398" sap2010:WorkflowViewState.IdRef="Sequence_20">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message: Convert Word Documents to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Info" Message="[String.Format(&quot;Proceeding to the conversion of Word documents named '{0}' to PDF files using Invoke Code...&quot;, String.Join(&quot;,&quot; , str_ListOfWordFilesNotConvertedWithWordActivities.TrimStart.TrimEnd))]">
+                    <ui:LogMessage DisplayName="Log Message: Convert Word Documents to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="596,61" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Info" Message="[String.Format(&quot;Proceeding to the conversion of Word documents named '{0}' to PDF files using Invoke Code...&quot;, String.Join(&quot;,&quot; , str_ListOfWordFilesNotConvertedWithWordActivities.TrimStart.TrimEnd))]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -577,50 +577,50 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Convert All Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(str_ListOfWordFilesNotConvertedWithWordActivities, &quot;,&quot;c)]">
+                    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Convert All Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="596,1273" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(str_ListOfWordFilesNotConvertedWithWordActivities, &quot;,&quot;c)]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="x:String">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="x:String" Name="str_CurrentWordDocument" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                          <Sequence DisplayName="Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="594,1147" sap2010:WorkflowViewState.IdRef="Sequence_18">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <TryCatch DisplayName="Try Catch: Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                            <TryCatch DisplayName="Try Catch: Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="560,1083" sap2010:WorkflowViewState.IdRef="TryCatch_6">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <TryCatch.Try>
-                                <Sequence DisplayName="Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="472,116" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                <Sequence DisplayName="Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="558,769" sap2010:WorkflowViewState.IdRef="Sequence_26">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <If Condition="[Not File.Exists(Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentWordDocument.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" DisplayName="If: Checking if Current Word Document was already converrted to PDF File" sap:VirtualizedContainerService.HintSize="438,52" sap2010:WorkflowViewState.IdRef="If_3">
+                                  <If Condition="[Not File.Exists(Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentWordDocument.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" DisplayName="If: Checking if Current Word Document was already converrted to PDF File" sap:VirtualizedContainerService.HintSize="524,705" sap2010:WorkflowViewState.IdRef="If_3">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                     <If.Then>
-                                      <Sequence DisplayName="Current Word Document Not Converted to PDF" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                      <Sequence DisplayName="Current Word Document Not Converted to PDF" sap:VirtualizedContainerService.HintSize="522,546" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:LogMessage DisplayName="Log Message: Word Document Not Converted to PDF" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[String.Format(&quot;Word document named '{0}' was not yet converted to a PDF file...&quot;, str_CurrentWordDocument.TrimStart.TrimEnd)]">
+                                        <ui:LogMessage DisplayName="Log Message: Word Document Not Converted to PDF" sap:VirtualizedContainerService.HintSize="488,61" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[String.Format(&quot;Word document named '{0}' was not yet converted to a PDF file...&quot;, str_CurrentWordDocument.TrimStart.TrimEnd)]">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -628,17 +628,17 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:LogMessage>
-                                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="488,421" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                                           <ui:RetryScope.ActivityBody>
                                             <ActivityAction>
-                                              <Sequence DisplayName="Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                              <Sequence DisplayName="Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="486,299" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                                <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="452,61" sap2010:WorkflowViewState.IdRef="Assign_5">
                                                   <Assign.To>
                                                     <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                                                   </Assign.To>
@@ -652,7 +652,7 @@
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </Assign>
-                                                <ui:LogMessage DisplayName="Log Message: Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[String.Format(&quot;Converting Word document named '{0}' to a PDF file using Invoke Code activity... | Attempt Number: {1}&quot;, str_CurrentWordDocument.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                                <ui:LogMessage DisplayName="Log Message: Convert Current Word Document to PDF using Invoke Code" sap:VirtualizedContainerService.HintSize="452,61" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[String.Format(&quot;Converting Word document named '{0}' to a PDF file using Invoke Code activity... | Attempt Number: {1}&quot;, str_CurrentWordDocument.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -660,17 +660,11 @@
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:LogMessage>
-                                                <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim MyApp As New Microsoft.Office.Interop.Word.Application&#xD;&#xA;MyApp.Visible = False&#xD;&#xA;&#xD;&#xA;Dim WordFilePath As String = System.IO.Path.Combine(in_str_FolderPathWithWordFilesToBeConverted.TrimStart.TrimEnd, in_str_CurrentWordDocument.TrimStart.TrimEnd)&#xD;&#xA;&#xD;&#xA;Dim PDFFileName As String = System.IO.Path.GetFileNameWithoutExtension(in_str_CurrentWordDocument.TrimStart.TrimEnd) &amp; &quot;.pdf&quot;&#xD;&#xA;&#xD;&#xA;Dim PDFFilePath As String = System.IO.Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, PDFFileName.TrimStart.TrimEnd)&#xD;&#xA;&#xD;&#xA;Dim doc As Microsoft.Office.Interop.Word.Document = MyApp.Documents.Open(WordFilePath.TrimStart.TrimEnd)&#xD;&#xA;doc.SaveAs(PDFFilePath.TrimStart.TrimEnd, Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatPDF)&#xD;&#xA;doc.Close(Microsoft.Office.Interop.Word.WdSaveOptions.wdDoNotSaveChanges)&#xD;&#xA;MyApp.Quit()" DisplayName="Invoke Code: Convert Current Word Document to PDF File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                                                <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim MyApp As New Microsoft.Office.Interop.Word.Application&#xA;MyApp.Visible = False&#xA;&#xA;Dim WordFilePath As String = System.IO.Path.Combine(in_str_FolderPathWithWordFilesToBeConverted.TrimStart.TrimEnd, in_str_CurrentWordDocument.TrimStart.TrimEnd)&#xA;&#xA;Dim PDFFileName As String = System.IO.Path.GetFileNameWithoutExtension(in_str_CurrentWordDocument.TrimStart.TrimEnd) &amp; &quot;.pdf&quot;&#xA;&#xA;Dim PDFFilePath As String = System.IO.Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, PDFFileName.TrimStart.TrimEnd)&#xA;&#xA;Dim doc As Microsoft.Office.Interop.Word.Document = MyApp.Documents.Open(WordFilePath.TrimStart.TrimEnd)&#xA;doc.SaveAs(PDFFilePath.TrimStart.TrimEnd, Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatPDF)&#xA;doc.Close(Microsoft.Office.Interop.Word.WdSaveOptions.wdDoNotSaveChanges)&#xA;MyApp.Quit()" DisplayName="Invoke Code: Convert Current Word Document to PDF File" sap:VirtualizedContainerService.HintSize="452,61" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                                                   <ui:InvokeCode.Arguments>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_str_FolderPathWithWordFilesToBeConverted">
-                                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_FolderPathWithWordFilesToBeConverted.TrimStart.TrimEnd" />
-                                                    </InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_str_CurrentWordDocument">
-                                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_CurrentWordDocument.TrimStart.TrimEnd" />
-                                                    </InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_str_FolderPathToStorePDFFiles">
-                                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd" />
-                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_str_FolderPathWithWordFilesToBeConverted">[in_str_FolderPathWithWordFilesToBeConverted.TrimStart.TrimEnd]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_str_CurrentWordDocument">[str_CurrentWordDocument.TrimStart.TrimEnd]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_str_FolderPathToStorePDFFiles">[in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd]</InArgument>
                                                   </ui:InvokeCode.Arguments>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -679,7 +673,7 @@
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:InvokeCode>
-                                                <If Condition="[File.Exists(Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentWordDocument.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" DisplayName="If: Check if Current Word Document was correctly converted to PDF File" sap:VirtualizedContainerService.HintSize="455,339" sap2010:WorkflowViewState.IdRef="If_2">
+                                                <If Condition="[File.Exists(Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentWordDocument.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" DisplayName="If: Check if Current Word Document was correctly converted to PDF File" sap:VirtualizedContainerService.HintSize="452,52" sap2010:WorkflowViewState.IdRef="If_2">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -726,7 +720,7 @@
                                           </ui:RetryScope.ActivityBody>
                                           <ui:RetryScope.Condition>
                                             <ActivityFunc x:TypeArguments="x:Boolean">
-                                              <ui:CheckTrue DisplayName="Check True: Check if Current Word Document was Converted To PDF" ErrorMessage="[String.Format(&quot;Word document named '{0}' was not converted to a PDF file...&quot;, str_CurrentWordDocument.TrimStart.TrimEnd)]" Expression="[File.Exists(Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentWordDocument.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" sap:VirtualizedContainerService.HintSize="337,131" sap2010:WorkflowViewState.IdRef="CheckTrue_2">
+                                              <ui:CheckTrue DisplayName="Check True: Check if Current Word Document was Converted To PDF" ErrorMessage="[String.Format(&quot;Word document named '{0}' was not converted to a PDF file...&quot;, str_CurrentWordDocument.TrimStart.TrimEnd)]" Expression="[File.Exists(Path.Combine(in_str_FolderPathToStorePDFFiles.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentWordDocument.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" sap:VirtualizedContainerService.HintSize="426,25" sap2010:WorkflowViewState.IdRef="CheckTrue_2">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -738,7 +732,7 @@
                                           </ui:RetryScope.Condition>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
@@ -746,7 +740,7 @@
                                       </Sequence>
                                     </If.Then>
                                     <If.Else>
-                                      <Sequence DisplayName="Word Document Already Converted to PDF" sap:VirtualizedContainerService.HintSize="497,25" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                      <Sequence DisplayName="Word Document Already Converted to PDF" sap:VirtualizedContainerService.HintSize="522,25" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -772,7 +766,7 @@
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                     </ActivityAction.Argument>
-                                    <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="472,25" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                    <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="558,25" sap2010:WorkflowViewState.IdRef="Sequence_27">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -806,13 +800,13 @@
                                 </Catch>
                               </TryCatch.Catches>
                               <TryCatch.Finally>
-                                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="472,116" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="558,116" sap2010:WorkflowViewState.IdRef="Sequence_28">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="438,52" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                  <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="524,52" sap2010:WorkflowViewState.IdRef="Assign_7">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                                     </Assign.To>
@@ -834,7 +828,7 @@
                       </ui:ForEach.Body>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -844,7 +838,7 @@
               </Catch>
             </TryCatch.Catches>
             <TryCatch.Finally>
-              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_21">
+              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="630,25" sap2010:WorkflowViewState.IdRef="Sequence_21">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
