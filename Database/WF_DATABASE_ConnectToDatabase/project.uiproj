@@ -1,0 +1,6 @@
+{
+  "Name": "WF_DATABASE_ConnectToDatabase",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_DATABASE_ConnectToDatabase.xaml"
+}
