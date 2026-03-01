@@ -92,16 +92,13 @@
           "in_str_WorkflowName": {
             "type": "string"
           },
-          "in_str_TXTFileName": {
-            "type": "string"
-          },
-          "in_str_FolderPathToSaveTXTFile": {
-            "type": "string"
-          },
           "in_str_TextToWriteToTXTFile": {
             "type": "string"
           },
           "in_str_TXTFileEncoding": {
+            "type": "string"
+          },
+          "in_str_TXTFilePath": {
             "type": "string"
           }
         },

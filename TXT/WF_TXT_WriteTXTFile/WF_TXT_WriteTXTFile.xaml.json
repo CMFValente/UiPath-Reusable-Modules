@@ -78,30 +78,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_str_TXTFileName",
-      "DisplayName": "in_str_TXTFileName",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": "TESTE",
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "in_str_FolderPathToSaveTXTFile",
-      "DisplayName": "in_str_FolderPathToSaveTXTFile",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": "C:\\Users\\catarina.valente\\Desktop",
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_str_TextToWriteToTXTFile",
       "DisplayName": "in_str_TextToWriteToTXTFile",
       "Category": null,
@@ -119,6 +95,18 @@
       "Category": null,
       "Tooltip": null,
       "Placeholder": "utf-8",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_TXTFilePath",
+      "DisplayName": "in_str_TXTFilePath",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
       "Widget": null,
       "IsRequired": false,
       "IsPrincipal": true,
