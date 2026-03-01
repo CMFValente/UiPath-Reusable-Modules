@@ -168,7 +168,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -190,103 +190,191 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Read PDF to extract text content" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
-            <ui:RetryScope.ActivityBody>
-              <ActivityAction>
-                <Sequence DisplayName="Read PDF to extract text content" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_4">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
-                    </Assign.Value>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </Assign>
-                  <ui:LogMessage DisplayName="Log Message: Read PDF File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Reading PDF file named '{0}' and extracting text from it... | Attempt Number: {1}&quot;, Path.GetFileNameWithoutExtension(in_str_PDFFilePathToBeRead.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:LogMessage>
-                  <If Condition="[in_bool_PDFNotScanned]" DisplayName="If: Verify if PDF is Scanned to extract text" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_1">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <Sequence DisplayName="PDF Not Scanned" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text: Extract Text From PDF" FileName="[in_str_PDFFilePathToBeRead.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="[in_str_PDFRangeToBeRead.TrimStart.TrimEnd]" Text="[out_str_PDFTextContent]">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:ReadPDFText>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="PDF Scanned" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read PDF With OCR: Extract Text From PDF" FileName="[in_str_PDFFilePathToBeRead.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_1" ImageDpi="150" Range="[in_str_PDFRangeToBeRead.TrimStart.TrimEnd]" Text="[out_str_PDFTextContent]">
-                          <ui:ReadPDFWithOCR.OCREngine>
-                            <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-                              <ActivityFunc.Argument>
-                                <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-                              </ActivityFunc.Argument>
-                              <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Invert="{x:Null}" Language="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="300,25" sap2010:WorkflowViewState.IdRef="GoogleOCR_1" Image="[Image]" NoopExecution="False" />
-                            </ActivityFunc>
-                          </ui:ReadPDFWithOCR.OCREngine>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:ReadPDFWithOCR>
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                </Sequence>
-              </ActivityAction>
-            </ui:RetryScope.ActivityBody>
-            <ui:RetryScope.Condition>
-              <ActivityFunc x:TypeArguments="x:Boolean" />
-            </ui:RetryScope.Condition>
+          <TryCatch DisplayName="Try Catch: Read PDF File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="TryCatch_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ui:RetryScope>
+            <TryCatch.Try>
+              <Sequence DisplayName="Read PDF File" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Read PDF to extract text content" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Read PDF to extract text content" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                        <ui:LogMessage DisplayName="Log Message: Read PDF File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Reading PDF file named '{0}' and extracting text from it... | Attempt Number: {1}&quot;, Path.GetFileNameWithoutExtension(in_str_PDFFilePathToBeRead.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                        <If Condition="[in_bool_PDFNotScanned]" DisplayName="If: Verify if PDF is Scanned to extract text" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="PDF Not Scanned" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text: Extract Text From PDF" FileName="[in_str_PDFFilePathToBeRead.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="[in_str_PDFRangeToBeRead.TrimStart.TrimEnd]" Text="[out_str_PDFTextContent]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ReadPDFText>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="PDF Scanned" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read PDF With OCR: Extract Text From PDF" FileName="[in_str_PDFFilePathToBeRead.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_1" ImageDpi="150" Range="[in_str_PDFRangeToBeRead.TrimStart.TrimEnd]" Text="[out_str_PDFTextContent]">
+                                <ui:ReadPDFWithOCR.OCREngine>
+                                  <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                                    <ActivityFunc.Argument>
+                                      <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                                    </ActivityFunc.Argument>
+                                    <ui:GoogleOCR AllowedCharacters="{x:Null}" DeniedCharacters="{x:Null}" FilterRegion="{x:Null}" Invert="{x:Null}" Language="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DisplayName="Tesseract OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="300,25" sap2010:WorkflowViewState.IdRef="GoogleOCR_1" Image="[Image]" NoopExecution="False" />
+                                  </ActivityFunc>
+                                </ui:ReadPDFWithOCR.OCREngine>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ReadPDFWithOCR>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                  </ui:RetryScope.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:RetryScope>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message: SE while reading PDF File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Error" Message="[String.Format(&quot;It was not possible to read PDF file named '{0}...&quot;, Path.GetFileNameWithoutExtension(in_str_PDFFilePathToBeRead.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_6">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Format("It was not possible to read PDF file named '{0}...", Path.GetFileNameWithoutExtension(in_str_PDFFilePathToBeRead.TrimStart.TrimEnd).TrimStart.TrimEnd)]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <Throw DisplayName="Throw: SE while reading PDF File" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Throw>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+            <TryCatch.Finally>
+              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                  </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Assign>
+              </Sequence>
+            </TryCatch.Finally>
+          </TryCatch>
           <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
