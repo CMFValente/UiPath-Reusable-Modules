@@ -1,0 +1,6 @@
+{
+  "Name": "WF_QUEUE_AddBulkQueueItems",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_QUEUE_AddBulkQueueItems.xaml"
+}
