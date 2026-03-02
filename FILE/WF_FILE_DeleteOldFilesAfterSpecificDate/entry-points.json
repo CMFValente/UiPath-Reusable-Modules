@@ -1,0 +1,10 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "DeleteOldFilesAfterSpecificDate.xaml",
+      "uniqueId": "789ddc23-fc87-4e4d-b349-193c1d743c44",
+      "type": "process"
+    }
+  ]
+}
