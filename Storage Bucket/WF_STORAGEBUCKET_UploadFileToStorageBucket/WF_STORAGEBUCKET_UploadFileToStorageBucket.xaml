@@ -1,5 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ucas="clr-namespace:UiPath.Core.Activities.Storage;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_ts_RetryInterval" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="in_int32_NumberOfRetries" Type="InArgument(x:Int32)" />
     <x:Property Name="in_str_FileNameInStorageBucket" Type="InArgument(x:String)" />
     <x:Property Name="in_str_FilePathToBeUploaded" Type="InArgument(x:String)" />
     <x:Property Name="in_str_StorageBucketName" Type="InArgument(x:String)" />
@@ -59,6 +61,7 @@
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>UiPath.Core.Activities.Storage</x:String>
       <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -125,16 +128,21 @@
       <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
       <AssemblyReference>NPOI.Core</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to ..." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1281,915" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to upload a file to a storage bucket." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1281,1041" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch " sap:VirtualizedContainerService.HintSize="452,861" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+    <TryCatch DisplayName="Try Catch: Upload File To Storage Bucket" sap:VirtualizedContainerService.HintSize="488,987" sap2010:WorkflowViewState.IdRef="TryCatch_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -142,14 +150,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="...." sap:VirtualizedContainerService.HintSize="450,509" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Upload File To Storage Bucket" sap:VirtualizedContainerService.HintSize="486,635" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -157,8 +168,155 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ucas:UploadStorageFile FileResource="{x:Null}" TimeoutMS="{x:Null}" Destination="[in_str_FileNameInStorageBucket.TrimStart.TrimEnd]" DisplayName="Upload Storage File" sap:VirtualizedContainerService.HintSize="416,279" sap2010:WorkflowViewState.IdRef="UploadStorageFile_1" Path="[in_str_FilePathToBeUploaded.TrimStart.TrimEnd]" StorageBucketName="[in_str_StorageBucketName.TrimStart.TrimEnd]" />
-          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <TryCatch DisplayName="Try Catch: Upload File To Storage Bucket" sap:VirtualizedContainerService.HintSize="452,344" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+            <TryCatch.Try>
+              <Sequence DisplayName="Upload File To Storage Bucket" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Upload File To Storage Bucket" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Upload File To Storage Bucket" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                        <ui:LogMessage DisplayName="Log Message: Upload File to Storage Bucket" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Uploading file '{0}' stored in folder '{1}' to storage bucket named '{2}' with the name '{3}'... | Attempt Number: {4}&quot;, Path.GetFileNameWithoutExtension(in_str_FilePathToBeUploaded.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(in_str_FilePathToBeUploaded.TrimStart.TrimEnd)).Name.TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd, in_str_FileNameInStorageBucket.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                        <ucas:UploadStorageFile FileResource="{x:Null}" TimeoutMS="{x:Null}" Destination="[in_str_FileNameInStorageBucket.TrimStart.TrimEnd]" DisplayName="Upload Storage File: Upload File To Storage Bucket" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="UploadStorageFile_1" Path="[in_str_FilePathToBeUploaded.TrimStart.TrimEnd]" StorageBucketName="[in_str_StorageBucketName.TrimStart.TrimEnd]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ucas:UploadStorageFile>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                  </ui:RetryScope.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:RetryScope>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message: SE while uploading file to storage bucket" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Error" Message="[String.Format(&quot;Error while uploading file '{0}' stored in folder '{1}' to storage bucket named '{2}'...&quot;, Path.GetFileNameWithoutExtension(in_str_FilePathToBeUploaded.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(in_str_FilePathToBeUploaded.TrimStart.TrimEnd)).Name.TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_6">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Format("Error while uploading file '{0}' stored in folder '{1}' to storage bucket named '{2}'...", Path.GetFileNameWithoutExtension(in_str_FilePathToBeUploaded.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(in_str_FilePathToBeUploaded.TrimStart.TrimEnd)).Name.TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd)]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <Throw DisplayName="Throw: SE while uploading file to storage bucket" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Throw>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+            <TryCatch.Finally>
+              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                  </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Assign>
+              </Sequence>
+            </TryCatch.Finally>
+          </TryCatch>
+          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="452,61" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
@@ -172,7 +330,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="452,52" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -194,7 +352,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -237,7 +395,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="BUSINESS EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence DisplayName="BUSINESS EXCEPTION" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="Sequence_16">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>

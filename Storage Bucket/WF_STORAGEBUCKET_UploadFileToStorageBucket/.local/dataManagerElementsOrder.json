@@ -11,7 +11,7 @@
     {
       "Path": "WF_STORAGEBUCKET_UploadFileToStorageBucket.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": null,
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": null,
       "ConstantsSectionElementsOrder": null,
       "AddedNamespaces": null
