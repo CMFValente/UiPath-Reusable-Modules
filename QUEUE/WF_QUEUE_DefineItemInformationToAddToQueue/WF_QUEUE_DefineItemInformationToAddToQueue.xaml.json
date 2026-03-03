@@ -1,0 +1,141 @@
+{
+  "DisplayName": "WF_QUEUE_DefineItemInformationToAddToQueue",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_dr_ItemInformationToAddToQueue",
+      "DisplayName": "in_dr_ItemInformationToAddToQueue",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "out_dict_ItemInformationToAddToQueue",
+      "DisplayName": "out_dict_ItemInformationToAddToQueue",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_bool_CheckFlow",
+      "DisplayName": "io_bool_CheckFlow",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_WorkflowName",
+      "DisplayName": "in_str_WorkflowName",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_str_ExceptionAuxiliarInfo",
+      "DisplayName": "io_str_ExceptionAuxiliarInfo",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_bool_BusinessException",
+      "DisplayName": "io_bool_BusinessException",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ColumnNamesToBeConsidered",
+      "DisplayName": "in_str_ColumnNamesToBeConsidered",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "HEADER1,HEADER2",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_QueueNameToAddItem",
+      "DisplayName": "in_str_QueueNameToAddItem",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_int32_NumberOfItemToBeAddedToQueue",
+      "DisplayName": "in_int32_NumberOfItemToBeAddedToQueue",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_ts_RetryInterval",
+      "DisplayName": "in_ts_RetryInterval",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_int32_NumberOfRetries",
+      "DisplayName": "in_int32_NumberOfRetries",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
