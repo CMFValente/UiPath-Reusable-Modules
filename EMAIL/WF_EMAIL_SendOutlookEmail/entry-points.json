@@ -1,0 +1,63 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_EMAIL_SendOutlookEmail.xaml",
+      "uniqueId": "c398fab9-7511-4485-83f3-8027ae6fe6c5",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "in_list_FilePathAttachmentsToSend": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "in_str_SenderNameToUseToSendEmail": {
+            "type": "string"
+          },
+          "in_str_AccountAddressToUseToSendEmail": {
+            "type": "string"
+          },
+          "in_str_EmailBodyToBeSent": {
+            "type": "string"
+          },
+          "in_str_SubjectEmailToBeSent": {
+            "type": "string"
+          },
+          "in_str_EmailAddressToSendEmail": {
+            "type": "string"
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  ]
+}
