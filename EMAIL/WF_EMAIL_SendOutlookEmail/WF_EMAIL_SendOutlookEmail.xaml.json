@@ -18,18 +18,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_str_SenderNameToUseToSendEmail",
-      "DisplayName": "in_str_SenderNameToUseToSendEmail",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": "CATARINA VALENTE",
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_str_AccountAddressToUseToSendEmail",
       "DisplayName": "in_str_AccountAddressToUseToSendEmail",
       "Category": null,
@@ -116,6 +104,42 @@
     {
       "Name": "io_bool_BusinessException",
       "DisplayName": "io_bool_BusinessException",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_EmailImportanceLevel",
+      "DisplayName": "in_str_EmailImportanceLevel",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_ts_RetryInterval",
+      "DisplayName": "in_ts_RetryInterval",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_int32_NumberOfRetries",
+      "DisplayName": "in_int32_NumberOfRetries",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
