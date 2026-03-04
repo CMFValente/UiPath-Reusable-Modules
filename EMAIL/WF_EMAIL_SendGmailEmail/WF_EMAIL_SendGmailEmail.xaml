@@ -1,0 +1,1294 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugage="clr-namespace:UiPath.GSuite.Activities.Gmail.Enums;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_ts_RetryInterval" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="in_int32_NumberOfRetries" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_str_EmailImportanceLevel" Type="InArgument(x:String)" />
+    <x:Property Name="in_bool_UseIntegrationServiceConnections" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_list_FileAttachmentsToBeSent" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_str_EmailBodyToBeSent" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_SubjectEmailToBeSent" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_EmailAddressToSendMailMessage" Type="InArgument(x:String)" />
+    <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
+    <x:Property Name="in_str_WorkflowName" Type="InArgument(x:String)" />
+    <x:Property Name="io_str_ExceptionAuxiliarInfo" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_bool_BusinessException" Type="InOutArgument(x:Boolean)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1283.2,900.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>WF_Reporting_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Credentials.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Gmail.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Utils</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Platform</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="102">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send a mail message using Gmail application.&#xD;&#xA;&#xD;&#xA;NOTE 1: The input argument called &quot;in_str_EmailImportanceLevel&quot; must contain one of the following values: Low, Normal or High.&#xD;&#xA;NOTE 2: The input argument called &quot;in_bool_UseIntegrationServiceConnections&quot; will determine if the send mail message activity will use or not the Integration Service capabilities.&#xD;&#xA;NOTE 3: Modify the account address that should be used to send the gmail mail message." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1927,989.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch: Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="452,696" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence DisplayName="Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="450,344" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <TryCatch DisplayName="Try Catch: Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <TryCatch.Try>
+              <Sequence DisplayName="Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If Condition="[in_bool_UseIntegrationServiceConnections]" DisplayName="If: Check if email should be sent using Integration Service Connections" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence DisplayName="Use Integration Service Connections" sap:VirtualizedContainerService.HintSize="500,25" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <TryCatch DisplayName="Try Catch: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="466,48" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch.Try>
+                          <Sequence DisplayName="Send Gmail Mail Message using Integration Service in Modern Activities" sap:VirtualizedContainerService.HintSize="504,25" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Mail Message using Integration Service in Modern Activities" sap:VirtualizedContainerService.HintSize="470,57" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                              <ui:RetryScope.ActivityBody>
+                                <ActivityAction>
+                                  <Sequence DisplayName="Send Gmail Mail Message using Integration Service in Modern Activities" sap:VirtualizedContainerService.HintSize="468,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                                      </Assign.Value>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Assign>
+                                    <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service with Modern Activities" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with '{0}' importance level to '{1}' using Integration Service connections in Modern Activities... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:LogMessage>
+                                    <If Condition="[in_list_FileAttachmentsToBeSent.Count &gt; 0]" DisplayName="If. Check if Mail Message to be sent must contain Attachments" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="If_2">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="Mail Message Must Contain Attachments" sap:VirtualizedContainerService.HintSize="453,25" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" AttachmentInputMode="UseExisting" Attachments="[in_list_FileAttachmentsToBeSent.Select(Function(f) LocalResource.FromPath(f.Trim))]" AuthScopesInvalid="False" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Send Email: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="SendEmailConnections_5" Importance="[DirectCast([Enum].Parse(GetType(UiPath.GSuite.Activities.Gmail.Enums.MailImportance), in_str_EmailImportanceLevel.TrimStart.TrimEnd, True), UiPath.GSuite.Activities.Gmail.Enums.MailImportance)]" InputType="TEXT" SaveAsDraft="False" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" TextBody="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.Split(&quot;,&quot;c).ToList()]" UseConnectionService="True">
+                                            <uga:SendEmailConnections.AttachmentsBackup>
+                                              <usau:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="UseExisting">
+                                                <usau:BackupSlot.BackupValues>
+                                                  <scg:List x:TypeArguments="x:Object" x:Key="UseExisting" Capacity="1">
+                                                    <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
+                                                  </scg:List>
+                                                  <scg:List x:TypeArguments="x:Object" x:Key="Builder" Capacity="1">
+                                                    <x:Null />
+                                                  </scg:List>
+                                                </usau:BackupSlot.BackupValues>
+                                              </usau:BackupSlot>
+                                            </uga:SendEmailConnections.AttachmentsBackup>
+                                            <uga:SendEmailConnections.InputTypeBackup>
+                                              <usau:BackupSlot x:TypeArguments="ugage:BodyInputType" StoredValue="TEXT">
+                                                <usau:BackupSlot.BackupValues>
+                                                  <scg:List x:TypeArguments="x:Object" x:Key="HTML" Capacity="1">
+                                                    <x:Null />
+                                                  </scg:List>
+                                                </usau:BackupSlot.BackupValues>
+                                              </usau:BackupSlot>
+                                            </uga:SendEmailConnections.InputTypeBackup>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </uga:SendEmailConnections>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Mail Message Must Not Contain Attachments" sap:VirtualizedContainerService.HintSize="453,25" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Send Email: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="SendEmailConnections_4" Importance="[DirectCast([Enum].Parse(GetType(UiPath.GSuite.Activities.Gmail.Enums.MailImportance), in_str_EmailImportanceLevel.TrimStart.TrimEnd, True), UiPath.GSuite.Activities.Gmail.Enums.MailImportance)]" InputType="TEXT" SaveAsDraft="False" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" TextBody="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.Split(&quot;,&quot;c).ToList()]" UseConnectionService="True">
+                                            <uga:SendEmailConnections.AttachmentsBackup>
+                                              <usau:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="UseExisting">
+                                                <usau:BackupSlot.BackupValues>
+                                                  <scg:List x:TypeArguments="x:Object" x:Key="UseExisting" Capacity="1">
+                                                    <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
+                                                  </scg:List>
+                                                  <scg:List x:TypeArguments="x:Object" x:Key="Builder" Capacity="1">
+                                                    <x:Null />
+                                                  </scg:List>
+                                                </usau:BackupSlot.BackupValues>
+                                              </usau:BackupSlot>
+                                            </uga:SendEmailConnections.AttachmentsBackup>
+                                            <uga:SendEmailConnections.InputTypeBackup>
+                                              <usau:BackupSlot x:TypeArguments="ugage:BodyInputType" StoredValue="TEXT">
+                                                <usau:BackupSlot.BackupValues>
+                                                  <scg:List x:TypeArguments="x:Object" x:Key="HTML" Capacity="1">
+                                                    <x:Null />
+                                                  </scg:List>
+                                                </usau:BackupSlot.BackupValues>
+                                              </usau:BackupSlot>
+                                            </uga:SendEmailConnections.InputTypeBackup>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </uga:SendEmailConnections>
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:RetryScope.ActivityBody>
+                              <ui:RetryScope.Condition>
+                                <ActivityFunc x:TypeArguments="x:Boolean" />
+                              </ui:RetryScope.Condition>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:RetryScope>
+                            <ui:LogMessage DisplayName="Log Message: Gmail Mail Message Sent Successfully using Integration Service Connections in Modern Activities" sap:VirtualizedContainerService.HintSize="470,52" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;A Gmail mail message with '{0}' importance level was correctly sent to '{1}' using Integration Service Connections in Modern Activities...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LogMessage>
+                          </Sequence>
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Send Gmail Mail Message using Integration Service in Classic Activities" sap:VirtualizedContainerService.HintSize="504,25" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="470,61" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                                <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service in Modern Activities Not Successful" sap:VirtualizedContainerService.HintSize="470,61" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Warn" Message="[String.Format(&quot;Occurred the error - '{0}' - while sending a gmail mail message with '{1}' importance level to '{2}' using Integration Service Connections in Modern Activities. Trying again to send the gmail mail message using Integration Service Connections in Classic Activities...&quot;)]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:LogMessage>
+                                <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Mail Message using Integration Service in Classic Activities" sap:VirtualizedContainerService.HintSize="470,61" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                                  <ui:RetryScope.ActivityBody>
+                                    <ActivityAction>
+                                      <Sequence DisplayName="Send Gmail Mail Message using Integration Service in Classic Activities" sap:VirtualizedContainerService.HintSize="576,25" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="549,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                                          </Assign.Value>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </Assign>
+                                        <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service in Classic Activities" sap:VirtualizedContainerService.HintSize="549,61" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with '{0}' importance level to '{1}' using Integration Service connections in Classic Activities... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:LogMessage>
+                                        <umab:GmailApplicationCard Account="catarina.valente@devoteam.com" ConnectionAccountName="catarina.valente@devoteam.com #2" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Use Gmail: Send Gmail Mail Message using Integration Servic in Classic Activities" EmailAddress="catarina.valente@devoteam.com" sap:VirtualizedContainerService.HintSize="549,52" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_3" Timeout="90" UseConnectionService="True">
+                                          <umab:GmailApplicationCard.Body>
+                                            <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
+                                              </ActivityAction.Argument>
+                                              <If Condition="[in_list_FileAttachmentsToBeSent.Count &gt; 0]" DisplayName="If. Check if Mail Message to be sent must contain Attachments" sap:VirtualizedContainerService.HintSize="515,25" sap2010:WorkflowViewState.IdRef="If_5">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <If.Then>
+                                                  <Sequence DisplayName="Mail Message Must Contain Attachments" sap:VirtualizedContainerService.HintSize="453,25" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_4">
+                                                      <Switch.Default>
+                                                        <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </Sequence>
+                                                      </Switch.Default>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Sequence x:Key="LOW" DisplayName="LOW" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_7" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                          <umab:SendMailX.Files>
+                                                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                                                              <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
+                                                            </scg:List>
+                                                          </umab:SendMailX.Files>
+                                                          <umab:SendMailX.HtmlBodyFromFile>
+                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                              <umabh:HtmlContentArgument.RuntimeImages>
+                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                              </umabh:HtmlContentArgument.RuntimeImages>
+                                                              <umabh:HtmlContentArgument.ValueMappings>
+                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                              </umabh:HtmlContentArgument.ValueMappings>
+                                                            </umabh:HtmlContentArgument>
+                                                          </umab:SendMailX.HtmlBodyFromFile>
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </umab:SendMailX>
+                                                      </Sequence>
+                                                      <Sequence x:Key="NORMAL" DisplayName="NORMAL" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="SendMailX_8" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                          <umab:SendMailX.Files>
+                                                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                                                              <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
+                                                            </scg:List>
+                                                          </umab:SendMailX.Files>
+                                                          <umab:SendMailX.HtmlBodyFromFile>
+                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                              <umabh:HtmlContentArgument.RuntimeImages>
+                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                              </umabh:HtmlContentArgument.RuntimeImages>
+                                                              <umabh:HtmlContentArgument.ValueMappings>
+                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                              </umabh:HtmlContentArgument.ValueMappings>
+                                                            </umabh:HtmlContentArgument>
+                                                          </umab:SendMailX.HtmlBodyFromFile>
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </umab:SendMailX>
+                                                      </Sequence>
+                                                      <Sequence x:Key="HIGH" DisplayName="HIGH" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="SendMailX_9" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                          <umab:SendMailX.Files>
+                                                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                                                              <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
+                                                            </scg:List>
+                                                          </umab:SendMailX.Files>
+                                                          <umab:SendMailX.HtmlBodyFromFile>
+                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                              <umabh:HtmlContentArgument.RuntimeImages>
+                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                              </umabh:HtmlContentArgument.RuntimeImages>
+                                                              <umabh:HtmlContentArgument.ValueMappings>
+                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                              </umabh:HtmlContentArgument.ValueMappings>
+                                                            </umabh:HtmlContentArgument>
+                                                          </umab:SendMailX.HtmlBodyFromFile>
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </umab:SendMailX>
+                                                      </Sequence>
+                                                    </Switch>
+                                                  </Sequence>
+                                                </If.Then>
+                                                <If.Else>
+                                                  <Sequence DisplayName="Mail Message Must Not Contain Attachments" sap:VirtualizedContainerService.HintSize="453,25" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_5">
+                                                      <Switch.Default>
+                                                        <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </Sequence>
+                                                      </Switch.Default>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Sequence x:Key="LOW" DisplayName="LOW" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_10" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                          <umab:SendMailX.Files>
+                                                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                                          </umab:SendMailX.Files>
+                                                          <umab:SendMailX.HtmlBodyFromFile>
+                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                              <umabh:HtmlContentArgument.RuntimeImages>
+                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                              </umabh:HtmlContentArgument.RuntimeImages>
+                                                              <umabh:HtmlContentArgument.ValueMappings>
+                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                              </umabh:HtmlContentArgument.ValueMappings>
+                                                            </umabh:HtmlContentArgument>
+                                                          </umab:SendMailX.HtmlBodyFromFile>
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </umab:SendMailX>
+                                                      </Sequence>
+                                                      <Sequence x:Key="NORMAL" DisplayName="NORMAL" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_11" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                          <umab:SendMailX.Files>
+                                                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                                          </umab:SendMailX.Files>
+                                                          <umab:SendMailX.HtmlBodyFromFile>
+                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                              <umabh:HtmlContentArgument.RuntimeImages>
+                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                              </umabh:HtmlContentArgument.RuntimeImages>
+                                                              <umabh:HtmlContentArgument.ValueMappings>
+                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                              </umabh:HtmlContentArgument.ValueMappings>
+                                                            </umabh:HtmlContentArgument>
+                                                          </umab:SendMailX.HtmlBodyFromFile>
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </umab:SendMailX>
+                                                      </Sequence>
+                                                      <Sequence x:Key="HIGH" DisplayName="HIGH" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_12" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                          <umab:SendMailX.Files>
+                                                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                                          </umab:SendMailX.Files>
+                                                          <umab:SendMailX.HtmlBodyFromFile>
+                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                              <umabh:HtmlContentArgument.RuntimeImages>
+                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                              </umabh:HtmlContentArgument.RuntimeImages>
+                                                              <umabh:HtmlContentArgument.ValueMappings>
+                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                              </umabh:HtmlContentArgument.ValueMappings>
+                                                            </umabh:HtmlContentArgument>
+                                                          </umab:SendMailX.HtmlBodyFromFile>
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                        </umab:SendMailX>
+                                                      </Sequence>
+                                                    </Switch>
+                                                  </Sequence>
+                                                </If.Else>
+                                              </If>
+                                            </ActivityAction>
+                                          </umab:GmailApplicationCard.Body>
+                                          <umab:GmailApplicationCard.ClientId>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <Literal x:TypeArguments="x:String" Value="" />
+                                            </InArgument>
+                                          </umab:GmailApplicationCard.ClientId>
+                                          <umab:GmailApplicationCard.ClientSecret>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <Literal x:TypeArguments="x:String" Value="" />
+                                            </InArgument>
+                                          </umab:GmailApplicationCard.ClientSecret>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </umab:GmailApplicationCard>
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ui:RetryScope.ActivityBody>
+                                  <ui:RetryScope.Condition>
+                                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                                  </ui:RetryScope.Condition>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:RetryScope>
+                                <ui:LogMessage DisplayName="Log Message: Gmail Mail Message Sent Successfully using Integration Service Connections in Classic Activities" sap:VirtualizedContainerService.HintSize="470,52" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[String.Format(&quot;A Gmail mail message with '{0}' importance level was correctly sent to '{1}' using Integration Service Connections in Classic Activities...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:LogMessage>
+                              </Sequence>
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                        <TryCatch.Finally>
+                          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="504,90" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Sequence>
+                        </TryCatch.Finally>
+                      </TryCatch>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Not Use Integration Service Connections" sap:VirtualizedContainerService.HintSize="500,25" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Message without Integration Service Connections" sap:VirtualizedContainerService.HintSize="466,61" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                        <ui:RetryScope.ActivityBody>
+                          <ActivityAction>
+                            <Sequence DisplayName="Send Gmail Message without Integration Service Connections" sap:VirtualizedContainerService.HintSize="524,238" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="490,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                              <ui:LogMessage DisplayName="Log Message: Send Gmail Message without Integration Service Connections" sap:VirtualizedContainerService.HintSize="490,61" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with '{0}' importance level to '{1}' without using Integration Service Connections... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:LogMessage>
+                              <umab:GmailApplicationCard Account="catarina.valente@devoteam.com" ConnectionAccountName="catarina.valente@devoteam.com #2" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Use Gmail: Send Gmail Message without Integration Service Connections" EmailAddress="catarina.valente@devoteam.com" sap:VirtualizedContainerService.HintSize="490,52" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_2" Timeout="90" UseConnectionService="False">
+                                <umab:GmailApplicationCard.Body>
+                                  <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
+                                    </ActivityAction.Argument>
+                                    <If Condition="[in_list_FileAttachmentsToBeSent.Count &gt; 0]" DisplayName="If. Check if Mail Message to be sent must contain Attachments" sap:VirtualizedContainerService.HintSize="482,25" sap2010:WorkflowViewState.IdRef="If_3">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="Mail Message Must Contain Attachments" sap:VirtualizedContainerService.HintSize="453,116" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                                            <Switch.Default>
+                                              <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </Sequence>
+                                            </Switch.Default>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Sequence x:Key="LOW" DisplayName="LOW" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="437,52" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                <umab:SendMailX.Files>
+                                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                                                    <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
+                                                  </scg:List>
+                                                </umab:SendMailX.Files>
+                                                <umab:SendMailX.HtmlBodyFromFile>
+                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                    <umabh:HtmlContentArgument.RuntimeImages>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </umabh:HtmlContentArgument.RuntimeImages>
+                                                    <umabh:HtmlContentArgument.ValueMappings>
+                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                    </umabh:HtmlContentArgument.ValueMappings>
+                                                  </umabh:HtmlContentArgument>
+                                                </umab:SendMailX.HtmlBodyFromFile>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </umab:SendMailX>
+                                            </Sequence>
+                                            <Sequence x:Key="NORMAL" DisplayName="NORMAL" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="SendMailX_2" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                <umab:SendMailX.Files>
+                                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                                                    <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
+                                                  </scg:List>
+                                                </umab:SendMailX.Files>
+                                                <umab:SendMailX.HtmlBodyFromFile>
+                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                    <umabh:HtmlContentArgument.RuntimeImages>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </umabh:HtmlContentArgument.RuntimeImages>
+                                                    <umabh:HtmlContentArgument.ValueMappings>
+                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                    </umabh:HtmlContentArgument.ValueMappings>
+                                                  </umabh:HtmlContentArgument>
+                                                </umab:SendMailX.HtmlBodyFromFile>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </umab:SendMailX>
+                                            </Sequence>
+                                            <Sequence x:Key="HIGH" DisplayName="HIGH" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="SendMailX_3" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                <umab:SendMailX.Files>
+                                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                                                    <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
+                                                  </scg:List>
+                                                </umab:SendMailX.Files>
+                                                <umab:SendMailX.HtmlBodyFromFile>
+                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                    <umabh:HtmlContentArgument.RuntimeImages>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </umabh:HtmlContentArgument.RuntimeImages>
+                                                    <umabh:HtmlContentArgument.ValueMappings>
+                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                    </umabh:HtmlContentArgument.ValueMappings>
+                                                  </umabh:HtmlContentArgument>
+                                                </umab:SendMailX.HtmlBodyFromFile>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </umab:SendMailX>
+                                            </Sequence>
+                                          </Switch>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Mail Message Must Not Contain Attachments" sap:VirtualizedContainerService.HintSize="453,116" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                                            <Switch.Default>
+                                              <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </Sequence>
+                                            </Switch.Default>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Sequence x:Key="LOW" DisplayName="LOW" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_4" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                <umab:SendMailX.Files>
+                                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                                </umab:SendMailX.Files>
+                                                <umab:SendMailX.HtmlBodyFromFile>
+                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                    <umabh:HtmlContentArgument.RuntimeImages>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </umabh:HtmlContentArgument.RuntimeImages>
+                                                    <umabh:HtmlContentArgument.ValueMappings>
+                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                    </umabh:HtmlContentArgument.ValueMappings>
+                                                  </umabh:HtmlContentArgument>
+                                                </umab:SendMailX.HtmlBodyFromFile>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </umab:SendMailX>
+                                            </Sequence>
+                                            <Sequence x:Key="NORMAL" DisplayName="NORMAL" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_5" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                <umab:SendMailX.Files>
+                                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                                </umab:SendMailX.Files>
+                                                <umab:SendMailX.HtmlBodyFromFile>
+                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                    <umabh:HtmlContentArgument.RuntimeImages>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </umabh:HtmlContentArgument.RuntimeImages>
+                                                    <umabh:HtmlContentArgument.ValueMappings>
+                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                    </umabh:HtmlContentArgument.ValueMappings>
+                                                  </umabh:HtmlContentArgument>
+                                                </umab:SendMailX.HtmlBodyFromFile>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </umab:SendMailX>
+                                            </Sequence>
+                                            <Sequence x:Key="HIGH" DisplayName="HIGH" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_6" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                <umab:SendMailX.Files>
+                                                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                                </umab:SendMailX.Files>
+                                                <umab:SendMailX.HtmlBodyFromFile>
+                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                                                    <umabh:HtmlContentArgument.RuntimeImages>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </umabh:HtmlContentArgument.RuntimeImages>
+                                                    <umabh:HtmlContentArgument.ValueMappings>
+                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                                                    </umabh:HtmlContentArgument.ValueMappings>
+                                                  </umabh:HtmlContentArgument>
+                                                </umab:SendMailX.HtmlBodyFromFile>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </umab:SendMailX>
+                                            </Sequence>
+                                          </Switch>
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </ActivityAction>
+                                </umab:GmailApplicationCard.Body>
+                                <umab:GmailApplicationCard.ClientId>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </umab:GmailApplicationCard.ClientId>
+                                <umab:GmailApplicationCard.ClientSecret>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </umab:GmailApplicationCard.ClientSecret>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </umab:GmailApplicationCard>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:RetryScope.ActivityBody>
+                        <ui:RetryScope.Condition>
+                          <ActivityFunc x:TypeArguments="x:Boolean" />
+                        </ui:RetryScope.Condition>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:RetryScope>
+                      <ui:LogMessage DisplayName="Log Message: Gmail Mail Message Sent Successfully without Integration Service Connections" sap:VirtualizedContainerService.HintSize="466,52" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[String.Format(&quot;A Gmail mail message with '{0}' importance level was correctly sent to '{1}' without using Integration Service Connections...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:LogMessage>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_8">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message: SE while sending Gmail Mail Message" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Error" Message="[String.Format(&quot;Error while sending a Gmail mail message with '{0}' importance level to '{1}'...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_8">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Format("Error while sending a Gmail mail message with '{0}' importance level to '{1}'...", in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <Throw DisplayName="Throw: SE while sending Gmail Mail Message" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Throw>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+            <TryCatch.Finally>
+              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                  </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Assign>
+              </Sequence>
+            </TryCatch.Finally>
+          </TryCatch>
+          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422.4,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: System Exception" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[String.Format(&quot;SYSTEM EXCEPTION &gt; {0} at Source: {1}&quot;,&#xA; exception.Message.TrimStart.TrimEnd,&#xA; exception.Source&#xA;)]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <Assign DisplayName="Assign: Store System Exception Message in str_ExceptionAuxiliarInfo Variable" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[Exception.Message.TrimStart.TrimEnd]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="422.4,296.8" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="BUSINESS EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_16">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: Business Exception" sap:VirtualizedContainerService.HintSize="475,57" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Error" Message="[String.Format(&quot;BUSINESS EXCEPTION &gt; {0} at Source: {1}&quot;,&#xA; exception.Message.TrimStart.TrimEnd,&#xA; exception.Source&#xA;)]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
+              <ui:MultipleAssign DisplayName="Multiple Assign: Assign boolean value to business exception and exception message" sap:VirtualizedContainerService.HintSize="475,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[io_bool_BusinessException]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[Exception.Message.TrimStart.TrimEnd]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
