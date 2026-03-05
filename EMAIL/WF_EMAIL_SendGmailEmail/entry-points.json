@@ -17,9 +17,6 @@
           "io_bool_BusinessException": {
             "type": "boolean"
           },
-          "in_str_EmailBodyToBeSent": {
-            "type": "string"
-          },
           "in_str_SubjectEmailToBeSent": {
             "type": "string"
           },
@@ -112,6 +109,9 @@
           },
           "in_bool_UseIntegrationServiceConnections": {
             "type": "boolean"
+          },
+          "in_str_EmailBodyHTMLToBeSent": {
+            "type": "string"
           }
         },
         "required": []

@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugage="clr-namespace:UiPath.GSuite.Activities.Gmail.Enums;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugage="clr-namespace:UiPath.GSuite.Activities.Gmail.Enums;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_ts_RetryInterval" Type="InArgument(x:TimeSpan)" />
     <x:Property Name="in_int32_NumberOfRetries" Type="InArgument(x:Int32)" />
     <x:Property Name="in_str_EmailImportanceLevel" Type="InArgument(x:String)" />
     <x:Property Name="in_bool_UseIntegrationServiceConnections" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_list_FileAttachmentsToBeSent" Type="InArgument(scg:List(x:String))" />
-    <x:Property Name="in_str_EmailBodyToBeSent" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_EmailBodyHTMLToBeSent" Type="InArgument(x:String)" />
     <x:Property Name="in_str_SubjectEmailToBeSent" Type="InArgument(x:String)" />
     <x:Property Name="in_str_EmailAddressToSendMailMessage" Type="InArgument(x:String)" />
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
@@ -151,7 +151,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send a mail message using Gmail application.&#xA;&#xA;NOTE 1: The input argument called &quot;in_str_EmailImportanceLevel&quot; must contain one of the following values: Low, Normal or High.&#xA;NOTE 2: The input argument called &quot;in_bool_UseIntegrationServiceConnections&quot; will determine if the send mail message activity will use or not the Integration Service capabilities.&#xA;NOTE 3: Modify the account address that should be used to send the gmail mail message." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1848,989.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send a mail message using Gmail application.&#xA;&#xA;NOTE 1: The input argument called &quot;in_str_EmailImportanceLevel&quot; must contain one of the following values: Low, Normal or High.&#xA;NOTE 2: The input argument called &quot;in_bool_UseIntegrationServiceConnections&quot; will determine if the send mail message activity will use or not the Integration Service capabilities.&#xA;NOTE 3: Modify the account address that should be used to send the gmail mail message." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1330,812" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
     </Sequence.Variables>
@@ -206,14 +206,14 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_53">
+              <Sequence DisplayName="Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_53">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[in_bool_UseIntegrationServiceConnections]" DisplayName="If: Check if email should be sent using Integration Service Connections" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="If_1">
+                <If Condition="[in_bool_UseIntegrationServiceConnections]" DisplayName="If: Check if email should be sent using Integration Service Connections" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="If_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -290,7 +290,7 @@
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:LogMessage>
-                                          <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" AttachmentInputMode="UseExisting" Attachments="[in_list_FileAttachmentsToBeSent.Select(Function(f) LocalResource.FromPath(f.Trim))]" AuthScopesInvalid="False" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Send Email: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="SendEmailConnections_5" Importance="[DirectCast([Enum].Parse(GetType(UiPath.GSuite.Activities.Gmail.Enums.MailImportance), in_str_EmailImportanceLevel.TrimStart.TrimEnd, True), UiPath.GSuite.Activities.Gmail.Enums.MailImportance)]" InputType="TEXT" SaveAsDraft="False" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" TextBody="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.Split(&quot;,&quot;c).ToList()]" UseConnectionService="True">
+                                          <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" Attachments="[in_list_FileAttachmentsToBeSent.Select(Function(f) LocalResource.FromPath(f.Trim))]" AuthScopesInvalid="False" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Send Email: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="SendEmailConnections_5" Importance="[DirectCast([Enum].Parse(GetType(UiPath.GSuite.Activities.Gmail.Enums.MailImportance), in_str_EmailImportanceLevel.TrimStart.TrimEnd, True), UiPath.GSuite.Activities.Gmail.Enums.MailImportance)]" InputType="HTML" SaveAsDraft="False" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.Split(&quot;,&quot;c).ToList()]" UseConnectionService="True">
                                             <uga:SendEmailConnections.AttachmentsBackup>
                                               <usau:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="UseExisting">
                                                 <usau:BackupSlot.BackupValues>
@@ -304,9 +304,12 @@
                                               </usau:BackupSlot>
                                             </uga:SendEmailConnections.AttachmentsBackup>
                                             <uga:SendEmailConnections.InputTypeBackup>
-                                              <usau:BackupSlot x:TypeArguments="ugage:BodyInputType" StoredValue="TEXT">
+                                              <usau:BackupSlot x:TypeArguments="ugage:BodyInputType" StoredValue="HTML">
                                                 <usau:BackupSlot.BackupValues>
                                                   <scg:List x:TypeArguments="x:Object" x:Key="HTML" Capacity="1">
+                                                    <x:Null />
+                                                  </scg:List>
+                                                  <scg:List x:TypeArguments="x:Object" x:Key="TEXT" Capacity="1">
                                                     <x:Null />
                                                   </scg:List>
                                                 </usau:BackupSlot.BackupValues>
@@ -337,7 +340,7 @@
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:LogMessage>
-                                          <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Send Email: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="SendEmailConnections_4" Importance="[DirectCast([Enum].Parse(GetType(UiPath.GSuite.Activities.Gmail.Enums.MailImportance), in_str_EmailImportanceLevel.TrimStart.TrimEnd, True), UiPath.GSuite.Activities.Gmail.Enums.MailImportance)]" InputType="TEXT" SaveAsDraft="False" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" TextBody="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.Split(&quot;,&quot;c).ToList()]" UseConnectionService="True">
+                                          <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Send Email: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="SendEmailConnections_4" Importance="[DirectCast([Enum].Parse(GetType(UiPath.GSuite.Activities.Gmail.Enums.MailImportance), in_str_EmailImportanceLevel.TrimStart.TrimEnd, True), UiPath.GSuite.Activities.Gmail.Enums.MailImportance)]" InputType="HTML" SaveAsDraft="False" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.Split(&quot;,&quot;c).ToList()]" UseConnectionService="True">
                                             <uga:SendEmailConnections.AttachmentsBackup>
                                               <usau:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="UseExisting">
                                                 <usau:BackupSlot.BackupValues>
@@ -351,9 +354,12 @@
                                               </usau:BackupSlot>
                                             </uga:SendEmailConnections.AttachmentsBackup>
                                             <uga:SendEmailConnections.InputTypeBackup>
-                                              <usau:BackupSlot x:TypeArguments="ugage:BodyInputType" StoredValue="TEXT">
+                                              <usau:BackupSlot x:TypeArguments="ugage:BodyInputType" StoredValue="HTML">
                                                 <usau:BackupSlot.BackupValues>
                                                   <scg:List x:TypeArguments="x:Object" x:Key="HTML" Capacity="1">
+                                                    <x:Null />
+                                                  </scg:List>
+                                                  <scg:List x:TypeArguments="x:Object" x:Key="TEXT" Capacity="1">
                                                     <x:Null />
                                                   </scg:List>
                                                 </usau:BackupSlot.BackupValues>
@@ -496,22 +502,12 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_7" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_7" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                           <umab:SendMailX.Files>
                                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
                                                               <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
                                                             </scg:List>
                                                           </umab:SendMailX.Files>
-                                                          <umab:SendMailX.HtmlBodyFromFile>
-                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                              <umabh:HtmlContentArgument.RuntimeImages>
-                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                              </umabh:HtmlContentArgument.RuntimeImages>
-                                                              <umabh:HtmlContentArgument.ValueMappings>
-                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                              </umabh:HtmlContentArgument.ValueMappings>
-                                                            </umabh:HtmlContentArgument>
-                                                          </umab:SendMailX.HtmlBodyFromFile>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -527,22 +523,12 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_8" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_8" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                           <umab:SendMailX.Files>
                                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
                                                               <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
                                                             </scg:List>
                                                           </umab:SendMailX.Files>
-                                                          <umab:SendMailX.HtmlBodyFromFile>
-                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                              <umabh:HtmlContentArgument.RuntimeImages>
-                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                              </umabh:HtmlContentArgument.RuntimeImages>
-                                                              <umabh:HtmlContentArgument.ValueMappings>
-                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                              </umabh:HtmlContentArgument.ValueMappings>
-                                                            </umabh:HtmlContentArgument>
-                                                          </umab:SendMailX.HtmlBodyFromFile>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -558,22 +544,12 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_9" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_9" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                           <umab:SendMailX.Files>
                                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
                                                               <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
                                                             </scg:List>
                                                           </umab:SendMailX.Files>
-                                                          <umab:SendMailX.HtmlBodyFromFile>
-                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                              <umabh:HtmlContentArgument.RuntimeImages>
-                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                              </umabh:HtmlContentArgument.RuntimeImages>
-                                                              <umabh:HtmlContentArgument.ValueMappings>
-                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                              </umabh:HtmlContentArgument.ValueMappings>
-                                                            </umabh:HtmlContentArgument>
-                                                          </umab:SendMailX.HtmlBodyFromFile>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -625,20 +601,10 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_10" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_10" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                           <umab:SendMailX.Files>
                                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                                           </umab:SendMailX.Files>
-                                                          <umab:SendMailX.HtmlBodyFromFile>
-                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                              <umabh:HtmlContentArgument.RuntimeImages>
-                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                              </umabh:HtmlContentArgument.RuntimeImages>
-                                                              <umabh:HtmlContentArgument.ValueMappings>
-                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                              </umabh:HtmlContentArgument.ValueMappings>
-                                                            </umabh:HtmlContentArgument>
-                                                          </umab:SendMailX.HtmlBodyFromFile>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -654,20 +620,10 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_11" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_11" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                           <umab:SendMailX.Files>
                                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                                           </umab:SendMailX.Files>
-                                                          <umab:SendMailX.HtmlBodyFromFile>
-                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                              <umabh:HtmlContentArgument.RuntimeImages>
-                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                              </umabh:HtmlContentArgument.RuntimeImages>
-                                                              <umabh:HtmlContentArgument.ValueMappings>
-                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                              </umabh:HtmlContentArgument.ValueMappings>
-                                                            </umabh:HtmlContentArgument>
-                                                          </umab:SendMailX.HtmlBodyFromFile>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -683,20 +639,10 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_12" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_12" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                           <umab:SendMailX.Files>
                                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                                           </umab:SendMailX.Files>
-                                                          <umab:SendMailX.HtmlBodyFromFile>
-                                                            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                              <umabh:HtmlContentArgument.RuntimeImages>
-                                                                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                              </umabh:HtmlContentArgument.RuntimeImages>
-                                                              <umabh:HtmlContentArgument.ValueMappings>
-                                                                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                              </umabh:HtmlContentArgument.ValueMappings>
-                                                            </umabh:HtmlContentArgument>
-                                                          </umab:SendMailX.HtmlBodyFromFile>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -821,7 +767,7 @@
                                           </ui:LogMessage>
                                           <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                                             <Switch.Default>
-                                              <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                              <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -836,29 +782,19 @@
                                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <Sequence x:Key="LOW" DisplayName="LOW" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                            <Sequence x:Key="LOW" DisplayName="LOW" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_30">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="437,52" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                 <umab:SendMailX.Files>
                                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
                                                     <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
                                                   </scg:List>
                                                 </umab:SendMailX.Files>
-                                                <umab:SendMailX.HtmlBodyFromFile>
-                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                    <umabh:HtmlContentArgument.RuntimeImages>
-                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                    </umabh:HtmlContentArgument.RuntimeImages>
-                                                    <umabh:HtmlContentArgument.ValueMappings>
-                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                    </umabh:HtmlContentArgument.ValueMappings>
-                                                  </umabh:HtmlContentArgument>
-                                                </umab:SendMailX.HtmlBodyFromFile>
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -867,29 +803,19 @@
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </umab:SendMailX>
                                             </Sequence>
-                                            <Sequence x:Key="NORMAL" DisplayName="NORMAL" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                            <Sequence x:Key="NORMAL" DisplayName="NORMAL" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="SendMailX_2" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_2" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                 <umab:SendMailX.Files>
                                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
                                                     <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
                                                   </scg:List>
                                                 </umab:SendMailX.Files>
-                                                <umab:SendMailX.HtmlBodyFromFile>
-                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                    <umabh:HtmlContentArgument.RuntimeImages>
-                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                    </umabh:HtmlContentArgument.RuntimeImages>
-                                                    <umabh:HtmlContentArgument.ValueMappings>
-                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                    </umabh:HtmlContentArgument.ValueMappings>
-                                                  </umabh:HtmlContentArgument>
-                                                </umab:SendMailX.HtmlBodyFromFile>
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -898,29 +824,19 @@
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </umab:SendMailX>
                                             </Sequence>
-                                            <Sequence x:Key="HIGH" DisplayName="HIGH" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                            <Sequence x:Key="HIGH" DisplayName="HIGH" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="SendMailX_3" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_3" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                 <umab:SendMailX.Files>
                                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
                                                     <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
                                                   </scg:List>
                                                 </umab:SendMailX.Files>
-                                                <umab:SendMailX.HtmlBodyFromFile>
-                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                    <umabh:HtmlContentArgument.RuntimeImages>
-                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                    </umabh:HtmlContentArgument.RuntimeImages>
-                                                    <umabh:HtmlContentArgument.ValueMappings>
-                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                    </umabh:HtmlContentArgument.ValueMappings>
-                                                  </umabh:HtmlContentArgument>
-                                                </umab:SendMailX.HtmlBodyFromFile>
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -972,20 +888,10 @@
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_4" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_4" Importance="Low" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                 <umab:SendMailX.Files>
                                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                                 </umab:SendMailX.Files>
-                                                <umab:SendMailX.HtmlBodyFromFile>
-                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                    <umabh:HtmlContentArgument.RuntimeImages>
-                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                    </umabh:HtmlContentArgument.RuntimeImages>
-                                                    <umabh:HtmlContentArgument.ValueMappings>
-                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                    </umabh:HtmlContentArgument.ValueMappings>
-                                                  </umabh:HtmlContentArgument>
-                                                </umab:SendMailX.HtmlBodyFromFile>
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1001,20 +907,10 @@
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_5" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_5" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                 <umab:SendMailX.Files>
                                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                                 </umab:SendMailX.Files>
-                                                <umab:SendMailX.HtmlBodyFromFile>
-                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                    <umabh:HtmlContentArgument.RuntimeImages>
-                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                    </umabh:HtmlContentArgument.RuntimeImages>
-                                                    <umabh:HtmlContentArgument.ValueMappings>
-                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                    </umabh:HtmlContentArgument.ValueMappings>
-                                                  </umabh:HtmlContentArgument>
-                                                </umab:SendMailX.HtmlBodyFromFile>
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1030,20 +926,10 @@
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_6" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                              <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromFile="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" HtmlBodyFromText="[in_str_EmailBodyHTMLToBeSent.TrimStart.TrimEnd]" sap2010:WorkflowViewState.IdRef="SendMailX_6" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                 <umab:SendMailX.Files>
                                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                                 </umab:SendMailX.Files>
-                                                <umab:SendMailX.HtmlBodyFromFile>
-                                                  <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
-                                                    <umabh:HtmlContentArgument.RuntimeImages>
-                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                                    </umabh:HtmlContentArgument.RuntimeImages>
-                                                    <umabh:HtmlContentArgument.ValueMappings>
-                                                      <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
-                                                    </umabh:HtmlContentArgument.ValueMappings>
-                                                  </umabh:HtmlContentArgument>
-                                                </umab:SendMailX.HtmlBodyFromFile>
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
