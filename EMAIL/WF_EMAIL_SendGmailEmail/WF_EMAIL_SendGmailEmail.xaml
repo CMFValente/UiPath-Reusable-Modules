@@ -151,7 +151,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send a mail message using Gmail application.&#xD;&#xA;&#xD;&#xA;NOTE 1: The input argument called &quot;in_str_EmailImportanceLevel&quot; must contain one of the following values: Low, Normal or High.&#xD;&#xA;NOTE 2: The input argument called &quot;in_bool_UseIntegrationServiceConnections&quot; will determine if the send mail message activity will use or not the Integration Service capabilities.&#xD;&#xA;NOTE 3: Modify the account address that should be used to send the gmail mail message." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1927,989.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send a mail message using Gmail application.&#xA;&#xA;NOTE 1: The input argument called &quot;in_str_EmailImportanceLevel&quot; must contain one of the following values: Low, Normal or High.&#xA;NOTE 2: The input argument called &quot;in_bool_UseIntegrationServiceConnections&quot; will determine if the send mail message activity will use or not the Integration Service capabilities.&#xA;NOTE 3: Modify the account address that should be used to send the gmail mail message." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1848,989.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
     </Sequence.Variables>
@@ -161,7 +161,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch: Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="452,696" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+    <TryCatch DisplayName="Try Catch: Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="452,712" sap2010:WorkflowViewState.IdRef="TryCatch_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -169,14 +169,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="450,344" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="450,360" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -184,7 +184,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
             </Assign.To>
@@ -206,13 +206,14 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_53">
+              <Sequence DisplayName="Send Gmail Mail Message" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_53">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[in_bool_UseIntegrationServiceConnections]" DisplayName="If: Check if email should be sent using Integration Service Connections" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_1">
+                <If Condition="[in_bool_UseIntegrationServiceConnections]" DisplayName="If: Check if email should be sent using Integration Service Connections" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="If_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -227,7 +228,7 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <TryCatch DisplayName="Try Catch: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="466,48" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                      <TryCatch DisplayName="Try Catch: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="466,52" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -242,17 +243,17 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Mail Message using Integration Service in Modern Activities" sap:VirtualizedContainerService.HintSize="470,57" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Mail Message using Integration Service in Modern Activities" sap:VirtualizedContainerService.HintSize="470,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                               <ui:RetryScope.ActivityBody>
                                 <ActivityAction>
-                                  <Sequence DisplayName="Send Gmail Mail Message using Integration Service in Modern Activities" sap:VirtualizedContainerService.HintSize="468,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                  <Sequence DisplayName="Send Gmail Mail Message using Integration Service in Modern Activities" sap:VirtualizedContainerService.HintSize="528,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                    <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="494,61" sap2010:WorkflowViewState.IdRef="Assign_4">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                                       </Assign.To>
@@ -266,15 +267,7 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </Assign>
-                                    <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service with Modern Activities" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with '{0}' importance level to '{1}' using Integration Service connections in Modern Activities... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                    </ui:LogMessage>
-                                    <If Condition="[in_list_FileAttachmentsToBeSent.Count &gt; 0]" DisplayName="If. Check if Mail Message to be sent must contain Attachments" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="If_2">
+                                    <If Condition="[in_list_FileAttachmentsToBeSent.Count &gt; 0]" DisplayName="If. Check if Mail Message to be sent must contain Attachments" sap:VirtualizedContainerService.HintSize="494,52" sap2010:WorkflowViewState.IdRef="If_2">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -289,6 +282,14 @@
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service with Attachments using Modern Activities" sap:VirtualizedContainerService.HintSize="419,61" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with attachments of '{0}' importance level to '{1}' using Integration Service connections in Modern Activities... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:LogMessage>
                                           <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" AttachmentInputMode="UseExisting" Attachments="[in_list_FileAttachmentsToBeSent.Select(Function(f) LocalResource.FromPath(f.Trim))]" AuthScopesInvalid="False" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Send Email: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="SendEmailConnections_5" Importance="[DirectCast([Enum].Parse(GetType(UiPath.GSuite.Activities.Gmail.Enums.MailImportance), in_str_EmailImportanceLevel.TrimStart.TrimEnd, True), UiPath.GSuite.Activities.Gmail.Enums.MailImportance)]" InputType="TEXT" SaveAsDraft="False" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" TextBody="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.Split(&quot;,&quot;c).ToList()]" UseConnectionService="True">
                                             <uga:SendEmailConnections.AttachmentsBackup>
                                               <usau:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="UseExisting">
@@ -328,6 +329,14 @@
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service without Attachments using Modern Activities" sap:VirtualizedContainerService.HintSize="419,61" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message without attachments of '{0}' importance level to '{1}' using Integration Service connections in Modern Activities... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:LogMessage>
                                           <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Attachments="{x:Null}" Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Send Email: Send Gmail Mail Message using Integration Service" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="SendEmailConnections_4" Importance="[DirectCast([Enum].Parse(GetType(UiPath.GSuite.Activities.Gmail.Enums.MailImportance), in_str_EmailImportanceLevel.TrimStart.TrimEnd, True), UiPath.GSuite.Activities.Gmail.Enums.MailImportance)]" InputType="TEXT" SaveAsDraft="False" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" TextBody="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.Split(&quot;,&quot;c).ToList()]" UseConnectionService="True">
                                             <uga:SendEmailConnections.AttachmentsBackup>
                                               <usau:BackupSlot x:TypeArguments="ugage:AttachmentInputMode" StoredValue="UseExisting">
@@ -373,14 +382,6 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:RetryScope>
-                            <ui:LogMessage DisplayName="Log Message: Gmail Mail Message Sent Successfully using Integration Service Connections in Modern Activities" sap:VirtualizedContainerService.HintSize="470,52" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;A Gmail mail message with '{0}' importance level was correctly sent to '{1}' using Integration Service Connections in Modern Activities...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </ui:LogMessage>
                           </Sequence>
                         </TryCatch.Try>
                         <TryCatch.Catches>
@@ -418,7 +419,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:LogMessage>
-                                <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Mail Message using Integration Service in Classic Activities" sap:VirtualizedContainerService.HintSize="470,61" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                                <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Mail Message using Integration Service in Classic Activities" sap:VirtualizedContainerService.HintSize="470,52" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                                   <ui:RetryScope.ActivityBody>
                                     <ActivityAction>
                                       <Sequence DisplayName="Send Gmail Mail Message using Integration Service in Classic Activities" sap:VirtualizedContainerService.HintSize="576,25" sap2010:WorkflowViewState.IdRef="Sequence_41">
@@ -428,7 +429,7 @@
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="549,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                        <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="561,61" sap2010:WorkflowViewState.IdRef="Assign_7">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                                           </Assign.To>
@@ -442,21 +443,13 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </Assign>
-                                        <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service in Classic Activities" sap:VirtualizedContainerService.HintSize="549,61" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with '{0}' importance level to '{1}' using Integration Service connections in Classic Activities... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:LogMessage>
-                                        <umab:GmailApplicationCard Account="catarina.valente@devoteam.com" ConnectionAccountName="catarina.valente@devoteam.com #2" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Use Gmail: Send Gmail Mail Message using Integration Servic in Classic Activities" EmailAddress="catarina.valente@devoteam.com" sap:VirtualizedContainerService.HintSize="549,52" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_3" Timeout="90" UseConnectionService="True">
+                                        <umab:GmailApplicationCard Account="catarina.valente@devoteam.com" ConnectionAccountName="catarina.valente@devoteam.com #2" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Use Gmail: Send Gmail Mail Message using Integration Servic in Classic Activities" EmailAddress="catarina.valente@devoteam.com" sap:VirtualizedContainerService.HintSize="561,52" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_3" Timeout="90" UseConnectionService="True">
                                           <umab:GmailApplicationCard.Body>
                                             <ActivityAction x:TypeArguments="um:IMailQuickHandle">
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
                                               </ActivityAction.Argument>
-                                              <If Condition="[in_list_FileAttachmentsToBeSent.Count &gt; 0]" DisplayName="If. Check if Mail Message to be sent must contain Attachments" sap:VirtualizedContainerService.HintSize="515,25" sap2010:WorkflowViewState.IdRef="If_5">
+                                              <If Condition="[in_list_FileAttachmentsToBeSent.Count &gt; 0]" DisplayName="If. Check if Mail Message to be sent must contain Attachments" sap:VirtualizedContainerService.HintSize="527,25" sap2010:WorkflowViewState.IdRef="If_5">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -471,6 +464,14 @@
                                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service with Attachments in Classic Activities" sap:VirtualizedContainerService.HintSize="419,61" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with attachments of  '{0}' importance level to '{1}' using Integration Service connections in Classic Activities... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </ui:LogMessage>
                                                     <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_4">
                                                       <Switch.Default>
                                                         <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_48">
@@ -526,7 +527,7 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="SendMailX_8" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_8" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                           <umab:SendMailX.Files>
                                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
                                                               <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
@@ -557,7 +558,7 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="SendMailX_9" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
+                                                        <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[in_str_EmailBodyToBeSent.TrimStart.TrimEnd]" BodyType="Text" DisplayName="Send Email: Send Gmail Mail Message with Classic Activities" sap:VirtualizedContainerService.HintSize="441,52" sap2010:WorkflowViewState.IdRef="SendMailX_9" Importance="High" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="[in_str_SubjectEmailToBeSent.TrimStart.TrimEnd]" To="[in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd]" UseDocumentAsBody="False">
                                                           <umab:SendMailX.Files>
                                                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
                                                               <InArgument x:TypeArguments="x:String">[in_list_FileAttachmentsToBeSent(0).ToString.TrimStart.TrimEnd]</InArgument>
@@ -592,6 +593,14 @@
                                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:LogMessage DisplayName="Log Message: Send Gmail Mail Message using Integration Service without Attachments in Classic Activities" sap:VirtualizedContainerService.HintSize="419,61" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message without attachments of  '{0}' importance level to '{1}' using Integration Service connections in Classic Activities... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </ui:LogMessage>
                                                     <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_5">
                                                       <Switch.Default>
                                                         <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_52">
@@ -732,23 +741,16 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:RetryScope>
-                                <ui:LogMessage DisplayName="Log Message: Gmail Mail Message Sent Successfully using Integration Service Connections in Classic Activities" sap:VirtualizedContainerService.HintSize="470,52" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[String.Format(&quot;A Gmail mail message with '{0}' importance level was correctly sent to '{1}' using Integration Service Connections in Classic Activities...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:LogMessage>
                               </Sequence>
                             </ActivityAction>
                           </Catch>
                         </TryCatch.Catches>
                         <TryCatch.Finally>
-                          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="504,90" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="504,25" sap2010:WorkflowViewState.IdRef="Sequence_40">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </Sequence>
@@ -764,17 +766,17 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Message without Integration Service Connections" sap:VirtualizedContainerService.HintSize="466,61" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                      <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Send Gmail Message without Integration Service Connections" sap:VirtualizedContainerService.HintSize="466,52" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                         <ui:RetryScope.ActivityBody>
                           <ActivityAction>
-                            <Sequence DisplayName="Send Gmail Message without Integration Service Connections" sap:VirtualizedContainerService.HintSize="524,238" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                            <Sequence DisplayName="Send Gmail Message without Integration Service Connections" sap:VirtualizedContainerService.HintSize="524,25" sap2010:WorkflowViewState.IdRef="Sequence_27">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="490,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+                              <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="516,61" sap2010:WorkflowViewState.IdRef="Assign_5">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                                 </Assign.To>
@@ -788,15 +790,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <ui:LogMessage DisplayName="Log Message: Send Gmail Message without Integration Service Connections" sap:VirtualizedContainerService.HintSize="490,61" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with '{0}' importance level to '{1}' without using Integration Service Connections... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </ui:LogMessage>
-                              <umab:GmailApplicationCard Account="catarina.valente@devoteam.com" ConnectionAccountName="catarina.valente@devoteam.com #2" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Use Gmail: Send Gmail Message without Integration Service Connections" EmailAddress="catarina.valente@devoteam.com" sap:VirtualizedContainerService.HintSize="490,52" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_2" Timeout="90" UseConnectionService="False">
+                              <umab:GmailApplicationCard Account="catarina.valente@devoteam.com" ConnectionAccountName="catarina.valente@devoteam.com #2" ConnectionId="19609363-8f0b-4dc9-b095-78d3ca421314" DisplayName="Use Gmail: Send Gmail Message without Integration Service Connections" EmailAddress="catarina.valente@devoteam.com" sap:VirtualizedContainerService.HintSize="516,52" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_2" Timeout="90" UseConnectionService="False">
                                 <umab:GmailApplicationCard.Body>
                                   <ActivityAction x:TypeArguments="um:IMailQuickHandle">
                                     <ActivityAction.Argument>
@@ -810,13 +804,21 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                       <If.Then>
-                                        <Sequence DisplayName="Mail Message Must Contain Attachments" sap:VirtualizedContainerService.HintSize="453,116" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                        <Sequence DisplayName="Mail Message Must Contain Attachments" sap:VirtualizedContainerService.HintSize="453,25" sap2010:WorkflowViewState.IdRef="Sequence_28">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message: Send Gmail Message with Attachments without Integration Service Connections" sap:VirtualizedContainerService.HintSize="419,61" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message with attachments of '{0}' importance level to '{1}' without using Integration Service Connections... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:LogMessage>
                                           <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                                             <Switch.Default>
                                               <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
@@ -931,13 +933,21 @@
                                         </Sequence>
                                       </If.Then>
                                       <If.Else>
-                                        <Sequence DisplayName="Mail Message Must Not Contain Attachments" sap:VirtualizedContainerService.HintSize="453,116" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                        <Sequence DisplayName="Mail Message Must Not Contain Attachments" sap:VirtualizedContainerService.HintSize="453,25" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message: Send Gmail Message without Attachments without Integration Service Connections" sap:VirtualizedContainerService.HintSize="419,61" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[String.Format(&quot;Sending a Gmail mail message without attachments of '{0}' importance level to '{1}' without using Integration Service Connections... | Attempt Number: {2}&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:LogMessage>
                                           <Switch x:TypeArguments="x:String" DisplayName="Switch: Send Gmail Mail Message with the appropriate Importance level" Expression="[in_str_EmailImportanceLevel.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="419,52" sap2010:WorkflowViewState.IdRef="Switch`1_3">
                                             <Switch.Default>
                                               <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="475,25" sap2010:WorkflowViewState.IdRef="Sequence_37">
@@ -1078,17 +1088,17 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:RetryScope>
-                      <ui:LogMessage DisplayName="Log Message: Gmail Mail Message Sent Successfully without Integration Service Connections" sap:VirtualizedContainerService.HintSize="466,52" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[String.Format(&quot;A Gmail mail message with '{0}' importance level was correctly sent to '{1}' without using Integration Service Connections...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:LogMessage>
                     </Sequence>
                   </If.Else>
                 </If>
+                <ui:LogMessage DisplayName="Log Message: Gmail Mail Message Sent Successfully" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;A Gmail mail message with '{0}' importance level was correctly sent to '{1}'...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_EmailAddressToSendMailMessage.TrimStart.TrimEnd)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
@@ -1163,7 +1173,7 @@
               </Sequence>
             </TryCatch.Finally>
           </TryCatch>
-          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
@@ -1177,7 +1187,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
