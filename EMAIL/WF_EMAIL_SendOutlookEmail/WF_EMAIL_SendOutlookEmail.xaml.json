@@ -30,18 +30,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_str_EmailBodyToBeSent",
-      "DisplayName": "in_str_EmailBodyToBeSent",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": "TESTE",
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_str_SubjectEmailToBeSent",
       "DisplayName": "in_str_SubjectEmailToBeSent",
       "Category": null,
@@ -152,6 +140,18 @@
     {
       "Name": "in_bool_UseIntegrationServicesConnections",
       "DisplayName": "in_bool_UseIntegrationServicesConnections",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_EmailBodyHTMLToBeSent",
+      "DisplayName": "in_str_EmailBodyHTMLToBeSent",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,

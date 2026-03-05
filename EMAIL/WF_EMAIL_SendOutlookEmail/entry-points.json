@@ -26,9 +26,6 @@
           "in_str_AccountAddressToUseToSendEmail": {
             "type": "string"
           },
-          "in_str_EmailBodyToBeSent": {
-            "type": "string"
-          },
           "in_str_SubjectEmailToBeSent": {
             "type": "string"
           },
@@ -115,6 +112,9 @@
           },
           "in_bool_UseIntegrationServicesConnections": {
             "type": "boolean"
+          },
+          "in_str_EmailBodyHTMLToBeSent": {
+            "type": "string"
           }
         },
         "required": []
