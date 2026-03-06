@@ -158,7 +158,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send the email via SMTP (Simple Mail Transfer Protocol), with or without attachment." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1330,1051" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send the email via SMTP (Simple Mail Transfer Protocol), with or without attachment." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1330,994" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
     </Sequence.Variables>
@@ -168,7 +168,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch: Send SMTP Mail Message" sap:VirtualizedContainerService.HintSize="452,997" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+    <TryCatch DisplayName="Try Catch: Send SMTP Mail Message" sap:VirtualizedContainerService.HintSize="452,940" sap2010:WorkflowViewState.IdRef="TryCatch_4">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:String" Name="str_SMTPUsername" />
         <Variable x:TypeArguments="ss:SecureString" Name="secstr_SMTPPassword" />
@@ -180,7 +180,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Send SMTP Mail Message" sap:VirtualizedContainerService.HintSize="450,645" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Send SMTP Mail Message" sap:VirtualizedContainerService.HintSize="450,662" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -209,7 +209,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <If sap2010:Annotation.AnnotationText="According with the chosen methodology to send SMTP Mail Message, validate the following inputs:&#xD;&#xA;  1) When using Integration Service capabilities to send SMTP Mail Message, validate if the recipient's address parameter is not empty;&#xD;&#xA;&#xD;&#xA;2) When not using Integration Service capabilities to send SMTP Mail Message, validate if the sender's address, recipient's address, SMTP server and SMTP port parameters are not empty. After this successful validation, proceed to the extraction of SMTP credentials from an Orchestrator Asset." Condition="[in_bool_UseIntegrationServiceConnections]" DisplayName="If: Validate Inputs to Send SMTP Mail Message" sap:VirtualizedContainerService.HintSize="416,285" sap2010:WorkflowViewState.IdRef="If_4">
+          <If sap2010:Annotation.AnnotationText="According with the chosen methodology to send SMTP Mail Message, validate the following inputs:&#xD;&#xA;&#xA;  1) When using Integration Service capabilities to send SMTP Mail Message, validate if the recipient's address parameter is not empty;&#xA;&#xA;2) When not using Integration Service capabilities to send SMTP Mail Message, validate if the sender's address, recipient's address, SMTP server and SMTP port parameters are not empty. After this successful validation, proceed to the extraction of SMTP credentials from an Orchestrator Asset." Condition="[in_bool_UseIntegrationServiceConnections]" DisplayName="If: Validate Inputs to Send SMTP Mail Message" sap:VirtualizedContainerService.HintSize="416,302" sap2010:WorkflowViewState.IdRef="If_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
