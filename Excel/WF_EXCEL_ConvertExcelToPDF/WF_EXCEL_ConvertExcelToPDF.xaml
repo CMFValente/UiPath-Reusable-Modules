@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_str_FolderPathWithExcelFilesToBeConverted" Type="InArgument(x:String)" />
     <x:Property Name="in_str_EntryMethodNameToConvertExcelToPDF" Type="InArgument(x:String)" />
@@ -144,14 +144,19 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to convert all excel spreadsheets into a single PDF file or to convert each excel spreadsheet into a separate PDF file, depending on the value stored in the argument called bool_ConvertAllExcelFileToPDF. If the value of this argument is set as True, all excel spreadsheets will be converted into a single PDF file; otherwise, if the value of this argument is set to False, each excel spreadsheet will be converted into a separate PDF file. The input argument called 'in_str_ListOfExcelFilenamesToConvertToPDF' must include the list of all excel files that need to be converted into a PDF file and each excel file mentioned in this argument must indicate not only the file name but also its extension.&#xA;&#xA;NOTE: The .TXT files containing the VBA scripts (a VBA script to convert all excel spreadsheets into a single PDF file and a VBA script to convert each excel spreadsheet into a separate PDF file) must be stored in a storage bucket and previously downloaded from it." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1927,989.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to convert all excel spreadsheets into a single PDF file or to convert each excel spreadsheet into a separate PDF file, depending on the value stored in the argument called bool_ConvertAllExcelFileToPDF. If the value of this argument is set as True, all excel spreadsheets will be converted into a single PDF file; otherwise, if the value of this argument is set to False, each excel spreadsheet will be converted into a separate PDF file. The input argument called 'in_str_ListOfExcelFilenamesToConvertToPDF' must include the list of all excel files that need to be converted into a PDF file and each excel file mentioned in this argument must indicate not only the file name but also its extension.&#xA;&#xA;NOTE: The .TXT files containing the VBA scripts (a VBA script to convert all excel spreadsheets into a single PDF file and a VBA script to convert each excel spreadsheet into a separate PDF file) must be stored in a storage bucket and previously downloaded from it." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1330,873" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
+      <Variable x:TypeArguments="x:String" Name="str_ListOfExcelFilesNotConvertedToPDF" />
+      <Variable x:TypeArguments="x:String" Name="str_ListOfExcelSheetsNotConvertedToPDF" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch: Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="452,643" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+    <TryCatch DisplayName="Try Catch: Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="452,773" sap2010:WorkflowViewState.IdRef="TryCatch_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -159,14 +164,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="450,291" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="450,421" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -174,16 +179,53 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(in_str_ListOfExcelFileNamesToConvertToPDF.TrimStart.TrimEnd, &quot;,&quot;c)]">
+          <ui:MultipleAssign DisplayName="Multiple Assign: Initialize Variables" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[str_ListOfExcelFilesNotConvertedToPDF]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[str_ListOfExcelSheetsNotConvertedToPDF]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:MultipleAssign>
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(in_str_ListOfExcelFileNamesToConvertToPDF.TrimStart.TrimEnd, &quot;,&quot;c)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="str_CurrentExcelFile" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                <Sequence DisplayName="Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_58">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch DisplayName="Try Catch: Convert Excel File to PDF File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="TryCatch_6">
@@ -223,7 +265,7 @@
                                     </ActivityAction.Argument>
                                     <Switch x:TypeArguments="x:Boolean" DisplayName="Switch: Determine the Method to Convert Excel to PDF" Expression="[in_bool_ConvertAllExcelFileToPDF]" sap:VirtualizedContainerService.HintSize="400,25" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                                       <Switch.Default>
-                                        <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                        <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="Sequence_28">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -238,22 +280,14 @@
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Sequence x:Key="True" DisplayName="Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                      <Sequence x:Key="True" DisplayName="Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="486,211" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:LogMessage DisplayName="Log Message: Convert Current Excel to PDF using Modern Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[String.Format(&quot;Converting the excel file named '{0}' to a PDF file using Excel Modern Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:LogMessage>
-                                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert All Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert All Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="452,147" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                                           <ui:RetryScope.ActivityBody>
                                             <ActivityAction>
                                               <Sequence DisplayName="Convert All Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_36">
@@ -263,6 +297,28 @@
                                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
+                                                <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                                                  </Assign.Value>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </Assign>
+                                                <ui:LogMessage DisplayName="Log Message: Convert Current Excel to PDF using Modern Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[String.Format(&quot;Converting the excel file named '{0}' to a PDF file using Excel Modern Activities... | Attempt Number: {1}&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:LogMessage>
                                                 <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd))]" DisplayName="Save Excel File As PDF: Convert Excel To PDF File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_1" SaveQuality="StandardQuality" Workbook="[ExcelToConvertToPDF]">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -354,13 +410,13 @@
                                           </ui:RetryScope.Condition>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:RetryScope>
                                       </Sequence>
-                                      <Sequence x:Key="False" DisplayName="Convert Each Excel Sheet to Separate PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                      <Sequence x:Key="False" DisplayName="Convert Each Excel Sheet to Separate PDF File" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -384,30 +440,45 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                                 <TryCatch.Try>
-                                                  <Sequence DisplayName="Convert Each Excel Sheet to Separate PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                                                  <Sequence DisplayName="Convert Each Excel Sheet to Separate PDF File" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_39">
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <ui:LogMessage DisplayName="Log Message: Convert Current Excel Sheet to PDF File using Modern Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[String.Format(&quot;Converting the excel sheet named '{0}' of the excel file named '{1}' to a PDF file using Excel Modern Activities...&quot;, CurrentSheet.Name.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </ui:LogMessage>
                                                     <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Each Excel Sheet to Separate PDF File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_3">
                                                       <ui:RetryScope.ActivityBody>
                                                         <ActivityAction>
-                                                          <Sequence DisplayName="Convert Each Excel Sheet to Separate PDF File" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                                                          <Sequence DisplayName="Convert Each Excel Sheet to Separate PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_42">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
+                                                            <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                                              <Assign.To>
+                                                                <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                                              </Assign.To>
+                                                              <Assign.Value>
+                                                                <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                                                              </Assign.Value>
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </Assign>
+                                                            <ui:LogMessage DisplayName="Log Message: Convert Current Excel Sheet to PDF File using Modern Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[String.Format(&quot;Converting the excel sheet named '{0}' of the excel file named '{1}' to a PDF file using Excel Modern Activities... | Attempt Number: {2}&quot;, CurrentSheet.Name.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </ui:LogMessage>
                                                             <ueab:InvokeVBAX Result="{x:Null}" CodeFilePath="[in_str_VBAToConvertExcelSheetToPDFFilePath.TrimStart.TrimEnd]" DisplayName="Invoke VBA: Convert Current Excel Sheet to PDF File" EntryMethodName="[in_str_EntryMethodNameToConvertExcelSheetToPDF.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="InvokeVBAX_2" Workbook="[ExcelToConvertToPDF]">
                                                               <ueab:InvokeVBAX.Body>
                                                                 <ActivityAction>
@@ -525,7 +596,7 @@
                                                       <ActivityAction.Argument>
                                                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                                       </ActivityAction.Argument>
-                                                      <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                                      <Sequence DisplayName="Current Excel Sheet Not Converted To PDF" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -540,12 +611,12 @@
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
                                                         </ui:LogMessage>
-                                                        <Assign DisplayName="Assign: Establish Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                                        <Assign DisplayName="Assign: Add Current Sheet Name to str_ListOfExcelSheetsNotConvertedToPDF" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_13">
                                                           <Assign.To>
-                                                            <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                                                            <OutArgument x:TypeArguments="x:String">[str_ListOfExcelSheetsNotConvertedToPDF]</OutArgument>
                                                           </Assign.To>
                                                           <Assign.Value>
-                                                            <InArgument x:TypeArguments="x:String">[String.Format("Excel Sheet Name: {0} | Excel File Name: '{1}' | Error Message: '{2}'", CurrentSheet.Name.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
+                                                            <InArgument x:TypeArguments="x:String">[If(String.IsNullOrEmpty(str_ListOfExcelSheetsNotConvertedToPDF), String.Format("{0} - {1}", Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, CurrentSheet.Name.TrimStart.TrimEnd), String.Concat(str_ListOfExcelSheetsNotConvertedToPDF.TrimStart.TrimEnd, ",", String.Format("{0} - {1}", Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, CurrentSheet.Name.TrimStart.TrimEnd)))]</InArgument>
                                                           </Assign.Value>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -554,14 +625,6 @@
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
                                                         </Assign>
-                                                        <Throw DisplayName="Throw: SE while coverting Current Excel Sheet to PDF" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_3">
-                                                          <sap:WorkflowViewStateService.ViewState>
-                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                            </scg:Dictionary>
-                                                          </sap:WorkflowViewStateService.ViewState>
-                                                        </Throw>
                                                       </Sequence>
                                                     </ActivityAction>
                                                   </Catch>
@@ -606,7 +669,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ueab:ExcelProcessScopeX>
-                        <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process: Kill EXCEL Process" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="EXCEL">
+                        <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process: Kill EXCEL Process" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="EXCEL">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -629,6 +692,20 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_20">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                              </Assign.Value>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Assign>
                             <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process: Kill EXCEL Process" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="KillProcess_3" ProcessName="EXCEL">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -667,88 +744,88 @@
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message: Convert Excel File to PDF File using Modern Activities" sap:VirtualizedContainerService.HintSize="587,57" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Warn" Message="[String.Format(&quot;Occurred the following error while converting the excel file named '{0}' to a PDF file using Modern Activities: '{1}'. Trying again to convert the excel file to a PDF file using Classic Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
+                                      <TryCatch DisplayName="Try Catch: Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="TryCatch_12">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                      </ui:LogMessage>
-                                      <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="587,52" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
-                                        <ui:RetryScope.ActivityBody>
-                                          <ActivityAction>
-                                            <Sequence DisplayName="Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_47">
-                                              <Sequence.Variables>
-                                                <Variable x:TypeArguments="x:String" Name="str_CurrentPDFFilePath" />
-                                                <Variable x:TypeArguments="scg:List(x:Object)" Name="list_EntryParametersVBAToConvertExcelToPDF" />
-                                              </Sequence.Variables>
+                                        <TryCatch.Try>
+                                          <Sequence DisplayName="Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LogMessage DisplayName="Log Message: Convert Excel File to PDF File using Modern Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Warn" Message="[String.Format(&quot;Occurred the following error while converting the excel file named '{0}' to a PDF file using Modern Activities: '{1}'. Trying again to convert the excel file to a PDF file using Classic Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <ui:MultipleAssign DisplayName="Multiple Assign: Establish the Entry Parameters of VBA Script" sap:VirtualizedContainerService.HintSize="445,61" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
-                                                <ui:MultipleAssign.AssignOperations>
-                                                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelToPDF]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="scg:List(x:Object)">[Nothing]</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelToPDF]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="scg:List(x:Object)">[New List(Of Object) From {}]</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
-                                                      <ui:AssignOperation.To>
-                                                        <OutArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelToPDF]</OutArgument>
-                                                      </ui:AssignOperation.To>
-                                                      <ui:AssignOperation.Value>
-                                                        <InArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelToPDF.Concat({Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format("{0}.pdf", Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd))}).ToList()]</InArgument>
-                                                      </ui:AssignOperation.Value>
-                                                    </ui:AssignOperation>
-                                                  </scg:List>
-                                                </ui:MultipleAssign.AssignOperations>
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                              </ui:MultipleAssign>
-                                              <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_str_VBAToConvertExcelToPDFFilePath.TrimStart.TrimEnd]" DisplayName="Invoke VBA: Convert Excel To PDF File" EntryMethodName="[in_str_EntryMethodNameToConvertExcelToPDF.TrimStart.TrimEnd]" EntryMethodParameters="[list_EntryParametersVBAToConvertExcelToPDF]" sap:VirtualizedContainerService.HintSize="445,61" sap2010:WorkflowViewState.IdRef="InvokeVBA_1">
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                              </ui:InvokeVBA>
-                                              <If Condition="[File.Exists(Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" DisplayName="If: Check if PDF File Exists" sap:VirtualizedContainerService.HintSize="445,52" sap2010:WorkflowViewState.IdRef="If_3">
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                                <If.Then>
-                                                  <Sequence DisplayName="PDF File Exists" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                            </ui:LogMessage>
+                                            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                                              <ui:RetryScope.ActivityBody>
+                                                <ActivityAction>
+                                                  <Sequence DisplayName="Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                                                    <Sequence.Variables>
+                                                      <Variable x:TypeArguments="x:String" Name="str_CurrentPDFFilePath" />
+                                                      <Variable x:TypeArguments="scg:List(x:Object)" Name="list_EntryParametersVBAToConvertExcelToPDF" />
+                                                    </Sequence.Variables>
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <ui:LogMessage DisplayName="Log Message: Excel File correctly converted to PDF" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[String.Format(&quot;Excel file named '{0}' was correctly converted to a PDF file which was stored in the folder named '{1}', using the Excel Classic Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                                                    <ui:MultipleAssign DisplayName="Multiple Assign: Establish the Entry Parameters of VBA Script" sap:VirtualizedContainerService.HintSize="445,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                                                      <ui:MultipleAssign.AssignOperations>
+                                                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                                                            <ui:AssignOperation.To>
+                                                              <OutArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelToPDF]</OutArgument>
+                                                            </ui:AssignOperation.To>
+                                                            <ui:AssignOperation.Value>
+                                                              <InArgument x:TypeArguments="scg:List(x:Object)">[Nothing]</InArgument>
+                                                            </ui:AssignOperation.Value>
+                                                          </ui:AssignOperation>
+                                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                                                            <ui:AssignOperation.To>
+                                                              <OutArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelToPDF]</OutArgument>
+                                                            </ui:AssignOperation.To>
+                                                            <ui:AssignOperation.Value>
+                                                              <InArgument x:TypeArguments="scg:List(x:Object)">[New List(Of Object) From {}]</InArgument>
+                                                            </ui:AssignOperation.Value>
+                                                          </ui:AssignOperation>
+                                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                                                            <ui:AssignOperation.To>
+                                                              <OutArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelToPDF]</OutArgument>
+                                                            </ui:AssignOperation.To>
+                                                            <ui:AssignOperation.Value>
+                                                              <InArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelToPDF.Concat({Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format("{0}.pdf", Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd))}).ToList()]</InArgument>
+                                                            </ui:AssignOperation.Value>
+                                                          </ui:AssignOperation>
+                                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                                                            <ui:AssignOperation.To>
+                                                              <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                                            </ui:AssignOperation.To>
+                                                            <ui:AssignOperation.Value>
+                                                              <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                                                            </ui:AssignOperation.Value>
+                                                          </ui:AssignOperation>
+                                                        </scg:List>
+                                                      </ui:MultipleAssign.AssignOperations>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </ui:MultipleAssign>
+                                                    <ui:LogMessage DisplayName="Log Message: Convert Excel Workbook To PDF File" sap:VirtualizedContainerService.HintSize="445,61" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[String.Format(&quot;Converting excel file named '{0}' to a PDF file using Classic Activities... | Attempt Number: {1}&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -756,83 +833,163 @@
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
                                                     </ui:LogMessage>
+                                                    <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_str_VBAToConvertExcelToPDFFilePath.TrimStart.TrimEnd]" DisplayName="Invoke VBA: Convert Excel To PDF File" EntryMethodName="[in_str_EntryMethodNameToConvertExcelToPDF.TrimStart.TrimEnd]" EntryMethodParameters="[list_EntryParametersVBAToConvertExcelToPDF]" sap:VirtualizedContainerService.HintSize="445,61" sap2010:WorkflowViewState.IdRef="InvokeVBA_1">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </ui:InvokeVBA>
+                                                    <If Condition="[File.Exists(Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" DisplayName="If: Check if PDF File Exists" sap:VirtualizedContainerService.HintSize="445,52" sap2010:WorkflowViewState.IdRef="If_3">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <If.Then>
+                                                        <Sequence DisplayName="PDF File Exists" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <ui:LogMessage DisplayName="Log Message: Excel File correctly converted to PDF" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[String.Format(&quot;Excel file named '{0}' was correctly converted to a PDF file which was stored in the folder named '{1}', using the Excel Classic Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </ui:LogMessage>
+                                                        </Sequence>
+                                                      </If.Then>
+                                                      <If.Else>
+                                                        <Sequence DisplayName="PDF File Not Exists" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <ui:LogMessage DisplayName="Log Message: Excel File correctly converted to PDF" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Error" Message="[String.Format(&quot;Excel file named '{0}' was not correctly converted to a PDF file using Excel Classic Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </ui:LogMessage>
+                                                          <Assign DisplayName="Assign: Exception Message about Excel to PDF conversion" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                                            <Assign.To>
+                                                              <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                                                            </Assign.To>
+                                                            <Assign.Value>
+                                                              <InArgument x:TypeArguments="x:String">[String.Format("Excel file named '{0}' was not correctly converted to a PDF file using Excel Classic Activities...", Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]</InArgument>
+                                                            </Assign.Value>
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </Assign>
+                                                          <Throw DisplayName="Throw: SE while converting Excel to PDF File" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_4">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </Throw>
+                                                        </Sequence>
+                                                      </If.Else>
+                                                    </If>
                                                   </Sequence>
-                                                </If.Then>
-                                                <If.Else>
-                                                  <Sequence DisplayName="PDF File Not Exists" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                                </ActivityAction>
+                                              </ui:RetryScope.ActivityBody>
+                                              <ui:RetryScope.Condition>
+                                                <ActivityFunc x:TypeArguments="x:Boolean">
+                                                  <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True: Check if PDF File was created" Expression="[File.Exists(Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" sap:VirtualizedContainerService.HintSize="455,25" sap2010:WorkflowViewState.IdRef="CheckTrue_3">
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <ui:LogMessage DisplayName="Log Message: Excel File correctly converted to PDF" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Error" Message="[String.Format(&quot;Excel file named '{0}' was not correctly converted to a PDF file using Excel Classic Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </ui:LogMessage>
-                                                    <Assign DisplayName="Assign: Exception Message about Excel to PDF conversion" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_7">
-                                                      <Assign.To>
-                                                        <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
-                                                      </Assign.To>
-                                                      <Assign.Value>
-                                                        <InArgument x:TypeArguments="x:String">[String.Format("Excel file named '{0}' was not correctly converted to a PDF file using Excel Classic Activities...", Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]</InArgument>
-                                                      </Assign.Value>
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </Assign>
-                                                    <Throw DisplayName="Throw: SE while converting Excel to PDF File" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_4">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </Throw>
-                                                  </Sequence>
-                                                </If.Else>
-                                              </If>
-                                            </Sequence>
-                                          </ActivityAction>
-                                        </ui:RetryScope.ActivityBody>
-                                        <ui:RetryScope.Condition>
-                                          <ActivityFunc x:TypeArguments="x:Boolean">
-                                            <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True: Check if PDF File was created" Expression="[File.Exists(Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format(&quot;{0}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)))]" sap:VirtualizedContainerService.HintSize="426,25" sap2010:WorkflowViewState.IdRef="CheckTrue_3">
+                                                  </ui:CheckTrue>
+                                                </ActivityFunc>
+                                              </ui:RetryScope.Condition>
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                            </ui:CheckTrue>
-                                          </ActivityFunc>
-                                        </ui:RetryScope.Condition>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:RetryScope>
+                                            </ui:RetryScope>
+                                          </Sequence>
+                                        </TryCatch.Try>
+                                        <TryCatch.Catches>
+                                          <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_12">
+                                            <ActivityAction x:TypeArguments="s:Exception">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                              </ActivityAction.Argument>
+                                              <Sequence DisplayName="Current Excel Workbook Not Converted to PDF" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:LogMessage DisplayName="Log Message: Current Excel Workbook Not Converted to PDF" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Error" Message="[String.Format(&quot;Excel file named '{0}' was not converted to a PDF file using Classic Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:LogMessage>
+                                                <Assign DisplayName="Assign: Add Current Excel File Name to str_ListOfExcelFilesNotConvertedToPDF" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:String">[str_ListOfExcelFilesNotConvertedToPDF]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:String">[If(String.IsNullOrEmpty(str_ListOfExcelFilesNotConvertedToPDF), Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, String.Concat(str_ListOfExcelFilesNotConvertedToPDF.TrimStart.TrimEnd, ",", Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd))]</InArgument>
+                                                  </Assign.Value>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </Assign>
+                                              </Sequence>
+                                            </ActivityAction>
+                                          </Catch>
+                                        </TryCatch.Catches>
+                                        <TryCatch.Finally>
+                                          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Sequence>
+                                        </TryCatch.Finally>
+                                      </TryCatch>
                                     </Sequence>
                                     <Sequence x:Key="False" DisplayName="Convert Each Excel Sheet to Separate PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_50">
-                                      <Sequence.Variables>
-                                        <Variable x:TypeArguments="scg:List(x:String)" Name="list_ListOfExcelSheets" />
-                                      </Sequence.Variables>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message: Convert Excel Sheet to PDF File using Modern Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Warn" Message="[String.Format(&quot;Occurred the following error while converting an excel sheet of the excel file named '{0}' to a PDF file using Excel Modern Activities: '{1}'. Trying again to convert each excel sheet to a PDF file using Excel Classic Activities...&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
+                                      <ui:LogMessage DisplayName="Log Message: Convert Excel Sheet to PDF File using Modern Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Warn" Message="[String.Format(&quot;Occurred the error - '{0}' - while converting the excel sheets '{1}' of the excel file named '{2}' to a PDF file using Excel Modern Activities. Trying again to convert each excel sheet to a PDF file using Excel Classic Activities...&quot;, exception.Message.TrimStart.TrimEnd, str_ListOfExcelSheetsNotConvertedToPDF.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -840,17 +997,16 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:LogMessage>
-                                      <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets: Get List Of Excel Worksheets" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_1" Sheets="[list_ListOfExcelSheets]" />
-                                      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Convert Each Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[list_ListOfExcelSheets]">
+                                      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Convert Each Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[str_ListOfExcelSheetsNotConvertedToPDF.TrimStart.TrimEnd.Split(&quot;,&quot;c)]">
                                         <ui:ForEach.Body>
                                           <ActivityAction x:TypeArguments="x:String">
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="x:String" Name="str_CurrentExcelSheet" />
                                             </ActivityAction.Argument>
-                                            <Sequence DisplayName="Convert Current Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                                            <Sequence DisplayName="Convert Current Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_51">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
@@ -869,15 +1025,7 @@
                                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <ui:LogMessage DisplayName="Log Message: Convert Current Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[String.Format(&quot;Converting the excel sheet named '{0}' of the excel file named '{1}' to a PDF file using Excel Classic Activites...&quot;, str_CurrentExcelSheet.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </ui:LogMessage>
-                                                    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Current Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_5">
+                                                    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Convert Current Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="RetryScope_5">
                                                       <ui:RetryScope.ActivityBody>
                                                         <ActivityAction>
                                                           <Sequence DisplayName="Convert Current Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_55">
@@ -890,7 +1038,7 @@
                                                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
-                                                            <ui:MultipleAssign DisplayName="Multiple Assign: Establish the Entry Parameters of VBA Script" sap:VirtualizedContainerService.HintSize="445,61" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                                                            <ui:MultipleAssign DisplayName="Multiple Assign: Establish the Entry Parameters of VBA Script" sap:VirtualizedContainerService.HintSize="445,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                                                               <ui:MultipleAssign.AssignOperations>
                                                                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                                                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -917,6 +1065,14 @@
                                                                       <InArgument x:TypeArguments="scg:List(x:Object)">[list_EntryParametersVBAToConvertExcelSheetToPDF.Concat({str_CurrentExcelSheet.TrimStart.TrimEnd, Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format("{0}_{1}.pdf", Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, str_CurrentExcelSheet.TrimStart.TrimEnd))}).ToList()]</InArgument>
                                                                     </ui:AssignOperation.Value>
                                                                   </ui:AssignOperation>
+                                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                                                                    <ui:AssignOperation.To>
+                                                                      <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                                                    </ui:AssignOperation.To>
+                                                                    <ui:AssignOperation.Value>
+                                                                      <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                                                                    </ui:AssignOperation.Value>
+                                                                  </ui:AssignOperation>
                                                                 </scg:List>
                                                               </ui:MultipleAssign.AssignOperations>
                                                               <sap:WorkflowViewStateService.ViewState>
@@ -926,6 +1082,14 @@
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
                                                             </ui:MultipleAssign>
+                                                            <ui:LogMessage DisplayName="Log Message: Convert Current Excel Sheet to PDF File" sap:VirtualizedContainerService.HintSize="445,61" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[String.Format(&quot;Converting the excel sheet named '{0}' of the excel file named '{1}' to a PDF file using Excel Classic Activites... | Attempt Number: {2}&quot;, str_CurrentExcelSheet.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </ui:LogMessage>
                                                             <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_str_VBAToConvertExcelSheetToPDFFilePath.TrimStart.TrimEnd]" DisplayName="Invoke VBA: Convert Current Excel Sheet to PDF File" EntryMethodName="[in_str_EntryMethodNameToConvertExcelSheetToPDF.TrimStart.TrimEnd]" EntryMethodParameters="[list_EntryParametersVBAToConvertExcelSheetToPDF]" sap:VirtualizedContainerService.HintSize="445,61" sap2010:WorkflowViewState.IdRef="InvokeVBA_2">
                                                               <sap:WorkflowViewStateService.ViewState>
                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1005,7 +1169,7 @@
                                                       </ui:RetryScope.ActivityBody>
                                                       <ui:RetryScope.Condition>
                                                         <ActivityFunc x:TypeArguments="x:Boolean">
-                                                          <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True: Check if PDF File was created" Expression="[File.Exists(Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format(&quot;{0}_{1}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, str_CurrentExcelSheet.TrimStart.TrimEnd)))]" sap:VirtualizedContainerService.HintSize="426,25" sap2010:WorkflowViewState.IdRef="CheckTrue_4">
+                                                          <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True: Check if PDF File was created" Expression="[File.Exists(Path.Combine(in_str_FolderPathToSavePDFFile.TrimStart.TrimEnd, String.Format(&quot;{0}_{1}.pdf&quot;, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, str_CurrentExcelSheet.TrimStart.TrimEnd)))]" sap:VirtualizedContainerService.HintSize="455,25" sap2010:WorkflowViewState.IdRef="CheckTrue_4">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1022,6 +1186,20 @@
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
                                                     </ui:RetryScope>
+                                                    <Assign DisplayName="Assign: Remove Current Excel Sheet from str_ListOfExcelSheetsNotConvertedToPDF" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:String">[str_ListOfExcelSheetsNotConvertedToPDF]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:String">[String.Join(",", str_ListOfExcelSheetsNotConvertedToPDF.TrimStart.TrimEnd.Split(","c).Where(Function(x) x &lt;&gt; str_CurrentExcelSheet.TrimStart.TrimEnd))]</InArgument>
+                                                      </Assign.Value>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </Assign>
                                                   </Sequence>
                                                 </TryCatch.Try>
                                                 <TryCatch.Catches>
@@ -1037,7 +1215,7 @@
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <ui:LogMessage DisplayName="Log Message: SE while converting Current Excel Sheet to PDF" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Error" Message="[String.Format(&quot;Excel Sheet Name: '{0}' | Excel File Name: '{1}' | Error Message: '{2}'&quot;, str_CurrentExcelSheet.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
+                                                        <ui:LogMessage DisplayName="Log Message: SE while converting Current Excel Sheet to PDF" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Error" Message="[String.Format(&quot;Excel Sheet Name: '{0}' | Excel File Name: '{1}' | Error Message: '{2}'&quot;, str_CurrentExcelSheet.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1045,37 +1223,16 @@
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
                                                         </ui:LogMessage>
-                                                        <Assign DisplayName="Assign: Establish Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_8">
-                                                          <Assign.To>
-                                                            <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
-                                                          </Assign.To>
-                                                          <Assign.Value>
-                                                            <InArgument x:TypeArguments="x:String">[String.Format("Excel Sheet Name: '{0}' | Excel File Name: '{1}' | Error Message: '{2}'", str_CurrentExcelSheet.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(str_CurrentExcelFile.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
-                                                          </Assign.Value>
-                                                          <sap:WorkflowViewStateService.ViewState>
-                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                            </scg:Dictionary>
-                                                          </sap:WorkflowViewStateService.ViewState>
-                                                        </Assign>
-                                                        <Throw DisplayName="Throw: SE while coverting Current Excel Sheet to PDF" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_5">
-                                                          <sap:WorkflowViewStateService.ViewState>
-                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                            </scg:Dictionary>
-                                                          </sap:WorkflowViewStateService.ViewState>
-                                                        </Throw>
                                                       </Sequence>
                                                     </ActivityAction>
                                                   </Catch>
                                                 </TryCatch.Catches>
                                                 <TryCatch.Finally>
-                                                  <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                                                  <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_54">
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
                                                   </Sequence>
@@ -1115,10 +1272,11 @@
                       </Catch>
                     </TryCatch.Catches>
                     <TryCatch.Finally>
-                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </Sequence>
@@ -1134,6 +1292,150 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEach>
+          <ui:IfElseIfV2 Condition="[in_bool_ConvertAllExcelFileToPDF And String.IsNullOrEmpty(str_ListOfExcelFilesNotConvertedToPDF)]" DisplayName="Else If: Verify if Excel File or Excel Sheets were correctly converted to PDF Files" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
+            <ui:IfElseIfV2.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="790,25" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </ui:IfElseIfV2.Else>
+            <ui:IfElseIfV2.ElseIfs>
+              <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_bool_ConvertAllExcelFileToPDF And Not String.IsNullOrEmpty(str_ListOfExcelFilesNotConvertedToPDF)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
+                  <ui:IfElseIfBlock.Then>
+                    <Sequence DisplayName="Not All Excel Workbooks were converted to PDF" sap:VirtualizedContainerService.HintSize="790,25" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message: Not All Excel Workbooks were converted to PDF" sap:VirtualizedContainerService.HintSize="719,57" sap2010:WorkflowViewState.IdRef="LogMessage_40" Level="Error" Message="[String.Format(&quot;Excel files named '{0}' were not converted to PDF files...&quot;, str_ListOfExcelFilesNotConvertedToPDF.TrimStart.TrimEnd)]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:LogMessage>
+                      <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="719,57" sap2010:WorkflowViewState.IdRef="Assign_17">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[String.Format("Excel files named '{0}' were not converted to PDF files...", str_ListOfExcelFilesNotConvertedToPDF.TrimStart.TrimEnd)]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                      <Throw DisplayName="Throw: SE Not All Excel Workbooks were converted to PDF" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="719,52" sap2010:WorkflowViewState.IdRef="Throw_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Throw>
+                    </Sequence>
+                  </ui:IfElseIfBlock.Then>
+                </ui:IfElseIfBlock>
+                <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not in_bool_ConvertAllExcelFileToPDF And String.IsNullOrEmpty(str_ListOfExcelSheetsNotConvertedToPDF)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+                  <ui:IfElseIfBlock.Then>
+                    <Sequence DisplayName="All Sheets from All Excel Files were converted to PDF" sap:VirtualizedContainerService.HintSize="790,25" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message: All Sheets from All Excel Files were converted to PDF" sap:VirtualizedContainerService.HintSize="756,48" sap2010:WorkflowViewState.IdRef="LogMessage_41" Level="Info" Message="[String.Format(&quot;All sheets from all excel files named '{0}' were correctly converted to PDF files...&quot;, in_str_ListOfExcelFileNamesToConvertToPDF.TrimStart.TrimEnd)]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:LogMessage>
+                    </Sequence>
+                  </ui:IfElseIfBlock.Then>
+                </ui:IfElseIfBlock>
+                <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not in_bool_ConvertAllExcelFileToPDF And Not String.IsNullOrEmpty(str_ListOfExcelSheetsNotConvertedToPDF)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
+                  <ui:IfElseIfBlock.Then>
+                    <Sequence DisplayName="Not All Sheets from All Excel Files were converted to PDF" sap:VirtualizedContainerService.HintSize="790,25" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message: Not All Sheets from All Excel Files were converted to PDF" sap:VirtualizedContainerService.HintSize="756,57" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Error" Message="[String.Format(&quot;Excel Sheets named '{0} were not converted to PDF files...&quot;, str_ListOfExcelSheetsNotConvertedToPDF.TrimStart.TrimEnd)]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:LogMessage>
+                      <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="756,57" sap2010:WorkflowViewState.IdRef="Assign_18">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[String.Format("Excel Sheets named '{0} were not converted to PDF files...", str_ListOfExcelSheetsNotConvertedToPDF.TrimStart.TrimEnd)]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                      <Throw DisplayName="Throw: SE Not All Sheets from All Excel Files were converted to PDF" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="756,52" sap2010:WorkflowViewState.IdRef="Throw_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Throw>
+                    </Sequence>
+                  </ui:IfElseIfBlock.Then>
+                </ui:IfElseIfBlock>
+              </sc:BindingList>
+            </ui:IfElseIfV2.ElseIfs>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:IfElseIfV2.Then>
+              <Sequence DisplayName="All Excel Workbooks were converted to PDF" sap:VirtualizedContainerService.HintSize="790,25" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message: All Excel Workbooks were converted to PDF" sap:VirtualizedContainerService.HintSize="756,52" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[String.Format(&quot;All excel files named '{0}' were correctly converted to PDF files...&quot;, in_str_ListOfExcelFileNamesToConvertToPDF.TrimStart.TrimEnd)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </Sequence>
+            </ui:IfElseIfV2.Then>
+          </ui:IfElseIfV2>
           <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
