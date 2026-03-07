@@ -273,7 +273,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message: SE while reading TXT File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Error" Message="[String.Format(&quot;It was not possible to read the TXT file named '{0}'...&quot;, Path.GetFileNameWithoutExtension(in_str_TXTFilePathToBeRead.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
+                    <ui:LogMessage DisplayName="Log Message: SE while reading TXT File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Error" Message="[String.Format(&quot;It was not possible to read the TXT file named '{0}': '{1}'&quot;, Path.GetFileNameWithoutExtension(in_str_TXTFilePathToBeRead.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -286,7 +286,7 @@
                         <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format("It was not possible to read the TXT file named '{0}'...", Path.GetFileNameWithoutExtension(in_str_TXTFilePathToBeRead.TrimStart.TrimEnd).TrimStart.TrimEnd)]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[String.Format("It was not possible to read the TXT file named '{0}': '{1}'", Path.GetFileNameWithoutExtension(in_str_TXTFilePathToBeRead.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
                       </Assign.Value>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
