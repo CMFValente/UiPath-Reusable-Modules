@@ -162,7 +162,7 @@
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send an Outlook mail message.&#xA;&#xA;NOTE: The input argument called &quot;in_str_EmailImportanceLevel&quot; must contain one of the following values: Low, Normal or High." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1330,1008" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to send an Outlook mail message.&#xA;&#xA;NOTE: The input argument called &quot;in_str_EmailImportanceLevel&quot; must contain one of the following values: Low, Normal or High." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1330,1016" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
     </Sequence.Variables>
@@ -172,7 +172,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch: Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="486,924" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+    <TryCatch DisplayName="Try Catch: Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="486,932" sap2010:WorkflowViewState.IdRef="TryCatch_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -180,14 +180,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="484,572" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="484,580" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="450,61" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -195,7 +195,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <Sequence sap2010:Annotation.AnnotationText="According with the chosen methodology to send an Outlook Mail Message, it's necessary to validate the following input parameters:&#xD;&#xA;&#xD;&#xA;  1)  When using Integration Service to send an Outlook Mail Message, validate if the input parameter - Recipient's Address - is not empty;&#xD;&#xA;&#xD;&#xA;  2) When not using Integration Service to send an Outlook Mail Message, validate if the input parameters - Recipient's Address and Sender's Address - are not empty." DisplayName="Validate Input Parameters" sap:VirtualizedContainerService.HintSize="450,216" sap2010:WorkflowViewState.IdRef="Sequence_66">
+          <Sequence sap2010:Annotation.AnnotationText="According with the chosen methodology to send an Outlook Mail Message, it's necessary to validate the following input parameters:&#xA;&#xA;  1)  When using Integration Service to send an Outlook Mail Message, validate if the input parameter - Recipient's Address - is not empty;&#xA;&#xA;  2) When not using Integration Service to send an Outlook Mail Message, validate if the input parameters - Recipient's Address and Sender's Address - are not empty." DisplayName="Validate Input Parameters" sap:VirtualizedContainerService.HintSize="450,220" sap2010:WorkflowViewState.IdRef="Sequence_66">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -450,10 +450,11 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_48">
+              <Sequence DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_48">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:IfElseIfV2 Condition="[in_bool_UseIntegrationServicesConnections And in_list_FilePathAttachmentsToSend.Count &gt; 0]" DisplayName="Else If: Check if the Outlook Mail Message should be sent by using Integration Service" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
@@ -1281,7 +1282,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message: SE while sending an Outlook Mail Message" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;Error while sending an Outlook mail message with '{0}' importance level from '{1}' to '{2}'...&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_AccountAddressToUseToSendEmail.TrimStart.TrimEnd, in_str_EmailAddressToSendEmail.TrimStart.TrimEnd)]">
+                    <ui:LogMessage DisplayName="Log Message: SE while sending an Outlook Mail Message" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;Error while sending an Outlook mail message with '{0}' importance level from '{1}' to '{2}': '{3}'&quot;, in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_AccountAddressToUseToSendEmail.TrimStart.TrimEnd, in_str_EmailAddressToSendEmail.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1294,7 +1295,7 @@
                         <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format("Error while sending an Outlook mail message with '{0}' importance level from '{1}' to '{2}'...", in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_AccountAddressToUseToSendEmail.TrimStart.TrimEnd, in_str_EmailAddressToSendEmail.TrimStart.TrimEnd)]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[String.Format("Error while sending an Outlook mail message with '{0}' importance level from '{1}' to '{2}': '{3}'", in_str_EmailImportanceLevel.TrimStart.TrimEnd, in_str_AccountAddressToUseToSendEmail.TrimStart.TrimEnd, in_str_EmailAddressToSendEmail.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
                       </Assign.Value>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1467,7 +1468,7 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_51">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="484,94" sap2010:WorkflowViewState.IdRef="Sequence_51">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
