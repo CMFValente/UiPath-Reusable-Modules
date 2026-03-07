@@ -324,7 +324,7 @@
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message: SE while bulk adding items to queue" sap:VirtualizedContainerService.HintSize="529,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;Error while bulk adding {0} items to queue named '{1}'...&quot;, in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
+                                <ui:LogMessage DisplayName="Log Message: SE while bulk adding items to queue" sap:VirtualizedContainerService.HintSize="529,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;Error while bulk adding {0} items to queue named '{1}': '{2}'&quot;, in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -337,7 +337,7 @@
                                     <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[String.Format("Error while bulk adding {0} items to queue named '{1}'...", in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]</InArgument>
+                                    <InArgument x:TypeArguments="x:String">[String.Format("Error while bulk adding {0} items to queue named '{1}': '{2}'", in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
                                   </Assign.Value>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -618,7 +618,7 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message: SE while adding items to queue" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Error" Message="[String.Format(&quot;{0} items were not added to queue '{1}'...&quot;, int32_NumberOfItemsNotAddedToQueue.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
+                            <ui:LogMessage DisplayName="Log Message: SE while adding items to queue" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Error" Message="[String.Format(&quot;{0} items were not added to queue '{1}'...&quot;, int32_NumberOfItemsNotAddedToQueue.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -626,7 +626,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:LogMessage>
-                            <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_13">
+                            <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_13">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                               </Assign.To>
