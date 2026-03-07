@@ -190,13 +190,14 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Append Data to CSV File" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="Sequence_34">
+              <Sequence DisplayName="Append Data to CSV File" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_34">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <TryCatch DisplayName="Try Catch: Append Data to CSV File using Modern/Classic Activities" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                <TryCatch DisplayName="Try Catch: Append Data to CSV File using Modern/Classic Activities" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -572,7 +573,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message: SE while appending data to CSV File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;It was not possible to append data to CSV file named '{0}'...&quot;, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
+                    <ui:LogMessage DisplayName="Log Message: SE while appending data to CSV File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;It was not possible to append data to CSV file named '{0}': '{1}'&quot;, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -585,7 +586,7 @@
                         <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format("It was not possible to append data to CSV file named '{0}'...", Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd)]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[String.Format("It was not possible to append data to CSV file named '{0}': '{1}'", Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
                       </Assign.Value>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
