@@ -133,7 +133,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to bulk add items to an Orchestrator Queue.&#xD;&#xA;&#xD;&#xA;NOTE: The maximum number of items that can be bulk added to a queue in a single action is limited to 15000 items." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1927,989.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to bulk add items to an Orchestrator Queue.&#xA;&#xA;NOTE: The maximum number of items that can be bulk added to a queue in a single action is limited to 15000 items." DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1330,796" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int32_NumberOfItemsNotAddedToQueue" />
       <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
@@ -203,10 +203,10 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Exists Items to be Added to Queue" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_20">
+              <Sequence DisplayName="Exists Items to be Added to Queue" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_20">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -233,7 +233,7 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <TryCatch DisplayName="Try Catch: Number of Items to be added to Queue is less than the Maximum Number of items that can be added to Queue in Bulk in a Single Action" sap:VirtualizedContainerService.HintSize="884,52" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                      <TryCatch DisplayName="Try Catch: Number of Items to be added to Queue is less than the Maximum Number of items that can be added to Queue in Bulk in a Single Action" sap:VirtualizedContainerService.HintSize="891,52" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -241,20 +241,20 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <TryCatch.Try>
-                          <Sequence DisplayName="Number of Items to be added to Queue is less than the Maximum Number of items that can be added to Queue in Bulk in a Single Action" sap:VirtualizedContainerService.HintSize="566,116" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                          <Sequence DisplayName="Number of Items to be added to Queue is less than the Maximum Number of items that can be added to Queue in Bulk in a Single Action" sap:VirtualizedContainerService.HintSize="563,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Number of Items to be added to Queue is less than the Maximum Number of items that can be added to Queue in Bulk in a Single Action" sap:VirtualizedContainerService.HintSize="532,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                            <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Number of Items to be added to Queue is less than the Maximum Number of items that can be added to Queue in Bulk in a Single Action" sap:VirtualizedContainerService.HintSize="529,61" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                               <ui:RetryScope.ActivityBody>
                                 <ActivityAction>
-                                  <Sequence DisplayName="Number of Items to be added to Queue is less than the Maximum Number of items that can be added to Queue in Bulk in a Single Action" sap:VirtualizedContainerService.HintSize="450,238" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                  <Sequence DisplayName="Number of Items to be added to Queue is less than the Maximum Number of items that can be added to Queue in Bulk in a Single Action" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_25">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
@@ -301,6 +301,14 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:RetryScope>
+                            <ui:LogMessage DisplayName="Log Message: Bulk Add Queue Items Successfully" sap:VirtualizedContainerService.HintSize="529,52" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[String.Format(&quot;{0} items were bulk added to queue {1}...&quot;, in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LogMessage>
                           </Sequence>
                         </TryCatch.Try>
                         <TryCatch.Catches>
@@ -309,14 +317,14 @@
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="566,25" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                              <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="563,25" sap2010:WorkflowViewState.IdRef="Sequence_23">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message: SE while bulk adding items to queue" sap:VirtualizedContainerService.HintSize="532,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;Error while bulk adding {0} items to queue named '{1}'...&quot;, in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
+                                <ui:LogMessage DisplayName="Log Message: SE while bulk adding items to queue" sap:VirtualizedContainerService.HintSize="529,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;Error while bulk adding {0} items to queue named '{1}'...&quot;, in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -324,7 +332,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:LogMessage>
-                                <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="532,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="529,61" sap2010:WorkflowViewState.IdRef="Assign_7">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                                   </Assign.To>
@@ -338,7 +346,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </Assign>
-                                <Throw DisplayName="Throw: SE while bulk adding items to queue" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="532,52" sap2010:WorkflowViewState.IdRef="Throw_2">
+                                <Throw DisplayName="Throw: SE while bulk adding items to queue" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="529,52" sap2010:WorkflowViewState.IdRef="Throw_2">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -351,14 +359,14 @@
                           </Catch>
                         </TryCatch.Catches>
                         <TryCatch.Finally>
-                          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="566,116" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                          <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="563,25" sap2010:WorkflowViewState.IdRef="Sequence_24">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="532,52" sap2010:WorkflowViewState.IdRef="Assign_6">
+                            <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="529,52" sap2010:WorkflowViewState.IdRef="Assign_6">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                               </Assign.To>
@@ -432,24 +440,24 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <TryCatch.Try>
-                                  <Sequence DisplayName="Bulk Add Queue Items for each Batch" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                  <Sequence DisplayName="Bulk Add Queue Items for each Batch" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="Sequence_27">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Bulk Add Queue Items for each Batch" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                                    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Bulk Add Queue Items for each Batch" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                                       <ui:RetryScope.ActivityBody>
                                         <ActivityAction>
-                                          <Sequence DisplayName="Bulk Add Queue Items for each Batch" sap:VirtualizedContainerService.HintSize="450,222" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                          <Sequence DisplayName="Bulk Add Queue Items for each Batch" sap:VirtualizedContainerService.HintSize="450,238" sap2010:WorkflowViewState.IdRef="Sequence_30">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                            <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_10">
                                               <Assign.To>
                                                 <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                                               </Assign.To>
@@ -463,7 +471,7 @@
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                             </Assign>
-                                            <ui:LogMessage DisplayName="Log Message: Bulk Add Current Batch Items to Queue" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[String.Format(&quot;Bulk adding {0} items of batch number {1} to queue '{2}'... | Attempt Number: {3}&quot;, dt_CurrentBatchItemsToBulkAddToQueue.Rows.Count.ToString.TrimStart.TrimEnd, Convert.ToString(int32_CurrentBatchIndex + 1).TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                                            <ui:LogMessage DisplayName="Log Message: Bulk Add Current Batch Items to Queue" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[String.Format(&quot;Bulk adding {0} items of batch number {1} to queue '{2}'... | Attempt Number: {3}&quot;, dt_CurrentBatchItemsToBulkAddToQueue.Rows.Count.ToString.TrimStart.TrimEnd, Convert.ToString(int32_CurrentBatchIndex + 1).TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -471,7 +479,7 @@
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                             </ui:LogMessage>
-                                            <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items: Bulk Add Current Batch Items to Queue" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_2" QueueItemsDataTable="[dt_CurrentBatchItemsToBulkAddToQueue]" QueueName="[in_str_QueueNameToAddItems.TrimStart.TrimEnd]">
+                                            <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items: Bulk Add Current Batch Items to Queue" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_2" QueueItemsDataTable="[dt_CurrentBatchItemsToBulkAddToQueue]" QueueName="[in_str_QueueNameToAddItems.TrimStart.TrimEnd]">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -492,6 +500,14 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:RetryScope>
+                                    <ui:LogMessage DisplayName="Log Message: Bulk Add Current Batch Items to Queue Successfully" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[String.Format(&quot;{0} items of batch number {1} were correctly bulk added to queue '{2}'...&quot;, dt_CurrentBatchItemsToBulkAddToQueue.Rows.Count.ToString.TrimStart.TrimEnd, Convert.ToString(int32_CurrentBatchIndex + 1).TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:LogMessage>
                                   </Sequence>
                                 </TryCatch.Try>
                                 <TryCatch.Catches>
@@ -577,14 +593,14 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <If.Then>
-                          <Sequence DisplayName="All Items were added to Queue" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                          <Sequence DisplayName="All Items were added to Queue" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_31">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message: All Items were added to Queue" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[String.Format(&quot;All {0} items were correctly added to queue '{1}'...&quot;, in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
+                            <ui:LogMessage DisplayName="Log Message: All Items were added to Queue" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[String.Format(&quot;All {0} items were correctly added to queue '{1}'...&quot;, in_dt_ItemsToBeAddedToQueue.Rows.Count.ToString.TrimStart.TrimEnd, in_str_QueueNameToAddItems.TrimStart.TrimEnd)]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
