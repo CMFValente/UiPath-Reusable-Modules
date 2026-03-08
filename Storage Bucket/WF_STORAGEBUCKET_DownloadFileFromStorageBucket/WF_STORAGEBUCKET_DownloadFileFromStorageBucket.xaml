@@ -135,7 +135,7 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to download a file from an Orchestrator Storage Bucket. " DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1281,766" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to download a file from an Orchestrator Storage Bucket. " DisplayName="WF_TemplateGeneric" sap:VirtualizedContainerService.HintSize="1330,766" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
     </Sequence.Variables>
@@ -190,10 +190,11 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Download File From Storage Bucket" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_20">
+              <Sequence DisplayName="Download File From Storage Bucket" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_20">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Download File From Storage Bucket" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
@@ -314,7 +315,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message: SE while downloading file from Storage Bucket" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;Error while downloading file '{0}' from storage bucket named '{1}'...&quot;, Path.GetFileNameWithoutExtension(in_str_StorageBucketFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd)]">
+                    <ui:LogMessage DisplayName="Log Message: SE while downloading file from Storage Bucket" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[String.Format(&quot;Error while downloading file '{0}' from storage bucket named '{1}': '{2}'&quot;, Path.GetFileNameWithoutExtension(in_str_StorageBucketFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -327,7 +328,7 @@
                         <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format("Error while downloading file '{0}' from storage bucket named '{1}'...", Path.GetFileNameWithoutExtension(in_str_StorageBucketFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd)]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[String.Format("Error while downloading file '{0}' from storage bucket named '{1}': '{2}'", Path.GetFileNameWithoutExtension(in_str_StorageBucketFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
                       </Assign.Value>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
