@@ -272,7 +272,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message: SE while uploading file to storage bucket" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Error" Message="[String.Format(&quot;Error while uploading file '{0}' stored in folder '{1}' to storage bucket named '{2}'...&quot;, Path.GetFileNameWithoutExtension(in_str_FilePathToBeUploaded.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(in_str_FilePathToBeUploaded.TrimStart.TrimEnd)).Name.TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd)]">
+                    <ui:LogMessage DisplayName="Log Message: SE while uploading file to storage bucket" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Error" Message="[String.Format(&quot;Error while uploading file '{0}' stored in folder '{1}' to storage bucket named '{2}': '{3}'&quot;, Path.GetFileNameWithoutExtension(in_str_FilePathToBeUploaded.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(in_str_FilePathToBeUploaded.TrimStart.TrimEnd)).Name.TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -280,12 +280,12 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:LogMessage>
-                    <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_6">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format("Error while uploading file '{0}' stored in folder '{1}' to storage bucket named '{2}'...", Path.GetFileNameWithoutExtension(in_str_FilePathToBeUploaded.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(in_str_FilePathToBeUploaded.TrimStart.TrimEnd)).Name.TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd)]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[String.Format("Error while uploading file '{0}' stored in folder '{1}' to storage bucket named '{2}': '{3}'", Path.GetFileNameWithoutExtension(in_str_FilePathToBeUploaded.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(in_str_FilePathToBeUploaded.TrimStart.TrimEnd)).Name.TrimStart.TrimEnd, in_str_StorageBucketName.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
                       </Assign.Value>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
