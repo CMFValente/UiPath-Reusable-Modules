@@ -1,0 +1,51 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_TakeScreenshot.xaml",
+      "uniqueId": "0209fc44-0254-42dd-90c7-0e4e6c782046",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "in_str_MethodologyToAutoIncrementScreenshot": {
+            "type": "string"
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "in_str_ScreenshotFileName": {
+            "type": "string"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "out_str_ScreenshotFilePath": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}
