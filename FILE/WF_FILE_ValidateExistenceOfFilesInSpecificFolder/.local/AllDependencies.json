@@ -23735,9 +23735,9 @@
     "restore": {
       "projectUniqueName": "FileValidation",
       "projectName": "FileValidation",
-      "projectPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\Files\\ValidateExistenceInputFiles\\.local",
+      "projectPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\FILE\\WF_FILE_ValidateExistenceOfFilesInSpecificFolder\\.local",
       "packagesPath": "C:\\Users\\catarina.valente\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\Files\\ValidateExistenceInputFiles\\.local",
+      "outputPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\FILE\\WF_FILE_ValidateExistenceOfFilesInSpecificFolder\\.local",
       "UsingMicrosoftNETSdk": false,
       "restoreAuditProperties": {
         "enableAudit": "False"

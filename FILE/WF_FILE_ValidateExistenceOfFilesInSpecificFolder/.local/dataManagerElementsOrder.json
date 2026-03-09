@@ -35,7 +35,7 @@
     {
       "Path": "WF_FILE_ValidateExistenceOfFilesInSpecificFolder.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": null,
+      "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": null,
       "ConstantsSectionElementsOrder": null,
       "AddedNamespaces": null

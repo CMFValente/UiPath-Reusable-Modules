@@ -14,13 +14,10 @@
           "io_bool_CheckFlow": {
             "type": "boolean"
           },
-          "io_str_AuxiliaryErrorMessage": {
+          "io_str_ExceptionAuxiliarInfo": {
             "type": "string"
           },
           "in_str_ListOfFilesToValidate": {
-            "type": "string"
-          },
-          "in_str_FolderPath": {
             "type": "string"
           },
           "in_ts_RetryInterval": {
@@ -94,6 +91,12 @@
             "type": "integer",
             "minimum": -2147483648,
             "maximum": 2147483647
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          },
+          "in_str_FolderPathWhereFilesAreStored": {
+            "type": "string"
           }
         },
         "required": []
@@ -107,7 +110,7 @@
           "io_bool_CheckFlow": {
             "type": "boolean"
           },
-          "io_str_AuxiliaryErrorMessage": {
+          "io_str_ExceptionAuxiliarInfo": {
             "type": "string"
           }
         }

@@ -1,5 +1,5 @@
 {
-  "name": "FileValidation",
+  "name": "WF_FILE_ValidateExistenceOfFilesInSpecificFolder",
   "projectId": "71f3a812-bd44-4244-82da-8e6123d81ba9",
   "description": "Validation of the existence of input files.",
   "main": "WF_FILE_ValidateExistenceOfFilesInSpecificFolder.xaml",

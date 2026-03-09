@@ -1,5 +1,5 @@
 {
-  "Name": "FileValidation",
+  "Name": "WF_FILE_ValidateExistenceOfFilesInSpecificFolder",
   "ProjectType": "Process",
   "Description": "Validation of the existence of input files.",
   "MainFile": "WF_FILE_ValidateExistenceOfFilesInSpecificFolder.xaml"

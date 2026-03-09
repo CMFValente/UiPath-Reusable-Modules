@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NNRq3uiHLns=",
+  "dgSpecHash": "9H4M2IY93eU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\Files\\ValidateExistenceInputFiles\\.local\\",
+  "projectFilePath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\FILE\\WF_FILE_ValidateExistenceOfFilesInSpecificFolder\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\catarina.valente\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\catarina.valente\\.nuget\\packages\\azure.core\\1.18.0\\azure.core.1.18.0.nupkg.sha512",
