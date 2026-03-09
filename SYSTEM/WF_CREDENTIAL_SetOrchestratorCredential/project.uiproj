@@ -1,0 +1,6 @@
+{
+  "Name": "WF_CREDENTIAL_SetOrchestratorCredential",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_CREDENTIAL_SetOrchestratorCredential.xaml"
+}
