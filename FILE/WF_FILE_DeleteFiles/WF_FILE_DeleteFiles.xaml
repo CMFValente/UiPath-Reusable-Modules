@@ -1,10 +1,11 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_str_WorkflowName" Type="InArgument(x:String)" />
     <x:Property Name="in_str_FolderPathOfFilesToBeDeleted" Type="InArgument(x:String)" />
     <x:Property Name="in_ts_RetryInterval" Type="InArgument(x:TimeSpan)" />
     <x:Property Name="in_int32_NumberOfRetries" Type="InArgument(x:Int32)" />
     <x:Property Name="in_str_ListOfFilesToBeDeleted" Type="InArgument(x:String)" />
-    <x:Property Name="io_str_AuxiliaryErrorMessage" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_str_ExceptionAuxiliarInfo" Type="InOutArgument(x:String)" />
     <x:Property Name="io_bool_BusinessException" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
   </x:Members>
@@ -109,49 +110,50 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[WF_FILE_DeleteFiles]&#xA;[Deleting a list of specific files from a specific folder.]" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1281,646" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="[WF_FILE_DeleteFiles]&#xA;[Deleting a list of specific files from a specific folder.]" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1330,1304" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Delete Specific Files from Folder" sap:VirtualizedContainerService.HintSize="452,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Deleting files '{0}' of the '{1}' folder...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch: Delete Files" sap:VirtualizedContainerService.HintSize="452,521" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="524,1236" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,238" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="522,890" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Delete Each File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c)]">
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:LogMessage DisplayName="Log Message: Delete Specific Files from Folder" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Deleting files '{0}' of folder '{1}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Delete Each File" sap:VirtualizedContainerService.HintSize="488,607" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="str_CurrentFile" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,403" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Delete Current File" sap:VirtualizedContainerService.HintSize="486,472" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch DisplayName="Try Catch: Delete Current File" sap:VirtualizedContainerService.HintSize="452,339" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch DisplayName="Try Catch: Delete Current File" sap:VirtualizedContainerService.HintSize="452,408" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -159,7 +161,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <TryCatch.Try>
-                      <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence DisplayName="Delete Current File" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -230,7 +232,7 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="SE" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_7">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -247,7 +249,7 @@
                             </ui:LogMessage>
                             <Assign DisplayName="Assign: Establish str_AuxiliaryErrorMessage" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_2">
                               <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
                                 <InArgument x:TypeArguments="x:String">[String.Format("File named '{0}' was not correctly deleted from the folder named '{1}': {2}", Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
@@ -259,7 +261,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </Assign>
-                            <Throw DisplayName="Throw: SE Deleting Current File" Exception="[New SystemException(io_str_AuxiliaryErrorMessage.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_1">
+                            <Throw DisplayName="Throw: SE Deleting Current File" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_1">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -272,10 +274,10 @@
                       </Catch>
                     </TryCatch.Catches>
                     <TryCatch.Finally>
-                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_6">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -287,17 +289,17 @@
             </ui:ForEach.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEach>
-          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:Boolean">[True]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
             </Assign.Value>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -306,7 +308,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: All Files deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[String.Format(&quot;All files '{0}' were correctly deleted from the folder named '{1}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim).TrimStart.TrimEnd).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="488,48" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -317,19 +319,19 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_4">
           <ActivityAction x:TypeArguments="s:Exception">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="SE" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="522,25" sap2010:WorkflowViewState.IdRef="Sequence_12">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: SE Delete Files" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+              <ui:LogMessage DisplayName="Log Message: System Exception" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[String.Format(&quot;SYSTEM EXCEPTION &gt; {0} at Source: {1}&quot;,&#xA; exception.Message.TrimStart.TrimEnd,&#xA; exception.Source&#xA;)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -337,12 +339,12 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
-              <Assign DisplayName="Assign: Establish str_AuxiliaryErrorMessage" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign DisplayName="Assign: Store System Exception Message in str_ExceptionAuxiliarInfo Variable" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_5">
                 <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[String.Format("Error Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
+                  <InArgument x:TypeArguments="x:String">[Exception.Message.TrimStart.TrimEnd]</InArgument>
                 </Assign.Value>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -354,19 +356,19 @@
             </Sequence>
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap2010:WorkflowViewState.IdRef="Catch`1_5">
           <ActivityAction x:TypeArguments="ui:BusinessRuleException">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="BRE" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence DisplayName="BUSINESS EXCEPTION" sap:VirtualizedContainerService.HintSize="522,25" sap2010:WorkflowViewState.IdRef="Sequence_13">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: BRE Delete Files" sap:VirtualizedContainerService.HintSize="480,57" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[String.Format(&quot;Error Message: {0}&quot;, exception.Message.TrimStart.TrimEnd)]">
+              <ui:LogMessage DisplayName="Log Message: Business Exception" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[String.Format(&quot;BUSINESS EXCEPTION &gt; {0} at Source: {1}&quot;,&#xA; exception.Message.TrimStart.TrimEnd,&#xA; exception.Source&#xA;)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -374,10 +376,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
-              <ui:MultipleAssign DisplayName="Multiple Assign: Establish str_AuxiliaryErrorMessage and bool_BusinessException" sap:VirtualizedContainerService.HintSize="480,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign DisplayName="Multiple Assign: Assign boolean value to business exception and exception message" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
                       <ui:AssignOperation.To>
                         <OutArgument x:TypeArguments="x:Boolean">[io_bool_BusinessException]</OutArgument>
                       </ui:AssignOperation.To>
@@ -385,12 +387,12 @@
                         <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>
-                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
                       <ui:AssignOperation.To>
-                        <OutArgument x:TypeArguments="x:String">[io_str_AuxiliaryErrorMessage]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format("Error Message: {0}", exception.Message.TrimStart.TrimEnd)]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[Exception.Message.TrimStart.TrimEnd]</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>
                   </scg:List>
@@ -407,11 +409,10 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="522,94" sap2010:WorkflowViewState.IdRef="Sequence_14">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </Sequence>

@@ -42,18 +42,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "io_str_AuxiliaryErrorMessage",
-      "DisplayName": "io_str_AuxiliaryErrorMessage",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "io_bool_BusinessException",
       "DisplayName": "io_bool_BusinessException",
       "Category": null,
@@ -80,6 +68,30 @@
     {
       "Name": "in_str_ListOfFilesToBeDeleted",
       "DisplayName": "in_str_ListOfFilesToBeDeleted",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_WorkflowName",
+      "DisplayName": "in_str_WorkflowName",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_str_ExceptionAuxiliarInfo",
+      "DisplayName": "io_str_ExceptionAuxiliarInfo",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
