@@ -1,0 +1,6 @@
+{
+  "Name": "WF_ReadConfigFile",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_ReadConfigFile.xaml"
+}

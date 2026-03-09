@@ -1,0 +1,57 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_ReadConfigFile.xaml",
+      "uniqueId": "6717370f-5883-43bb-8483-c10e0e9a45bd",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "in_str_ExecutionEnvironment": {
+            "type": "string"
+          },
+          "in_str_ConfigFilePath": {
+            "type": "string"
+          },
+          "in_str_ConfigSheets": {
+            "type": "string"
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "out_dict_Config": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  ]
+}
