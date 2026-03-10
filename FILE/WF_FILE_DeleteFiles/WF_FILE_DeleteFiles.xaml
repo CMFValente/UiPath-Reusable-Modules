@@ -110,22 +110,26 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="[WF_FILE_DeleteFiles]&#xA;[Deleting a list of specific files from a specific folder.]" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1330,1304" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The puporse of this WF is to delete a list of specific files from a specific folder." DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1330,868" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
+      <Variable x:TypeArguments="x:String" Name="str_ListOfFilesNotDeleted" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="524,1236" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Catch: Delete Specific Files from Folder" sap:VirtualizedContainerService.HintSize="452,814" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="522,890" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Delete Specific Files from Folder" sap:VirtualizedContainerService.HintSize="450,462" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Starting" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[String.Format(&quot;Starting workflow named '{0}'...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -133,7 +137,35 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:LogMessage DisplayName="Log Message: Delete Specific Files from Folder" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Deleting files '{0}' of folder '{1}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+          <ui:MultipleAssign DisplayName="Multiple Assign: Initialize Variables" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[str_ListOfFilesNotDeleted]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:MultipleAssign>
+          <ui:LogMessage DisplayName="Log Message: Delete Specific Files from Folder" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Deleting files '{0}' from folder '{1}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -141,44 +173,58 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Delete Each File" sap:VirtualizedContainerService.HintSize="488,607" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c)]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Delete Each File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="str_CurrentFile" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Delete Current File" sap:VirtualizedContainerService.HintSize="486,472" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Delete Current File" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch DisplayName="Try Catch: Delete Current File" sap:VirtualizedContainerService.HintSize="452,408" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch DisplayName="Try Catch: Delete Current File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <TryCatch.Try>
-                      <Sequence DisplayName="Delete Current File" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence DisplayName="Delete Current File" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="Sequence_8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Delete Current File" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Delete Current File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
                           <ui:RetryScope.ActivityBody>
                             <ActivityAction>
-                              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                              <Sequence DisplayName="Delete Current File" sap:VirtualizedContainerService.HintSize="450,299" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message: Delete Current File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Deleting file named '{0}' from the folder named '{1}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
+                                <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                                <ui:LogMessage DisplayName="Log Message: Delete Current File" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Deleting file '{0}' from folder '{1}'... | Attempt Number: {2}&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -194,20 +240,56 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:DeleteFileX>
-                                <ui:LogMessage DisplayName="Log Message: Current File deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;File named '{0}' was successfully deleted from the folder named '{1}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
+                                <If Condition="[Not File.Exists(Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd))]" DisplayName="If: Check if Current File was successfully deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_1">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                </ui:LogMessage>
+                                  <If.Then>
+                                    <Sequence DisplayName="File Deleted Successfully" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message: Current File deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[String.Format(&quot;File '{0}' was successfully deleted from folder '{1}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:LogMessage>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="File Not Deleted" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message: Current File Not Deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Warn" Message="[String.Format(&quot;File '{0}' was not deleted from folder '{1}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:LogMessage>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
                               </Sequence>
                             </ActivityAction>
                           </ui:RetryScope.ActivityBody>
                           <ui:RetryScope.Condition>
                             <ActivityFunc x:TypeArguments="x:Boolean">
-                              <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True: Validate Existence File" Expression="[Not File.Exists(Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd))]" sap:VirtualizedContainerService.HintSize="426,25" sap2010:WorkflowViewState.IdRef="CheckTrue_1">
+                              <ui:CheckTrue DisplayName="Check True: Validate Existence File" ErrorMessage="[String.Format(&quot;File '{0}' was not deleted from folder '{1}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]" Expression="[Not File.Exists(Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd))]" sap:VirtualizedContainerService.HintSize="426,25" sap2010:WorkflowViewState.IdRef="CheckTrue_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -239,7 +321,7 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message: SE while deleting current file" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[String.Format(&quot;File named '{0}' was not correctly deleted from the folder named '{1}': {2}&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]">
+                            <ui:LogMessage DisplayName="Log Message: Current File Not Deleted" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Error" Message="[String.Format(&quot;File '{0}' was not deleted from folder '{1}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd)]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -247,12 +329,12 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:LogMessage>
-                            <Assign DisplayName="Assign: Establish str_AuxiliaryErrorMessage" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                            <Assign DisplayName="Assign: Add Current File Name to str_ListOfFilesNotDeleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_8">
                               <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String">[str_ListOfFilesNotDeleted]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[String.Format("File named '{0}' was not correctly deleted from the folder named '{1}': {2}", Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Parent.Name.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
+                                <InArgument x:TypeArguments="x:String">[If(String.IsNullOrEmpty(str_ListOfFilesNotDeleted), Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd, String.Concat(str_ListOfFilesNotDeleted.TrimStart.TrimEnd, ",", Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd).TrimStart.TrimEnd))]</InArgument>
                               </Assign.Value>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -261,26 +343,32 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </Assign>
-                            <Throw DisplayName="Throw: SE Deleting Current File" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_1">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </Throw>
                           </Sequence>
                         </ActivityAction>
                       </Catch>
                     </TryCatch.Catches>
                     <TryCatch.Finally>
-                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_6">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Assign_6">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
                       </Sequence>
                     </TryCatch.Finally>
                   </TryCatch>
@@ -289,12 +377,78 @@
             </ui:ForEach.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEach>
-          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="488,57" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <If Condition="[String.IsNullOrEmpty(str_ListOfFilesNotDeleted)]" DisplayName="If: Check if All Files were correctly deleted" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="If_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence DisplayName="All Files Deleted" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message: All Files Deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[String.Format(&quot;All files '{0}' were successfully deleted from folder '{1}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToBeDeleted.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Not All Files Deleted" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message: SE while deleting files" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[String.Format(&quot;Files '{0}' were not deleted from folder '{1}'...&quot;, str_ListOfFilesNotDeleted.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+                <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_10">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[String.Format("Files '{0}' were not deleted from folder '{1}'...", str_ListOfFilesNotDeleted.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_FolderPathOfFilesToBeDeleted.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]</InArgument>
+                  </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Assign>
+                <Throw DisplayName="Throw: SE while deleting files" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Throw>
+              </Sequence>
+            </If.Else>
+          </If>
+          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
@@ -308,7 +462,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="488,48" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -324,7 +478,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="522,25" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_12">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -361,7 +515,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="BUSINESS EXCEPTION" sap:VirtualizedContainerService.HintSize="522,25" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <Sequence DisplayName="BUSINESS EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_13">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -409,7 +563,7 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="522,94" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_14">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
