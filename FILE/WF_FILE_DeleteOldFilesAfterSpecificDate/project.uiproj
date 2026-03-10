@@ -1,0 +1,6 @@
+{
+  "Name": "DeleteOldFilesAfterSpecificDate",
+  "ProjectType": "Process",
+  "Description": "Delete all old files after specific date.",
+  "MainFile": "DeleteOldFilesAfterSpecificDate.xaml"
+}
