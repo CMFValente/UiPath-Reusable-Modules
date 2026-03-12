@@ -14,7 +14,7 @@
           "io_bool_BusinessException": {
             "type": "boolean"
           },
-          "io_str_AuxiliaryErrorMessage": {
+          "io_str_ExceptionAuxiliarInfo": {
             "type": "string"
           },
           "in_str_FolderPathToForceDeleteFiles": {
@@ -94,6 +94,12 @@
             "type": "integer",
             "minimum": -2147483648,
             "maximum": 2147483647
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          },
+          "in_str_PowerShellScriptToForceDeleteFiles": {
+            "type": "string"
           }
         },
         "required": []
@@ -107,7 +113,7 @@
           "io_bool_BusinessException": {
             "type": "boolean"
           },
-          "io_str_AuxiliaryErrorMessage": {
+          "io_str_ExceptionAuxiliarInfo": {
             "type": "string"
           }
         }
