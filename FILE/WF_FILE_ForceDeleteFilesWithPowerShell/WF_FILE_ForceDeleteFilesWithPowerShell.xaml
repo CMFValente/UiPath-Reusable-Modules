@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.in_str_PowerShellScriptToForceDeleteFiles="Remove-Item -Path $FilePath -Force" this:Main.in_str_WorkflowName="TESTE" this:Main.in_ts_RetryInterval="00:00:03" this:Main.in_int32_NumberOfRetries="3" this:Main.in_str_FolderPathToForceDeleteFiles="‪C:\Users\catarina.valente\Desktop" this:Main.in_str_FilesToForceDelete="TESTE.txt,TESTE2.txt" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_str_PowerShellScriptToForceDeleteFiles" Type="InArgument(x:String)" />
     <x:Property Name="in_str_WorkflowName" Type="InArgument(x:String)" />
@@ -8,7 +8,7 @@
     <x:Property Name="io_bool_BusinessException" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_str_ExceptionAuxiliarInfo" Type="InOutArgument(x:String)" />
     <x:Property Name="in_str_FolderPathToForceDeleteFiles" Type="InArgument(x:String)" />
-    <x:Property Name="in_str_FilesToForceDelete" Type="InArgument(x:String)" />
+    <x:Property Name="in_str_ListOfFilesToForceDelete" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -178,7 +178,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:MultipleAssign>
-          <ui:LogMessage DisplayName="Log Message: Force Delete Files with PowerShell" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;Forcing the deletion of files '{0}' stored in folder '{1}' with PowerShell Script '{2}'...&quot;, String.Join(&quot;,&quot;, in_str_FilesToForceDelete.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathToForceDeleteFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, in_str_PowerShellScriptToForceDeleteFiles.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: Force Delete Files with PowerShell" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;Forcing the deletion of files '{0}' stored in folder '{1}' with PowerShell Script '{2}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToForceDelete.TrimStart.TrimEnd.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathToForceDeleteFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, in_str_PowerShellScriptToForceDeleteFiles.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -186,7 +186,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Steps to Force Delete File with PowerShell" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(in_str_FilesToForceDelete.TrimStart.TrimEnd, &quot;,&quot;)]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Steps to Force Delete File with PowerShell" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Split(in_str_ListOfFilesToForceDelete.TrimStart.TrimEnd, &quot;,&quot;)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
@@ -460,7 +460,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message: All Files Deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[String.Format(&quot;All files '{0}' from folder '{1}' were correctly force deleted...&quot;, String.Join(&quot;,&quot;, in_str_FilesToForceDelete.TrimStart.TrimEnd.split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathToForceDeleteFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                <ui:LogMessage DisplayName="Log Message: All Files Deleted" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[String.Format(&quot;All files '{0}' from folder '{1}' were correctly force deleted...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToForceDelete.TrimStart.TrimEnd.split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_FolderPathToForceDeleteFiles.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
