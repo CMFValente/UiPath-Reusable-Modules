@@ -14,13 +14,10 @@
           "io_bool_CheckFlow": {
             "type": "boolean"
           },
-          "io_str_AuxiliaryErrorMessage": {
+          "io_str_ExceptionAuxiliarInfo": {
             "type": "string"
           },
           "in_str_DestinationFolderPath": {
-            "type": "string"
-          },
-          "in_str_OriginFolderPath": {
             "type": "string"
           },
           "in_ts_RetryInterval": {
@@ -97,6 +94,12 @@
           },
           "in_str_ListOfFilesToCopy": {
             "type": "string"
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          },
+          "in_str_SourceFolderPath": {
+            "type": "string"
           }
         },
         "required": []
@@ -110,7 +113,7 @@
           "io_bool_CheckFlow": {
             "type": "boolean"
           },
-          "io_str_AuxiliaryErrorMessage": {
+          "io_str_ExceptionAuxiliarInfo": {
             "type": "string"
           }
         }

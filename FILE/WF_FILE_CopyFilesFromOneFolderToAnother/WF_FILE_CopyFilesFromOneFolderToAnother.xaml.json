@@ -18,18 +18,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_str_OriginFolderPath",
-      "DisplayName": "in_str_OriginFolderPath",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "io_bool_BusinessException",
       "DisplayName": "io_bool_BusinessException",
       "Category": null,
@@ -44,18 +32,6 @@
     {
       "Name": "io_bool_CheckFlow",
       "DisplayName": "io_bool_CheckFlow",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "io_str_AuxiliaryErrorMessage",
-      "DisplayName": "io_str_AuxiliaryErrorMessage",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
@@ -92,6 +68,42 @@
     {
       "Name": "in_str_ListOfFilesToCopy",
       "DisplayName": "in_str_ListOfFilesToCopy",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_WorkflowName",
+      "DisplayName": "in_str_WorkflowName",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_str_ExceptionAuxiliarInfo",
+      "DisplayName": "io_str_ExceptionAuxiliarInfo",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_SourceFolderPath",
+      "DisplayName": "in_str_SourceFolderPath",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
