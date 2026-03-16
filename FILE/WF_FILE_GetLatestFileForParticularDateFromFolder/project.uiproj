@@ -1,0 +1,6 @@
+{
+  "Name": "GetLatestFileForParticularDateFromFolder",
+  "ProjectType": "Process",
+  "Description": "Get Latest File with a specific date from a particular folder. ",
+  "MainFile": "GetLatestFileForParticularDateFromFolder.xaml"
+}
