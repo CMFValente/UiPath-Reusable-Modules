@@ -1,7 +1,7 @@
 {
-  "name": "BlankProcess",
+  "name": "WF_FILE_GetLatestFileFromFolder",
   "projectId": "2fe383fb-ba76-422b-8e1c-e9a657482d2b",
-  "description": "Blank Process",
+  "description": "",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.11.4]",
@@ -36,7 +36,6 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
