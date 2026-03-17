@@ -4,8 +4,6 @@
     <x:Property Name="io_bool_BusinessException" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="io_str_ExceptionAuxiliarInfo" Type="InOutArgument(x:String)" />
-    <x:Property Name="in_ts_RetryInterval" Type="InArgument(x:TimeSpan)" />
-    <x:Property Name="in_int32_NumberOfRetries" Type="InArgument(x:Int32)" />
     <x:Property Name="in_str_DestinationFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_str_SourceFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_str_ListOfFilesToCopy" Type="InArgument(x:String)" />
@@ -112,10 +110,9 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to copy specific files from a source folder to a destination folder." DisplayName="WF_FILE_CopyFilesFromOneFolderToAntoher" sap:VirtualizedContainerService.HintSize="1222,864" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to copy specific files from a source folder to a destination folder." DisplayName="WF_FILE_CopyFilesFromOneFolderToAntoher" sap:VirtualizedContainerService.HintSize="1222,884" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_ListOfFilesNotCopied" />
-      <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -123,7 +120,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch: Copying Files From One Folder to Another" sap:VirtualizedContainerService.HintSize="452,810" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Catch: Copying Files From One Folder to Another" sap:VirtualizedContainerService.HintSize="452,830" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -131,7 +128,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Copying Files From One Folder to Another" sap:VirtualizedContainerService.HintSize="450,458" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Copying Files From One Folder to Another" sap:VirtualizedContainerService.HintSize="450,478" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -146,35 +143,21 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:MultipleAssign DisplayName="Multiple Assign: Initialize Variables" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
-            <ui:MultipleAssign.AssignOperations>
-              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
-                  <ui:AssignOperation.To>
-                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
-                  </ui:AssignOperation.To>
-                  <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:Int32">0</InArgument>
-                  </ui:AssignOperation.Value>
-                </ui:AssignOperation>
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
-                  <ui:AssignOperation.To>
-                    <OutArgument x:TypeArguments="x:String">[str_ListOfFilesNotCopied]</OutArgument>
-                  </ui:AssignOperation.To>
-                  <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
-                  </ui:AssignOperation.Value>
-                </ui:AssignOperation>
-              </scg:List>
-            </ui:MultipleAssign.AssignOperations>
+          <Assign DisplayName="Assign: Set str_ListOfFilesNotCopied value to Nothing" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[str_ListOfFilesNotCopied]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[""]</InArgument>
+            </Assign.Value>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ui:MultipleAssign>
-          <ui:LogMessage DisplayName="Log Message: Copying Files From One Folder to Another" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Copying files '{0}' from source folder '{1}' to destination folder '{2}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToCopy.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+          </Assign>
+          <ui:LogMessage DisplayName="Log Message: Copying Files From One Folder to Another" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Copying files '{0}' from source folder '{1}' to destination folder '{2}'...&quot;, String.Join(&quot;,&quot;, in_str_ListOfFilesToCopy.Split(&quot;,&quot;c).Select(Function(f) System.IO.Path.GetFileNameWithoutExtension(f.Trim)).ToArray), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -182,20 +165,20 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Copy each file mentioned in in_str_ListOfFilesPathsToCopy from Origin Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(in_str_ListOfFilesToCopy.TrimStart.TrimEnd, &quot;,&quot;c)]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Copy each file mentioned in in_str_ListOfFilesPathsToCopy from Origin Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Split(in_str_ListOfFilesToCopy.TrimStart.TrimEnd, &quot;,&quot;c)]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="str_CurrentFile" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Copy Current File From Source Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="638,25" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Copy Current File From Source Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="612,116" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch DisplayName="Try Catch: Copy Current File from Origin Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="604,52" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch DisplayName="Try Catch: Copy Current File from Origin Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="578,52" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -203,119 +186,81 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <TryCatch.Try>
-                      <Sequence DisplayName="Copy Current File From Source Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="487,25" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <Sequence DisplayName="Copy Current File From Source Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="487,222" sap2010:WorkflowViewState.IdRef="Sequence_7">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Copy Current File from Origin Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="453,48" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
-                          <ui:RetryScope.ActivityBody>
-                            <ActivityAction>
-                              <Sequence DisplayName="Copy Current File From Source Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="502,25" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="468,61" sap2010:WorkflowViewState.IdRef="Assign_7">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
-                                  </Assign.Value>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Assign>
-                                <ui:LogMessage DisplayName="Log Message: Copy Current File" sap:VirtualizedContainerService.HintSize="468,61" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Copying file '{0}' from source folder '{1}' to destination folder '{2}'... | Attempt Number: {3}&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:LogMessage>
-                                <ui:CopyFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_str_DestinationFolderPath.TrimStart.TrimEnd]" DisplayName="Copy File: Copy Current File to Destination Folder" sap:VirtualizedContainerService.HintSize="468,61" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_SourceFolderPath.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd)]">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:CopyFile>
-                                <If Condition="[File.Exists(Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_DestinationFolderPath.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd))]" DisplayName="If: Check if Current File was correctly copied from Source Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="468,52" sap2010:WorkflowViewState.IdRef="If_1">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <If.Then>
-                                    <Sequence DisplayName="File Correctly Copied" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message: Current File successfully copied" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;File '{0}' was correctly copied from source folder '{1}' to destination folder '{2}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:LogMessage>
-                                    </Sequence>
-                                  </If.Then>
-                                  <If.Else>
-                                    <Sequence DisplayName="File Not Copied" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_16">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message: Current File not copied" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Warn" Message="[String.Format(&quot;File '{0}' was not copied from source folder '{1}' to destination folder '{2}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:LogMessage>
-                                    </Sequence>
-                                  </If.Else>
-                                </If>
-                              </Sequence>
-                            </ActivityAction>
-                          </ui:RetryScope.ActivityBody>
-                          <ui:RetryScope.Condition>
-                            <ActivityFunc x:TypeArguments="x:Boolean">
-                              <ui:CheckTrue DisplayName="Check True: Verify if Current File exists" ErrorMessage="[String.Format(&quot;File '{0}' was not copied from source folder '{1}' to destination folder '{2}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]" Expression="[File.Exists(Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_DestinationFolderPath.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd))]" sap:VirtualizedContainerService.HintSize="478,25" sap2010:WorkflowViewState.IdRef="CheckTrue_1">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </ui:CheckTrue>
-                            </ActivityFunc>
-                          </ui:RetryScope.Condition>
+                        <ui:LogMessage DisplayName="Log Message: Copy Current File" sap:VirtualizedContainerService.HintSize="453,57" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Copying file '{0}' from source folder '{1}' to destination folder '{2}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </ui:RetryScope>
+                        </ui:LogMessage>
+                        <ui:CopyFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_str_DestinationFolderPath.TrimStart.TrimEnd]" DisplayName="Copy File: Copy Current File to Destination Folder" sap:VirtualizedContainerService.HintSize="453,57" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_SourceFolderPath.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd)]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CopyFile>
+                        <If Condition="[File.Exists(Path.Combine(System.Text.RegularExpressions.Regex.Replace(in_str_DestinationFolderPath.TrimStart.TrimEnd, &quot;[^\x20-\x7E]&quot;, &quot;&quot;).Replace(&quot;\\&quot;, &quot;\&quot;).TrimStart.TrimEnd, str_CurrentFile.TrimStart.TrimEnd))]" DisplayName="If: Check if Current File was correctly copied from Source Folder to Destination Folder" sap:VirtualizedContainerService.HintSize="453,48" sap2010:WorkflowViewState.IdRef="If_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="File Correctly Copied" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message: Current File successfully copied" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;File '{0}' was correctly copied from source folder '{1}' to destination folder '{2}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:LogMessage>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="File Not Copied" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message: Current File not copied" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[String.Format(&quot;File '{0}' was not copied from source folder '{1}' to destination folder '{2}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:LogMessage>
+                              <Throw DisplayName="Throw: Current File not copied" Exception="[New SystemException(String.Format(&quot;File '{0}' was not copied from source folder '{1}' to destination folder '{2}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd))]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="Throw_3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Throw>
+                            </Sequence>
+                          </If.Else>
+                        </If>
                       </Sequence>
                     </TryCatch.Try>
                     <TryCatch.Catches>
@@ -331,14 +276,6 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message: Current File Not Copied" sap:VirtualizedContainerService.HintSize="453,57" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Error" Message="[String.Format(&quot;File '{0}' was not copied from source folder '{1}' to destination folder '{2}'...&quot;, Path.GetFileNameWithoutExtension(str_CurrentFile.TrimStart.TrimEnd), New System.IO.DirectoryInfo(in_str_SourceFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd, New System.IO.DirectoryInfo(in_str_DestinationFolderPath.TrimStart.TrimEnd).Name.TrimStart.TrimEnd)]">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </ui:LogMessage>
                             <Assign DisplayName="Assign: Add Current File Name to str_ListOfFilesNotCopied" sap:VirtualizedContainerService.HintSize="453,52" sap2010:WorkflowViewState.IdRef="Assign_6">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[str_ListOfFilesNotCopied]</OutArgument>
@@ -365,20 +302,6 @@
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="453,52" sap2010:WorkflowViewState.IdRef="Assign_8">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
-                          </Assign.Value>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </Assign>
                       </Sequence>
                     </TryCatch.Finally>
                   </TryCatch>
@@ -458,7 +381,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
             </Assign.To>
@@ -472,7 +395,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
+          <ui:LogMessage DisplayName="Log Message: WF Success" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[String.Format(&quot;Workflow named '{0}' executed with success...&quot;, in_str_WorkflowName.TrimStart.TrimEnd)]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
