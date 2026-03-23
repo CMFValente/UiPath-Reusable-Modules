@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="in_arr_KeysToAddToDictionary" Type="InArgument(s:String[])" />
     <x:Property Name="in_arr_ValuesToAddToDictionary" Type="InArgument(s:String[])" />
-    <x:Property Name="io_dict_DictionaryToRemoveKeys" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_dict_DictionaryToAddKeys" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_bool_CheckFlow" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="in_str_WorkflowName" Type="InArgument(x:String)" />
     <x:Property Name="io_str_ExceptionAuxiliarInfo" Type="InOutArgument(x:String)" />
@@ -212,7 +212,7 @@
                         </ui:LogMessage>
                         <Assign DisplayName="Assign: Add Current Key-Value Pair to Dictionary" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="Assign_3">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:Object">[io_dict_DictionaryToRemoveKeys(str_CurrentKeyToAddToDicitionary.TrimStart.TrimEnd)]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Object">[io_dict_DictionaryToAddKeys(str_CurrentKeyToAddToDicitionary.TrimStart.TrimEnd)]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="x:String">[in_arr_ValuesToAddToDictionary(int32_CurrentKeyIndex).TrimStart.TrimEnd]</InArgument>
