@@ -1,0 +1,6 @@
+{
+  "Name": "WF_DICTIONARY_RemoveSpecificKeysFromDictionary",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_DICTIONARY_RemoveSpecificKeysFromDictionary.xaml"
+}

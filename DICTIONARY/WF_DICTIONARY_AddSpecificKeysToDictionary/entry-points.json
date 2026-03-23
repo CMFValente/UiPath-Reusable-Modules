@@ -1,0 +1,10 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_DICTIONARY_RemoveSpecificKeysFromDictionary.xaml",
+      "uniqueId": "50b20c43-fde1-477a-814a-212393493f9e",
+      "type": "process"
+    }
+  ]
+}
