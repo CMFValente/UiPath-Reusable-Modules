@@ -1,0 +1,60 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_DICITONARY_RemoveSpecificKeysFromDictionary.xaml",
+      "uniqueId": "5148a1ae-c13d-4494-8e08-0aab22e4efb0",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_dict_DictionaryToRemoveKeyValuePairs": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "in_arr_KeysToRemove": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_dict_DictionaryToRemoveKeyValuePairs": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  ]
+}
