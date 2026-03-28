@@ -1,0 +1,23 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": null,
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "WF_FTP_DownloadFiles.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_ListOfFTPFilesNotDownloaded&Sequence_12",
+        "int32_AttemptRetryNumber&Sequence_12"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}

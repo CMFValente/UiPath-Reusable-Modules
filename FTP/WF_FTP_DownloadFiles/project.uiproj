@@ -1,0 +1,6 @@
+{
+  "Name": "WF_FTP_DownloadFiles",
+  "ProjectType": "Process",
+  "Description": "Blank Process",
+  "MainFile": "WF_FTP_DownloadFiles.xaml"
+}
