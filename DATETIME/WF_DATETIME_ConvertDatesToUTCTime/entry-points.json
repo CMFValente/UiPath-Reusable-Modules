@@ -1,0 +1,63 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "WF_DATETIME_ConvertDatesToUTCTime.xaml",
+      "uniqueId": "45fad288-0d76-4226-875f-a5ef68cfb408",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_arr_DatesConvertedToUTCTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "in_str_FinalDateFormat": {
+            "type": "string"
+          },
+          "in_str_ActualDateFormat": {
+            "type": "string"
+          },
+          "in_str_SystemTimeZone": {
+            "type": "string"
+          },
+          "in_str_WorkflowName": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_arr_DatesConvertedToUTCTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_ExceptionAuxiliarInfo": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  ]
+}
