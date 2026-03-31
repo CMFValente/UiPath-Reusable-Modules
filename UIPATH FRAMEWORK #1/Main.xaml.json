@@ -1,0 +1,117 @@
+{
+  "DisplayName": "Main",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_str_ExceptionLanguage",
+      "DisplayName": "in_str_ExceptionLanguage",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "PT",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ExecutionEnvironment",
+      "DisplayName": "in_str_ExecutionEnvironment",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "PRD",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ConfigSheets",
+      "DisplayName": "in_str_ConfigSheets",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ConfigFilePath",
+      "DisplayName": "in_str_ConfigFilePath",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Data\\Config.xlsx",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ConfigSheetAssets",
+      "DisplayName": "in_str_ConfigSheetAssets",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Assets",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_bool_DownloadConfigStorageBucket",
+      "DisplayName": "in_bool_DownloadConfigStorageBucket",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "False",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ProcessName",
+      "DisplayName": "in_str_ProcessName",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "Framework_Devoteam",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ProcessStorageBucketName",
+      "DisplayName": "in_str_ProcessStorageBucketName",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "CustomFrameworkBucket",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_bool_DownloadReportStorageBucket",
+      "DisplayName": "in_bool_DownloadReportStorageBucket",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": "False",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}

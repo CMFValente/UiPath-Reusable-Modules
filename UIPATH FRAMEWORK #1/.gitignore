@@ -1,0 +1,35 @@
+# ----------------------------
+# UiPath / Studio user files
+# ----------------------------
+*.user
+*.local
+*.tmp
+*.temp
+*.bak
+*.log
+project/
+tmh/
+Exceptions_Screenshots/
+
+# Studio settings / per-user state
+.project.user.json
+settings/
+entities/
+objects/
+templates/
+
+# ----------------------------
+# Windows / OS noise
+# ----------------------------
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ----------------------------
+# Build / runtime artifacts
+# ----------------------------
+bin/
+obj/
+.nuget/
+packages/
+*.nupkg

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "8da2bc47-e5d6-4d2f-8868-ac4c7bc3e1c2",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_str_ExceptionLanguage": {
+            "type": "string",
+            "x-default-expression": "\"PT\"",
+            "default": "PT"
+          },
+          "in_str_ExecutionEnvironment": {
+            "type": "string",
+            "x-default-expression": "\"PRD\"",
+            "default": "PRD"
+          },
+          "in_str_ConfigSheets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "x-default-expression": "{\"Settings\", \"Constants\"}"
+          },
+          "in_str_ConfigFilePath": {
+            "type": "string",
+            "x-default-expression": "\"Data\\Config.xlsx\"",
+            "default": "Data\\Config.xlsx"
+          },
+          "in_str_ConfigSheetAssets": {
+            "type": "string",
+            "x-default-expression": "\"Assets\"",
+            "default": "Assets"
+          },
+          "in_bool_DownloadConfigStorageBucket": {
+            "type": "boolean",
+            "x-default-expression": "False",
+            "default": false
+          },
+          "in_str_ProcessName": {
+            "type": "string",
+            "x-default-expression": "\"Framework_Devoteam\"",
+            "default": "Framework_Devoteam"
+          }
+        },
+        "required": []
+      }
+    }
+  ]
+}
