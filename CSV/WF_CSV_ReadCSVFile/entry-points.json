@@ -17,9 +17,6 @@
           "io_bool_BusinessException": {
             "type": "boolean"
           },
-          "in_str_CSVDelimiter": {
-            "type": "string"
-          },
           "in_str_CSVFilePathToBeRead": {
             "type": "string"
           },
@@ -100,6 +97,9 @@
           },
           "in_bool_CSVContainsHeaders": {
             "type": "boolean"
+          },
+          "in_str_CSVDelimiterType": {
+            "type": "string"
           }
         },
         "required": []

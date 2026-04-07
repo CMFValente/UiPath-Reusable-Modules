@@ -6,18 +6,6 @@
   "OriginalIconFileName": null,
   "Arguments": [
     {
-      "Name": "in_str_CSVDelimiter",
-      "DisplayName": "in_str_CSVDelimiter",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_str_CSVFilePathToBeRead",
       "DisplayName": "in_str_CSVFilePathToBeRead",
       "Category": null,
@@ -116,6 +104,18 @@
     {
       "Name": "in_bool_CSVContainsHeaders",
       "DisplayName": "in_bool_CSVContainsHeaders",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_CSVDelimiterType",
+      "DisplayName": "in_str_CSVDelimiterType",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
