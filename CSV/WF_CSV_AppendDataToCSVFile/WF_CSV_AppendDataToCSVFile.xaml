@@ -1,5 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="WF_TemplateGeneric" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_str_GeneralExceptionMessage" Type="InArgument(x:String)" />
     <x:Property Name="in_str_CSVDelimiterType" Type="InArgument(x:String)" />
     <x:Property Name="in_str_CSVFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_dt_DataToAppendToCSVFile" Type="InArgument(sd:DataTable)" />
@@ -135,7 +136,7 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to append data to a CSV file that already exists.&#xA;The input argument called &quot;in_str_CSVDelimiterType&quot; must contain one of the following values: Comma, Tab, Pipe, Caret or Semicolon." DisplayName="WF_CSV_AppendDataToCSVFile" sap:VirtualizedContainerService.HintSize="1281,842" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The purpose of this WF is to append data to a CSV file that already exists.&#xA;The input argument called &quot;in_str_CSVDelimiterType&quot; must contain one of the following values: Comma, Tab, Pipe, Caret or Semicolon." DisplayName="WF_CSV_AppendDataToCSVFile" sap:VirtualizedContainerService.HintSize="1281,952" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int32_AttemptRetryNumber" />
     </Sequence.Variables>
@@ -145,7 +146,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch: Append Data to CSV File" sap:VirtualizedContainerService.HintSize="486,774" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+    <TryCatch DisplayName="Try Catch: Append Data to CSV File" sap:VirtualizedContainerService.HintSize="486,884" sap2010:WorkflowViewState.IdRef="TryCatch_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -153,7 +154,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Append Data to CSV File" sap:VirtualizedContainerService.HintSize="484,430" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Append Data to CSV File" sap:VirtualizedContainerService.HintSize="484,605" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -168,7 +169,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <Sequence sap2010:Annotation.AnnotationText="The purpose of this sequence is to validate if the following input arguments are correctly filled in and not empty:&#xD;&#xA;    1. in_str_CSVDemiliterType;&#xD;&#xA;    2. in_str_CSVFilePath;&#xD;&#xA;    3. in_dt_DataToAppendToCSVFile." DisplayName="Validate Input Arguments" sap:VirtualizedContainerService.HintSize="450,151" sap2010:WorkflowViewState.IdRef="Sequence_37">
+          <Sequence sap2010:Annotation.AnnotationText="The purpose of this sequence is to validate if the following input arguments are correctly filled in and not empty:&#xA;    1. in_str_CSVDemiliterType;&#xA;    2. in_str_CSVFilePath;&#xA;    3. in_dt_DataToAppendToCSVFile." DisplayName="Validate Input Arguments" sap:VirtualizedContainerService.HintSize="450,151" sap2010:WorkflowViewState.IdRef="Sequence_37">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -184,7 +185,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
-            <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Conditions:&#xD;&#xA;    1. Input Arguments - in_str_CSVDelimiterType, in_str_CSVFilePath, in_dt_DataToAppendToCSVFile - are Correctly Filled In =&gt; Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xD;&#xA;&#xD;&#xA;    2. Input Argument - in_str_CSVDelimiterType - Empty =&gt; String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xD;&#xA;&#xD;&#xA;    3. Input Argument - in_str_CSVFilePath - Empty =&gt; Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xD;&#xA;&#xD;&#xA;    4. Input Argument - in_dt_DataToAppendToCSVFile - Empty =&gt; Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xD;&#xA;&#xD;&#xA;    5. Input Arguments - in_str_CSVDemiliterType, in_str_CSVFilePath - Empty =&gt; String.IsNullOrEmpty(in_str_CSVDelimiterType) And String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xD;&#xA;&#xD;&#xA;    6. Input Arguments - in_str_CSVDemiliterType, in_dt_DataToAppendToCSVFile - Empty =&gt; String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xD;&#xA;&#xD;&#xA;    7. Input Arguments - in_str_CSVFilePath, in_dt_DataToAppendToCSVFile - Empty =&gt; Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And String.IsNullOrEmpty(in_str_CSVFilePath) And in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xD;&#xA;&#xD;&#xA;    8. Input Arguments - in_str_CSVDelimiterType, in_str_CSVFilePath, in_dt_DataToAppendToCSVFile - Empty =&gt; String.IsNullOrEmpty(in_str_CSVDelimiterType) And String.IsNullOrEmpty(in_str_CSVFilePath) And in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0." Condition="[Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0]" DisplayName="Else If: Validate if All Input Arguments are Correctly Filled In" sap:VirtualizedContainerService.HintSize="416,926" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+            <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Conditions:&#xA;    1. Input Arguments - in_str_CSVDelimiterType, in_str_CSVFilePath, in_dt_DataToAppendToCSVFile - are Correctly Filled In =&gt; Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xA;&#xA;    2. Input Argument - in_str_CSVDelimiterType - Empty =&gt; String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xA;&#xA;    3. Input Argument - in_str_CSVFilePath - Empty =&gt; Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xA;&#xA;    4. Input Argument - in_dt_DataToAppendToCSVFile - Empty =&gt; Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xA;&#xA;    5. Input Arguments - in_str_CSVDemiliterType, in_str_CSVFilePath - Empty =&gt; String.IsNullOrEmpty(in_str_CSVDelimiterType) And String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xA;&#xA;    6. Input Arguments - in_str_CSVDemiliterType, in_dt_DataToAppendToCSVFile - Empty =&gt; String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xA;&#xA;    7. Input Arguments - in_str_CSVFilePath, in_dt_DataToAppendToCSVFile - Empty =&gt; Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And String.IsNullOrEmpty(in_str_CSVFilePath) And in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0;&#xA;&#xA;    8. Input Arguments - in_str_CSVDelimiterType, in_str_CSVFilePath, in_dt_DataToAppendToCSVFile - Empty =&gt; String.IsNullOrEmpty(in_str_CSVDelimiterType) And String.IsNullOrEmpty(in_str_CSVFilePath) And in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0." Condition="[Not String.IsNullOrEmpty(in_str_CSVDelimiterType) And Not String.IsNullOrEmpty(in_str_CSVFilePath) And Not in_dt_DataToAppendToCSVFile.Rows.Count &lt;= 0]" DisplayName="Else If: Validate if All Input Arguments are Correctly Filled In" sap:VirtualizedContainerService.HintSize="416,926" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
               <ui:IfElseIfV2.Else>
                 <Sequence DisplayName="Input Arguments - in_str_CSVDelimiterType, in_str_CSVFilePath, in_dt_DataToAppendToCSVFile - Empty" sap:VirtualizedContainerService.HintSize="1029,25" sap2010:WorkflowViewState.IdRef="Sequence_39">
                   <sap:WorkflowViewStateService.ViewState>
@@ -508,22 +509,372 @@
               </ui:IfElseIfV2.Then>
             </ui:IfElseIfV2>
           </Sequence>
-          <TryCatch DisplayName="Try Catch: Append Data to CSV File" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+          <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+            </Assign.Value>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <TryCatch sap2010:Annotation.AnnotationText="Firstly, append data to CSV file using Modern Activities. If an unexpected error occurrs, try again to appedn data to CSV file with Classic Activities." DisplayName="Try Catch: Append Data to CSV File using Modern/Classic Activities" sap:VirtualizedContainerService.HintSize="450,118" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Append Data to CSV File" sap:VirtualizedContainerService.HintSize="450,283" sap2010:WorkflowViewState.IdRef="Sequence_34">
+              <Sequence DisplayName="Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="474,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="440,48" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="450,222" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                        <ui:LogMessage DisplayName="Log Message: Append Data to CSV File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;Appending data to CSV file named '{0}' using Modern Activities... | Attempt Number: {1}&quot;, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                        <Switch x:TypeArguments="x:String" DisplayName="Switch: Append Data to CSV File according with the corresponding delimiter type" Expression="[in_str_CSVDelimiterType.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                          <Switch.Default>
+                            <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </Switch.Default>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence x:Key="COMMA" DisplayName="Append Data to CSV File with COMMA Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Write CSV: Append Data to CSV File with COMMA Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_2" ShouldQuote="True">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendWriteCsvFile>
+                          </Sequence>
+                          <Sequence x:Key="SEMICOLON" DisplayName="Append Data to CSV File with SEMICOLON Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Semicolon" DelimitatorForViewModel="Semicolon" DisplayName="Write CSV: Append Data to CSV File with SEMICOLON Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_3" ShouldQuote="True">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendWriteCsvFile>
+                          </Sequence>
+                          <Sequence x:Key="TAB" DisplayName="Append Data to CSV File with TAB Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Tab" DelimitatorForViewModel="Tab" DisplayName="Write CSV: Append Data to CSV File with TAB Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_4" ShouldQuote="True">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendWriteCsvFile>
+                          </Sequence>
+                          <Sequence x:Key="CARET" DisplayName="Append Data to CSV File with CARET Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Caret" DelimitatorForViewModel="Caret" DisplayName="Write CSV: Append Data to CSV File with CARET Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_5" ShouldQuote="True">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendWriteCsvFile>
+                          </Sequence>
+                          <Sequence x:Key="PIPE" DisplayName="Append Data to CSV File with PIPE Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Pipe" DelimitatorForViewModel="Pipe" DisplayName="Write CSV: Append Data to CSV File with PIPE Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_6" ShouldQuote="True">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendWriteCsvFile>
+                          </Sequence>
+                        </Switch>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                  </ui:RetryScope.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:RetryScope>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Append Data to CSV File using Classic Activities" sap:VirtualizedContainerService.HintSize="474,25" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="440,57" sap2010:WorkflowViewState.IdRef="Assign_6">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <ui:LogMessage DisplayName="Log Message: Append Data to CSV File using Classic Activities" sap:VirtualizedContainerService.HintSize="440,57" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Warn" Message="[String.Format(&quot;Occurred the error - '{0}' - while appending data to the CSV file named '{1}' using Modern Activities. Trying again to append data to the CSV file using Classic Activities...&quot;, exception.Message.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LogMessage>
+                    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="440,48" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
+                      <ui:RetryScope.ActivityBody>
+                        <ActivityAction>
+                          <Sequence DisplayName="Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="450,222" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_5">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
+                              </Assign.Value>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Assign>
+                            <ui:LogMessage DisplayName="Log Message: Append Data to CSV File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[String.Format(&quot;Appending data to CSV file named '{0}' using Classic Activities... | Attempt Number: {1}&quot;, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LogMessage>
+                            <Switch x:TypeArguments="x:String" DisplayName="Switch: Append Data to CSV File according with the corresponding delimiter type" Expression="[in_str_CSVDelimiterType.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                              <Switch.Default>
+                                <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </Switch.Default>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Sequence x:Key="COMMA" DisplayName="Append Data to CSV File with COMMA Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Comma" DisplayName="Append to CSV: Append Data to CSV File with COMMA Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_1">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendCsvFile>
+                              </Sequence>
+                              <Sequence x:Key="SEMICOLON" DisplayName="Append Data to CSV File with SEMICOLON Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Semicolon" DisplayName="Append to CSV: Append Data to CSV File with SEMICOLON Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_2">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendCsvFile>
+                              </Sequence>
+                              <Sequence x:Key="TAB" DisplayName="Append Data to CSV File with TAB Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Tab" DisplayName="Append to CSV: Append Data to CSV File with TAB Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_4">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendCsvFile>
+                              </Sequence>
+                              <Sequence x:Key="CARET" DisplayName="Append Data to CSV File with CARET Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Caret" DisplayName="Append to CSV: Append Data to CSV File with CARET Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendCsvFile>
+                              </Sequence>
+                              <Sequence x:Key="PIPE" DisplayName="Append Data to CSV File with PIPE Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Pipe" DisplayName="Append to CSV: Append Data to CSV File with PIPE Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_6">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendCsvFile>
+                              </Sequence>
+                            </Switch>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:RetryScope.ActivityBody>
+                      <ui:RetryScope.Condition>
+                        <ActivityFunc x:TypeArguments="x:Boolean" />
+                      </ui:RetryScope.Condition>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:RetryScope>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+            <TryCatch.Finally>
+              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="474,108" sap2010:WorkflowViewState.IdRef="Sequence_19">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="440,48" sap2010:WorkflowViewState.IdRef="Assign_7">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
                   </Assign.To>
@@ -537,442 +888,17 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </Assign>
-                <TryCatch sap2010:Annotation.AnnotationText="Firstly, append data to CSV file using Modern Activities. If an unexpected error occurrs, try again to appedn data to CSV file with Classic Activities." DisplayName="Try Catch: Append Data to CSV File using Modern/Classic Activities" sap:VirtualizedContainerService.HintSize="416,118" sap2010:WorkflowViewState.IdRef="TryCatch_5">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch.Try>
-                    <Sequence DisplayName="Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="474,25" sap2010:WorkflowViewState.IdRef="Sequence_17">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="440,48" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
-                        <ui:RetryScope.ActivityBody>
-                          <ActivityAction>
-                            <Sequence DisplayName="Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="450,222" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_4">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
-                                </Assign.Value>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </Assign>
-                              <ui:LogMessage DisplayName="Log Message: Append Data to CSV File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[String.Format(&quot;Appending data to CSV file named '{0}' using Modern Activities... | Attempt Number: {1}&quot;, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </ui:LogMessage>
-                              <Switch x:TypeArguments="x:String" DisplayName="Switch: Append Data to CSV File according with the corresponding delimiter type" Expression="[in_str_CSVDelimiterType.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-                                <Switch.Default>
-                                  <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </Sequence>
-                                </Switch.Default>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Sequence x:Key="COMMA" DisplayName="Append Data to CSV File with COMMA Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Write CSV: Append Data to CSV File with COMMA Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_2" ShouldQuote="True">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:AppendWriteCsvFile>
-                                </Sequence>
-                                <Sequence x:Key="SEMICOLON" DisplayName="Append Data to CSV File with SEMICOLON Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Semicolon" DelimitatorForViewModel="Semicolon" DisplayName="Write CSV: Append Data to CSV File with SEMICOLON Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_3" ShouldQuote="True">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:AppendWriteCsvFile>
-                                </Sequence>
-                                <Sequence x:Key="TAB" DisplayName="Append Data to CSV File with TAB Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Tab" DelimitatorForViewModel="Tab" DisplayName="Write CSV: Append Data to CSV File with TAB Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_4" ShouldQuote="True">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:AppendWriteCsvFile>
-                                </Sequence>
-                                <Sequence x:Key="CARET" DisplayName="Append Data to CSV File with CARET Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Caret" DelimitatorForViewModel="Caret" DisplayName="Write CSV: Append Data to CSV File with CARET Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_5" ShouldQuote="True">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:AppendWriteCsvFile>
-                                </Sequence>
-                                <Sequence x:Key="PIPE" DisplayName="Append Data to CSV File with PIPE Delimiter" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Append" DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Pipe" DelimitatorForViewModel="Pipe" DisplayName="Write CSV: Append Data to CSV File with PIPE Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_6" ShouldQuote="True">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:AppendWriteCsvFile>
-                                </Sequence>
-                              </Switch>
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:RetryScope.ActivityBody>
-                        <ui:RetryScope.Condition>
-                          <ActivityFunc x:TypeArguments="x:Boolean" />
-                        </ui:RetryScope.Condition>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:RetryScope>
-                    </Sequence>
-                  </TryCatch.Try>
-                  <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_7">
-                      <ActivityAction x:TypeArguments="s:Exception">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Append Data to CSV File using Classic Activities" sap:VirtualizedContainerService.HintSize="474,25" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="440,57" sap2010:WorkflowViewState.IdRef="Assign_6">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
-                            </Assign.Value>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Assign>
-                          <ui:LogMessage DisplayName="Log Message: Append Data to CSV File using Classic Activities" sap:VirtualizedContainerService.HintSize="440,57" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Warn" Message="[String.Format(&quot;Occurred the error - '{0}' - while appending data to the CSV file named '{1}' using Modern Activities. Trying again to append data to the CSV file using Classic Activities...&quot;, exception.Message.TrimStart.TrimEnd, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:LogMessage>
-                          <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope: Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="440,48" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_int32_NumberOfRetries]" RetryInterval="[in_ts_RetryInterval]">
-                            <ui:RetryScope.ActivityBody>
-                              <ActivityAction>
-                                <Sequence DisplayName="Append Data to CSV File using Modern Activities" sap:VirtualizedContainerService.HintSize="450,222" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign DisplayName="Assign: Increment int32_AttemptRetryNumber value" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="Assign_5">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber + 1]</InArgument>
-                                    </Assign.Value>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </Assign>
-                                  <ui:LogMessage DisplayName="Log Message: Append Data to CSV File" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[String.Format(&quot;Appending data to CSV file named '{0}' using Classic Activities... | Attempt Number: {1}&quot;, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, int32_AttemptRetryNumber.ToString.TrimStart.TrimEnd)]">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:LogMessage>
-                                  <Switch x:TypeArguments="x:String" DisplayName="Switch: Append Data to CSV File according with the corresponding delimiter type" Expression="[in_str_CSVDelimiterType.ToUpper.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-                                    <Switch.Default>
-                                      <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </Sequence>
-                                    </Switch.Default>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <Sequence x:Key="COMMA" DisplayName="Append Data to CSV File with COMMA Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Comma" DisplayName="Append to CSV: Append Data to CSV File with COMMA Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_1">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:AppendCsvFile>
-                                    </Sequence>
-                                    <Sequence x:Key="SEMICOLON" DisplayName="Append Data to CSV File with SEMICOLON Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_28">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Semicolon" DisplayName="Append to CSV: Append Data to CSV File with SEMICOLON Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_2">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:AppendCsvFile>
-                                    </Sequence>
-                                    <Sequence x:Key="TAB" DisplayName="Append Data to CSV File with TAB Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Tab" DisplayName="Append to CSV: Append Data to CSV File with TAB Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_4">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:AppendCsvFile>
-                                    </Sequence>
-                                    <Sequence x:Key="CARET" DisplayName="Append Data to CSV File with CARET Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Caret" DisplayName="Append to CSV: Append Data to CSV File with CARET Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_5">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:AppendCsvFile>
-                                    </Sequence>
-                                    <Sequence x:Key="PIPE" DisplayName="Append Data to CSV File with PIPE Delimiter" sap:VirtualizedContainerService.HintSize="559,25" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:AppendCsvFile DataTable="[in_dt_DataToAppendToCSVFile]" Delimitator="Pipe" DisplayName="Append to CSV: Append Data to CSV File with PIPE Delimiter" FilePath="[in_str_CSVFilePath.TrimStart.TrimEnd]" sap:VirtualizedContainerService.HintSize="525,52" sap2010:WorkflowViewState.IdRef="AppendCsvFile_6">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:AppendCsvFile>
-                                    </Sequence>
-                                  </Switch>
-                                </Sequence>
-                              </ActivityAction>
-                            </ui:RetryScope.ActivityBody>
-                            <ui:RetryScope.Condition>
-                              <ActivityFunc x:TypeArguments="x:Boolean" />
-                            </ui:RetryScope.Condition>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:RetryScope>
-                        </Sequence>
-                      </ActivityAction>
-                    </Catch>
-                  </TryCatch.Catches>
-                  <TryCatch.Finally>
-                    <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="474,108" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign: Set int32_AttemptRetryNumber value to 0" sap:VirtualizedContainerService.HintSize="440,48" sap2010:WorkflowViewState.IdRef="Assign_7">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[int32_AttemptRetryNumber]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
-                        </Assign.Value>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Assign>
-                    </Sequence>
-                  </TryCatch.Finally>
-                </TryCatch>
-                <ui:LogMessage DisplayName="Log Message: Data Correctly Appended to CSV File" sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[String.Format(&quot;Data was correctly appended to CSV file named '{0}'...&quot;, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:LogMessage>
-              </Sequence>
-            </TryCatch.Try>
-            <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_8">
-                <ActivityAction x:TypeArguments="s:Exception">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="SYSTEM EXCEPTION" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_35">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Assign: Establish System Exception Message to str_ExceptionAuxiliarInfo" sap:VirtualizedContainerService.HintSize="476,57" sap2010:WorkflowViewState.IdRef="Assign_8">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format("It was not possible to append data to CSV file named '{0}': '{1}'", Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
-                      </Assign.Value>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </Assign>
-                    <ui:LogMessage DisplayName="Log Message: SE while appending data to CSV File" sap:VirtualizedContainerService.HintSize="476,57" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Error" Message="[io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd]">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </ui:LogMessage>
-                    <Throw DisplayName="Throw: SE while appending data to CSV File" Exception="[New SystemException(io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd)]" sap:VirtualizedContainerService.HintSize="476,48" sap2010:WorkflowViewState.IdRef="Throw_1">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </Throw>
-                  </Sequence>
-                </ActivityAction>
-              </Catch>
-            </TryCatch.Catches>
-            <TryCatch.Finally>
-              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_36">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
               </Sequence>
             </TryCatch.Finally>
           </TryCatch>
+          <ui:LogMessage DisplayName="Log Message: Data Correctly Appended to CSV File" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[String.Format(&quot;Data was correctly appended to CSV file named '{0}'...&quot;, Path.GetFileNameWithoutExtension(in_str_CSVFilePath.TrimStart.TrimEnd).TrimStart.TrimEnd)]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
           <Assign DisplayName="Assign: Establish bool_CheckFlow as True" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
@@ -1016,7 +942,43 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: System Exception" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[String.Format(&quot;SYSTEM EXCEPTION &gt; {0} at Source: {1}&quot;,&#xA; exception.Message.TrimStart.TrimEnd,&#xA; exception.Source&#xA;)]">
+              <ui:MultipleAssign DisplayName="Multiple Assign: Initialize control flow and exception handling variables" sap:VirtualizedContainerService.HintSize="477,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[io_bool_BusinessException]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[String.Format("{0}: '{1}'", in_str_GeneralExceptionMessage.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+              <ui:LogMessage DisplayName="Log Message: System Exception" sap:VirtualizedContainerService.HintSize="477,48" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1024,20 +986,6 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
-              <Assign DisplayName="Assign: Store System Exception Message in str_ExceptionAuxiliarInfo Variable" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="Assign_2">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[Exception.Message.TrimStart.TrimEnd]</InArgument>
-                </Assign.Value>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Assign>
             </Sequence>
           </ActivityAction>
         </Catch>
@@ -1059,15 +1007,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Business Exception" sap:VirtualizedContainerService.HintSize="581,57" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Error" Message="[String.Format(&quot;BUSINESS EXCEPTION &gt; {0} at Source: {1}&quot;,&#xA; exception.Message.TrimStart.TrimEnd,&#xA; exception.Source&#xA;)]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <ui:MultipleAssign DisplayName="Multiple Assign: Assign boolean value to business exception and exception message" sap:VirtualizedContainerService.HintSize="581,48" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign DisplayName="Multiple Assign: Set exception handling variables" sap:VirtualizedContainerService.HintSize="478,57" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -1083,7 +1023,15 @@
                         <OutArgument x:TypeArguments="x:String">[io_str_ExceptionAuxiliarInfo]</OutArgument>
                       </ui:AssignOperation.To>
                       <ui:AssignOperation.Value>
-                        <InArgument x:TypeArguments="x:String">[Exception.Message.TrimStart.TrimEnd]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[String.Format("{0}: '{1}'", in_str_GeneralExceptionMessage.TrimStart.TrimEnd, exception.Message.TrimStart.TrimEnd)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[io_bool_CheckFlow]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
                       </ui:AssignOperation.Value>
                     </ui:AssignOperation>
                   </scg:List>
@@ -1095,6 +1043,14 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:MultipleAssign>
+              <ui:LogMessage DisplayName="Log Message: Business Exception" sap:VirtualizedContainerService.HintSize="478,48" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Error" Message="[io_str_ExceptionAuxiliarInfo.TrimStart.TrimEnd]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:LogMessage>
             </Sequence>
           </ActivityAction>
         </Catch>
