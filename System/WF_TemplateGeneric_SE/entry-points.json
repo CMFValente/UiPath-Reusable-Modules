@@ -16,6 +16,9 @@
           },
           "in_str_WorkflowName": {
             "type": "string"
+          },
+          "in_str_GeneralExceptionMessage": {
+            "type": "string"
           }
         },
         "required": []
