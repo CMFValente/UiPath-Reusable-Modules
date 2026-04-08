@@ -95,10 +95,10 @@
           "in_str_DatabaseName": {
             "type": "string"
           },
-          "in_str_ProviderNameBD": {
+          "in_str_ProviderNameDB": {
             "type": "string"
           },
-          "in_str_ConnectionStringBD": {
+          "in_str_ConnectionStringDB": {
             "type": "string"
           }
         },

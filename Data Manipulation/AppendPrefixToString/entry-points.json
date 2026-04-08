@@ -1,0 +1,48 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "AppendPrefixToString.xaml",
+      "uniqueId": "97dae04b-bb4f-4c7d-a495-be63ec163b13",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_InformationToAppendPrefix": {
+            "type": "string"
+          },
+          "in_str_PrefixToAppend": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "io_str_AuxiliaryErrorMessage": {
+            "type": "string"
+          },
+          "io_bool_BusinessException": {
+            "type": "boolean"
+          },
+          "io_bool_CheckFlow": {
+            "type": "boolean"
+          },
+          "io_str_InformationToAppendPrefix": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

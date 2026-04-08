@@ -90,32 +90,32 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_str_ProviderNameBD",
-      "DisplayName": "in_str_ProviderNameBD",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "in_str_ConnectionStringBD",
-      "DisplayName": "in_str_ConnectionStringBD",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "out_dtconn_DatabaseConnection",
       "DisplayName": "out_dtconn_DatabaseConnection",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ProviderNameDB",
+      "DisplayName": "in_str_ProviderNameDB",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_ConnectionStringDB",
+      "DisplayName": "in_str_ConnectionStringDB",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,

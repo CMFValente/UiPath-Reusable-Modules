@@ -24700,15 +24700,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\catarina.valente\\.nuget\\packages\\": {}
+    "C:\\Users\\catar\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "WF_DATABASE_ConnectToDatabase",
       "projectName": "WF_DATABASE_ConnectToDatabase",
-      "projectPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\Database\\WF_DATABASE_ConnectToDatabase\\.local",
-      "packagesPath": "C:\\Users\\catarina.valente\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\Database\\WF_DATABASE_ConnectToDatabase\\.local",
+      "projectPath": "C:\\Users\\catar\\Documents\\UiPath-Reusable-Modules\\Database\\WF_DATABASE_ConnectToDatabase\\.local",
+      "packagesPath": "C:\\Users\\catar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\catar\\Documents\\UiPath-Reusable-Modules\\Database\\WF_DATABASE_ConnectToDatabase\\.local",
       "UsingMicrosoftNETSdk": false,
       "restoreAuditProperties": {
         "enableAudit": "False"
@@ -24748,7 +24748,7 @@
             "version": "[25.10.24, 25.10.24]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\catarina.valente\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\UiPathPlatform\\Studio\\26.0.190-cloud.22531\\PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
