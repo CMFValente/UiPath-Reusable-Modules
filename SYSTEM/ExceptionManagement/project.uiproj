@@ -1,0 +1,6 @@
+{
+  "Name": "WF_InvokeWorkflow",
+  "ProjectType": "Process",
+  "Description": "Management of Business Exceptions and System Exceptions.",
+  "MainFile": "WF_InvokeWorkflow.xaml"
+}

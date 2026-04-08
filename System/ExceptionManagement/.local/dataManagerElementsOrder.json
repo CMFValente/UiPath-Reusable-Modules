@@ -9,22 +9,10 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "ExceptionManagement.xaml",
+      "Path": "WF_InvokeWorkflow.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [],
-      "ConstantsSectionElementsOrder": [],
-      "AddedNamespaces": null
-    },
-    {
-      "Path": "Main_TemplateWorkflow.xaml",
-      "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
-      "ArgumentsSectionElementsOrder": [
-        "io_str_WF_ErrorMessageToRpaTeam",
-        "io_str_WF_ErrorMessageToBusiness",
-        "io_bool_CheckFlow"
-      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }

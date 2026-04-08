@@ -2,8 +2,8 @@
   "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
   "entryPoints": [
     {
-      "filePath": "ExceptionManagement.xaml",
-      "uniqueId": "8b10be49-68ab-4a3b-8da6-257e97653aea",
+      "filePath": "WF_InvokeWorkflow.xaml",
+      "uniqueId": "0f1343e0-15b0-4f3e-9e39-15b05daafdf5",
       "type": "process"
     }
   ]
