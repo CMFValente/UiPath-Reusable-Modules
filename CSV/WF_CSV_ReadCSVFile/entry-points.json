@@ -100,6 +100,9 @@
           },
           "in_str_CSVDelimiterType": {
             "type": "string"
+          },
+          "in_str_GeneralExceptionMessage": {
+            "type": "string"
           }
         },
         "required": []
