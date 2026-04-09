@@ -18,30 +18,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_ts_RetryInterval",
-      "DisplayName": "in_ts_RetryInterval",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "in_int32_NumberOfRetries",
-      "DisplayName": "in_int32_NumberOfRetries",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_str_QueryToExecute",
       "DisplayName": "in_str_QueryToExecute",
       "Category": null,
@@ -116,6 +92,18 @@
     {
       "Name": "out_dt_QueryResult",
       "DisplayName": "out_dt_QueryResult",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_GeneralExceptionMessage",
+      "DisplayName": "in_str_GeneralExceptionMessage",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
