@@ -1,0 +1,10 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "AddNewColumnsToExistingDataTable.xaml",
+      "uniqueId": "4af6bcd5-5389-4c16-ae83-5d5839a73efc",
+      "type": "process"
+    }
+  ]
+}
