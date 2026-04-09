@@ -6,30 +6,6 @@
   "OriginalIconFileName": null,
   "Arguments": [
     {
-      "Name": "in_ts_RetryInterval",
-      "DisplayName": "in_ts_RetryInterval",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
-      "Name": "in_int32_NumberOfRetries",
-      "DisplayName": "in_int32_NumberOfRetries",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_dt_DataToInsertToDatabase",
       "DisplayName": "in_dt_DataToInsertToDatabase",
       "Category": null,
@@ -104,6 +80,18 @@
     {
       "Name": "io_bool_BusinessException",
       "DisplayName": "io_bool_BusinessException",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_str_GeneralExceptionMessage",
+      "DisplayName": "in_str_GeneralExceptionMessage",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
