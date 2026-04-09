@@ -6,18 +6,6 @@
   "OriginalIconFileName": null,
   "Arguments": [
     {
-      "Name": "io_str_AuxiliaryErrorMessage",
-      "DisplayName": "io_str_AuxiliaryErrorMessage",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "io_bool_BusinessException",
       "DisplayName": "io_bool_BusinessException",
       "Category": null,
@@ -54,18 +42,6 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_str_DataTableName",
-      "DisplayName": "in_str_DataTableName",
-      "Category": null,
-      "Tooltip": null,
-      "Placeholder": null,
-      "Widget": null,
-      "IsRequired": false,
-      "IsPrincipal": true,
-      "ArgumentType": 0,
-      "DataSourceItems": null
-    },
-    {
       "Name": "in_dt_DataTableWithDuplicateValues",
       "DisplayName": "in_dt_DataTableWithDuplicateValues",
       "Category": null,
@@ -90,8 +66,8 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_ts_RetryInterval",
-      "DisplayName": "in_ts_RetryInterval",
+      "Name": "in_str_WorkflowName",
+      "DisplayName": "in_str_WorkflowName",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,
@@ -102,8 +78,20 @@
       "DataSourceItems": null
     },
     {
-      "Name": "in_int32_NumberOfRetries",
-      "DisplayName": "in_int32_NumberOfRetries",
+      "Name": "in_str_GeneralExceptionMessage",
+      "DisplayName": "in_str_GeneralExceptionMessage",
+      "Category": null,
+      "Tooltip": null,
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "io_str_ExceptionAuxiliarInfo",
+      "DisplayName": "io_str_ExceptionAuxiliarInfo",
       "Category": null,
       "Tooltip": null,
       "Placeholder": null,

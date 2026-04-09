@@ -23820,15 +23820,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\catarina.valente\\.nuget\\packages\\": {}
+    "C:\\Users\\catar\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "GetUniqueValuesDataTable",
       "projectName": "GetUniqueValuesDataTable",
-      "projectPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\DataTables\\GetUniqueValuesDataTable\\.local",
-      "packagesPath": "C:\\Users\\catarina.valente\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\catarina.valente\\Documents\\GitHub\\UiPath-Reusable-Modules\\DataTables\\GetUniqueValuesDataTable\\.local",
+      "projectPath": "C:\\Users\\catar\\Documents\\UiPath-Reusable-Modules\\DATATABLE\\WF_DATATABLE_GetUniqueValuesDataTable\\.local",
+      "packagesPath": "C:\\Users\\catar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\catar\\Documents\\UiPath-Reusable-Modules\\DATATABLE\\WF_DATATABLE_GetUniqueValuesDataTable\\.local",
       "UsingMicrosoftNETSdk": false,
       "restoreAuditProperties": {
         "enableAudit": "False"
@@ -23863,7 +23863,7 @@
             "version": "[25.10.25, 25.10.25]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\catarina.valente\\AppData\\Local\\Programs\\UiPath\\Studio\\PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\UiPathPlatform\\Studio\\26.0.190-cloud.22531\\PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
